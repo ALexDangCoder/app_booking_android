@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.fbooking">
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="FPOLY HOTEL"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:theme="@style/Theme.AppColor">
+        <activity
+            android:name=".booking.ConfirmActivity"
+            android:exported="true"
+            android:label="Xác nhận giao dịch"/>
+        <activity
+            android:name=".booking.PayActivity"
+            android:exported="true"
+            android:label="Thanh toán" >
+
+
+        </activity>
+        <activity
+            android:name=".booking.CheckAgainActivity"
+            android:exported="true"
+            android:label="Kiểm tra thông tin">
+
+        </activity>
+        <activity
+            android:name=".booking.FillInformationActivity"
+            android:exported="true"
+            android:label="Điền thông tin">
+
+
+        </activity>
+        <activity
+            android:name=".booking.RoomDetailActivity"
+            android:exported="true" >
+
+        </activity>
+        <activity
+            android:name=".introduction.IntroductionActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".splashscreen.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar" >
+
+
+        </activity>
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".history.HistoryActivity"
+            android:exported="true"
+            android:label="Lịch sử đặt phòng"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".userloginandsignup.LoginActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar" >
+
+
+        </activity>
+        <activity
+            android:name=".userloginandsignup.SignUpActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar" >
+
+
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

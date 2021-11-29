@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "993083207307",
+    "project_id": "fbookinghotel",
+    "storage_bucket": "fbookinghotel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993083207307:android:b35a03f71a103c8efdee8e",
+        "android_client_info": {
+          "package_name": "com.example.fbooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993083207307-paanmc62p06j3nhcqse4qcueqfh043dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMu2drR9QX2mz8lEkoSUlgeiZkzXlvH_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993083207307-paanmc62p06j3nhcqse4qcueqfh043dm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993083207307:android:53bf48e115ab09b0fdee8e",
+        "android_client_info": {
+          "package_name": "com.example.fbookinghotel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993083207307-paanmc62p06j3nhcqse4qcueqfh043dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMu2drR9QX2mz8lEkoSUlgeiZkzXlvH_I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993083207307-paanmc62p06j3nhcqse4qcueqfh043dm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

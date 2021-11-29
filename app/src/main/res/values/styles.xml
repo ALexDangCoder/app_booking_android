@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="orange_input">
+        <item name="lineHeight">40dp</item>
+        <item name="maxLines">1</item>
+        <item name="android:minLines">1</item>
+        <item name="android:textColorHint">#838383</item>
+        <item name="android:drawablePadding">10dp</item>
+    </style>
+
+    <style name="orange_input_disable">
+        <item name="lineHeight">40dp</item>
+        <item name="maxLines">1</item>
+        <item name="android:minLines">1</item>
+        <item name="android:textColorHint">#838383</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:clickable">false</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+    </style>
+
+    <style name="text_button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_button_back">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:textColor">#FF0000</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_button_continue">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_suggest">
+        <item name="android:textColor">#FF9800</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+    </style>
+
+    <style name="text_open">
+        <item name="android:textColor">#FF418743</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+    <style name="text_error">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textColor">#FF0000</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_margin">10dp</item>
+    </style>
+
+    <style name="text_logo">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textColor">#FF9800</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/baloo_bhai</item>
+    </style>
+
+    <style name="text_remember">
+        <item name="android:textColor">#FF9800</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="text_forgot">
+        <item name="android:textColor">#FF794F</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="text_success">
+        <item name="android:textColor">#3F51B5</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="text_title_check_again">
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="text_content_check_again">
+        <item name="android:textColor">#000000</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+    </style>
+
+    <style name="text_price">
+        <item name="android:textColor">#FF0000</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginEnd">10dp</item>
+    </style>
+
+    <style name="text_title_price">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="text_title_information">
+        <item name="android:textColor">#3F51B5</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="text_checkbox_pay">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    app:layout_editor_absoluteX="1dp"
+    app:layout_editor_absoluteY="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        tools:context=".booking.CheckAgainActivity">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Khách sạn FPOLY"
+            android:textColor="#3F51B5"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_color_grey"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/text_title_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thời gian"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_date_check_in_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nhận phòng: 30/10/2021"
+                app:drawableStartCompat="@drawable/ic_calender_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/tv_night_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Số đêm: 2 đêm"
+                app:drawableStartCompat="@drawable/ic_night_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_date_check_in_again" />
+
+            <TextView
+                android:id="@+id/tv_date_check_out_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Trả phòng: 30/10/2021"
+                app:drawableLeftCompat="@drawable/ic_calender_check"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_night_again" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_color_grey"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/text_title_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thông tin phòng"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_room_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <TextView
+                android:id="@+id/tv_room_number_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phòng số: 301"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_room_again" />
+
+            <TextView
+                android:id="@+id/tv_room_type_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Loại phòng: Phòng đơn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_room_number_again" />
+
+            <TextView
+                android:id="@+id/tv_rank_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hạng phòng: Phổ thông"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_room_type_again" />
+
+            <TextView
+                android:id="@+id/tv_people_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Số người / phòng: 2 người"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_rank_again" />
+
+            <TextView
+                android:id="@+id/tv_description_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mô tả: Điều hòa, wifi, minibar, thang máy, tủ lạnh"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_people_again" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Khách hàng"
+            android:textColor="#3F51B5"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_color_grey"
+            android:orientation="vertical"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+            <TextView
+                android:id="@+id/textView9"
+                style="@style/text_title_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thông tin khách hàng"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_name_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên khách hàng: Nguyễn Văn A"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <TextView
+                android:id="@+id/tv_phone_number_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Số điện thoại: 0123456789"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name_again" />
+
+            <TextView
+                android:id="@+id/tv_id_person_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CCCD/CMND: 0123456789"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_phone_number_again" />
+
+            <TextView
+                android:id="@+id/tv_email_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email: nguyenvana@gmail.com"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_id_person_again" />
+
+            <TextView
+                android:id="@+id/textView10"
+                style="@style/text_title_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yêu cầu của khách hàng"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_email_again" />
+
+            <TextView
+                android:id="@+id/tv_order_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đặt phòng: Đặt cho bản thân"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/tv_check_in_time_again"
+                style="@style/text_content_check_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giờ đến: 11:00 AM"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_order_again" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_title_price_again"
+            style="@style/text_title_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toStartOf="@id/tv_price_again"
+            android:text="Giá tiền: "
+            app:layout_constraintEnd_toStartOf="@+id/tv_price_again"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout6" />
+
+        <TextView
+            android:id="@+id/tv_price_again"
+            style="@style/text_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="1500000 VNĐ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout6" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_cancel_again"
+            style="@style/text_button_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button_cancel_detail"
+            android:text="Quay lại"
+            app:layout_constraintEnd_toStartOf="@+id/btn_open_pay_again"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_price_again" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_open_pay_again"
+            style="@style/text_button_continue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button_room_detail"
+            android:text="Tới thanh toán"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_cancel_again"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_price_again" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
