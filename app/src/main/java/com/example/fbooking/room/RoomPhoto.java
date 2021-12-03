@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
-public class RoomPhoto {
+public class RoomPhoto implements Serializable {
     @SerializedName("fieldname")
     @Expose
     private String fieldname;
@@ -31,17 +31,6 @@ public class RoomPhoto {
     @SerializedName("size")
     @Expose
     private Integer size;
-
-    public RoomPhoto(String fieldname, String originalname, String encoding, String mimetype, String destination, String filename, String path, Integer size) {
-        this.fieldname = fieldname;
-        this.originalname = originalname;
-        this.encoding = encoding;
-        this.mimetype = mimetype;
-        this.destination = destination;
-        this.filename = filename;
-        this.path = path;
-        this.size = size;
-    }
 
     public String getFieldname() {
         return fieldname;

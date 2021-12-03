@@ -3,4 +3,223 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">MapsActivity</string>
+
+    <!--    Check again-->
+    <string name="khach_san">Khách sạn FPOLY</string>
+
+    <string name="thoi_gian">Thoi gian </string>
+    <string name="ngay_nhan_phong">Ngày nhận phòng: </string>
+    <string name="so_dem">Số đêm: </string>
+    <string name="ngay_tra_phong">Ngày trả phòng: </string>
+
+    <string name="thong_tin_phong">Thông tin phòng: </string>
+    <string name="fill_thong_tin_phong">Thông tin phòng</string>
+    <string name="phong_so">Phòng số: </string>
+    <string name="loai_phong">Loại phòng: </string>
+    <string name="hang_phong">Hạng phòng: </string>
+    <string name="so_nguoi">Số người: </string>
+    <string name="mo_ta">Mô tả: </string>
+
+    <string name="khach_hang">Khách hàng</string>
+    <string name="thong_tin_khach_hang">Thông tin khách hàng</string>
+    <string name="so_dien_thoai">Số điện thoại: </string>
+    <string name="ten_khach_hang">Tên khách hàng: </string>
+    <string name="cmnd">CMND/CCCD: </string>
+    <string name="email">Email: </string>
+
+    <string name="yeu_cau_khach_hang">Yêu cầu của khách hàng</string>
+    <string name="dat_cho">Đặt cho: </string>
+    <string name="gio_den">Giờ đến: </string>
+
+    <string name="don_gia">Đơn giá: </string>
+    <string name="price">1500000 đ</string>
+
+    <string name="quay_lai">Quay lại</string>
+    <string name="toi_thanh_toan">Tới thanh toán</string>
+
+    <!--    Confirm-->
+    <string name="dat_phong_thanh_cong">Đặt phòng thành công</string>
+    <string name="quay_ve_trang_chu">Quay về trang chủ</string>
+
+    <!--    Fill infomation-->
+    <string name="thong_tin_lien_he">Thông tin liên hệ</string>
+    <string name="hint_ho_va_ten">Họ và tên</string>
+    <string name="hint_so_dien_thoai">Số điện thoại</string>
+    <string name="hint_cmnd">CMND/CCCD</string>
+    <string name="hint_email">Email</string>
+
+    <string name="thong_tin_chuyen_di">Thông tin chuyến đi</string>
+    <string name="hint_ngay_nhan">Ngày nhận</string>
+    <string name="hint_ngay_tra">Ngày trả</string>
+    <string name="hint_so_dem">Số đêm</string>
+    <string name="hint_nguoi_lon">Người lớn</string>
+    <string name="hint_tre_em">Trẻ em</string>
+
+    <string name="yeu_cau">Yêu cầu</string>
+    <string name="dat_cho_ban_than">Đặt cho bản thân</string>
+    <string name="dat_cho_nguoi_khac">Đặt cho người khác</string>
+    <string name="gio_nhan">Giờ nhận</string>
+    <string name="gio_tra">Giờ trả</string>
+
+    <string name="thanh_toan_khi_nhan_phong">Thanh toán khi nhận phòng</string>
+
+    <string name="tiep_tuc">Tiếp tục</string>
+
+    <string name="thong_tin_bi_trong">Thông tin bị trống!</string>
+    <string name="chua_nhap_ho_ten">Bạn chưa nhập họ và tên!</string>
+    <string name="chua_nhap_so_dien_thoai">Bạn chưa nhập số điện thoại!</string>
+    <string name="sai_so_dien_thoai">Sai định dạng số điện thoại!</string>
+    <string name="chua_nhap_cmnd">Bạn chưa nhập CMND / CCCD!</string>
+    <string name="chua_nhap_email">Bạn chưa nhập email!</string>
+    <string name="sai_dinh_dang_email">Sai định dạng email!</string>
+    <string name="chua_nhap_ngay_nhan">Bạn chưa nhập ngày nhận phòng!</string>
+    <string name="chua_nhap_ngay_tra">Bạn chưa nhập ngày trả phòng!</string>
+    <string name="sai_ngay_nhan_tra_phong">Sai ngày nhận / trả phòng!</string>
+    <string name="sai_thoi_gian_nhan_tra_phong">Sai thời gian nhận / trả phòng!</string>
+    <string name="chua_nhap_nguoi_lon">Bạn chưa nhập số người lớn!</string>
+    <string name="chua_nhap_tre_em">Bạn chưa nhập số trẻ em!</string>
+    <string name="chua_nhap_so_dem">Bạn chưa nhập số đêm!</string>
+    <string name="chua_nhap_thoi_gian_nhan">Bạn chưa nhập thời gian nhận phòng!</string>
+    <string name="chua_nhap_thoi_gian_tra">Bạn chưa nhập thời gian trả phòng!</string>
+
+    <!--    History-->
+    <string name="phong_da_dat">Phòng đã đặt</string>
+    <string name="xoa_tat_ca">Xóa tất cả</string>
+
+    <!--    Introduce-->
+    <string name="dang_nhap">Đăng nhập</string>
+    <string name="bat_dau">Bắt đầu</string>
+
+    <!--    Login-->
+    <string name="fboking">FBOOKING</string>
+
+    <string name="hint_mat_khau">Mật khẩu</string>
+    <string name="nho_mat_khau">Nhớ mật khẩu</string>
+    <string name="quen_mat_khau">Quên mật khẩu?</string>
+    <string name="chua_co_tai_khoan">Chưa có tài khoản?</string>
+
+    <!--    Pay-->
+    <string name="chuyen_khoan_ngan_hang">Chuyển khoản ngân hàng</string>
+
+    <string name="chon_tai_khoan_giao_dich">Chọn tài khoản giao dịch</string>
+
+    <string name="vietcombank">Vietcombank</string>
+    <string name="noi_dung_vietcombank">Số tài khoản: 0451000504702\n\nChủ tài khoản: Fpoly Hotel
+    \n\nChi nhánh: Hà Nội\n\nNội dung: họ và tên - số phòng - id - đặt cọc tiền phòng</string>
+
+    <string name="techcombank">Techcombank</string>
+    <string name="noi_dung_techcombank">Số tài khoản: 19036190267011\n\nChủ tài khoản: Fpoly Hotel
+    \n\nChi nhánh: Hà Nội\n\nNội dung: họ và tên - số phòng - id - đặt cọc tiền phòng</string>
+
+    <string name="luu_y">*Lưu ý: </string>
+    <string name="noi_dung_luu_y">- Qúy khách đặt cọc tối thiểu 20% để đặt phòng.\n\n- Trường
+        hợp khi khách hàng đã thanh toán tại ngân hàng, khi khách hàng huỷ phòng sẽ bị thu 20% hoá đơn.\n\n- Nếu
+        quý khách chuyển 100% tiền phòng, khi hủy phòng thì khách sạn sẽ hoàn lại 80% vào số tài khoản đã chuyển tiền cho khách sạn\n\n- Mọi
+        thắc mắc xin quý khách liên hệ đến số điện thoại 0123456789 để được giải đáp thắc mắc</string>
+
+    <string name="tien_dat_coc">Tiền đặt cọc: </string>
+
+    <string name="thanh_toan">Thanh toán</string>
+
+    <!--    Room detail-->
+    <string name="fboking_hotel">FBOOKING - FPOLY HOTEL</string>
+
+    <string name="toi_dat_phong">Tới đặt phòng</string>
+
+    <!--    Sign up-->
+    <string name="hint_ngay_sinh">Ngày sinh</string>
+    <string name="hint_xac_nhan_mat_khau">Xác nhận mật khẩu</string>
+
+    <string name="da_co_tai_khoan">Đã có tài khoản?</string>
+    <string name="dang_ky">Đăng ký</string>
+
+    <!--    Splash-->
+    <string name="fboking_hotel_slogan">FPOLY HOTEL - BOOKING APP</string>
+
+    <!--    Bottom sheet-->
+    <string name="pho_thong">Đăng ký</string>
+    <string name="cao_cap">Cao cấp</string>
+    <string name="sang_trong">Sang trọng</string>
+    <string name="phong_don">Phòng đơn</string>
+    <string name="phong_doi">Phòng đôi</string>
+    <string name="phong_hai_giuong">Phòng 2 giường</string>
+    <string name="wifi">Wife</string>
+    <string name="be_boi">Bể bơi</string>
+    <string name="do_xe">Đỗ xe</string>
+    <string name="nha_hang">Nhà hàng</string>
+    <string name="le_tan">Lễ tân</string>
+    <string name="thang_may">Thang máy</string>
+    <string name="loi_xe_lan">Lối xe lăn</string>
+    <string name="tap_gym">Tập gym</string>
+    <string name="phong_hop">Phòng họp</string>
+    <string name="dua_don">Đăng ký</string>
+    <string name="giat_la">Giặt là</string>
+    <string name="khac">Khác</string>
+
+    <!--    Booking-->
+    <string name="hint_so_nguoi">Số người</string>
+    <string name="gia_tien">Giá tiền</string>
+    <string name="tien_ich">Tiện ích</string>
+
+    <!--    Change password-->
+    <string name="doi_mat_khau">Đổi mật khẩu</string>
+    <string name="xac_nhan">Xác nhận</string>
+    <string name="huy">Hủy</string>
+
+    <!--    Favorite-->
+    <string name="danh_sach_yeu_thich">Danh sách yêu thích</string>
+
+    <!--    Profile-->
+    <string name="xin_chao">Xin chào</string>
+
+    <string name="ngay_sinh">Ngày sinh: </string>
+    <string name="mat_khau">Mật khẩu: </string>
+    <string name="chua_cap_nhat">Chưa cập nhật</string>
+    <string name="cap_nhat">Cập nhật</string>
+
+    <!--    Update profile-->
+    <string name="cap_nhat_thong_tin_ca_nhan">Cập nhật thông tin cá nhân</string>
+
+    <!--    Progress dialog-->
+    <string name="dang_tai">Đang tải...</string>
+
+    <!--    Room row-->
+    <string name="fbooking_ha_noi">Fbooking Hà Nội.</string>
+    <string name="tinh_trang">Tình trạng: </string>
+    <string name="path">https://hotelfpoly.herokuapp.com/uploads/%1$s</string>
+
+    <!--    Vnđ-->
+    <string name="vnd">%1$s đ</string>
+
+    <!--    Value - Room detail-->
+    <string name="phong_detail">Phòng: %1$s</string>
+    <string name="hang_detail">Hạng: %1$s</string>
+    <string name="loai_phong_detail">Loại phòng: %1$s</string>
+    <string name="so_nguoi_detail">Số người/phòng: %1$s</string>
+    <string name="mo_ta_detail">Mô tả: %1$s</string>
+
+    <!--    Value - Fill infomation-->
+    <string name="sai_ngay">Sai ngày nhận / trả phòng!</string>
+    <string name="loi">Lỗi</string>
+    <string name="dem">%1$s đêm</string>
+
+    <!--    Value - Check again-->
+    <string name="check_nhan_phong">Ngày nhận phòng: %1$s</string>
+    <string name="check_so_dem">Số đêm: %1$s</string>
+    <string name="check_tra_phong">Ngày trả phòng: %1$s</string>
+    <string name="check_phong_so">Phòng số: %1$s</string>
+    <string name="check_loai_phong">Loại phòng: %1$s</string>
+    <string name="check_hang_phong">Hạng phòng: %1$s</string>
+    <string name="check_so_nguoi">Số người/phòng: %1$s</string>
+    <string name="check_mo_ta">Mô tả: %1$s</string>
+
+    <string name="check_ten_khach">Tên khách hàng: %1$s</string>
+    <string name="check_so_dien_thoai">Số điện thoại: %1$s</string>
+    <string name="check_cmnd">CMND/CCCD: %1$s</string>
+    <string name="check_email">Email: %1$s</string>
+
+    <string name="check_dat_phong_cho">Đặt phòng cho: %1$s</string>
+    <string name="check_gio_den">Giờ đến: %1$s</string>
+
+    <string name="check_don_gia">Đơn giá: %1$s</string>
 </resources>

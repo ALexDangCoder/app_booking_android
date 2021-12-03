@@ -5,21 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    app:layout_editor_absoluteX="1dp"
-    app:layout_editor_absoluteY="1dp">
+    app:layout_editor_absoluteX="@dimen/dp_1"
+    app:layout_editor_absoluteY="@dimen/dp_1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F4F4F4"
-        android:padding="5dp"
+        android:padding="@dimen/dp_5"
         tools:context=".booking.FillInformationActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_login_fill"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,32 +27,28 @@
 
             <TextView
                 android:id="@+id/tv_title_login"
+                style="@style/text_title_information"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Đăng nhập để tiếp tục!"
-                android:textColor="#3F51B5"
-                android:textSize="20dp"
-                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_open_login_fill"
+                style="@style/text_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/dp_10"
                 android:background="@drawable/custom_button"
                 android:text="Đăng nhập"
-                android:textColor="@color/white"
-                android:textSize="18dp"
-                android:textStyle="bold"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_login" />
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="@dimen/dp_10"
                 android:src="@drawable/logo_bee"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -67,30 +62,27 @@
             android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:id="@+id/tv_title_contact_fill"
                 style="@style/text_title_information"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thông tin liên hệ"
+                android:text="@string/thong_tin_lien_he"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteY="10dp" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/edt_name_fill"
                 style="@style/orange_input"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
                 android:layout_below="@id/tv_title_contact_fill"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text"
                 android:drawableStart="@drawable/ic_name"
-                android:hint="Họ và tên"
-                android:paddingHorizontal="10dp"
+                android:hint="@string/hint_ho_va_ten"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_contact_fill" />
@@ -98,14 +90,13 @@
             <EditText
                 android:id="@+id/edt_phone_fill"
                 style="@style/orange_input"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
                 android:layout_below="@id/edt_name_fill"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text"
                 android:drawableStart="@drawable/ic_phone"
-                android:hint="Số điện thoại"
-                android:paddingHorizontal="10dp"
+                android:hint="@string/hint_so_dien_thoai"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_name_fill" />
@@ -113,14 +104,13 @@
             <EditText
                 android:id="@+id/edt_id_person_fill"
                 style="@style/orange_input"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
                 android:layout_below="@id/edt_phone_fill"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text"
                 android:drawableStart="@drawable/ic_name"
-                android:hint="CCCD/CMND"
-                android:paddingHorizontal="10dp"
+                android:hint="@string/hint_cmnd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_phone_fill" />
@@ -128,14 +118,13 @@
             <EditText
                 android:id="@+id/edt_email_fill"
                 style="@style/orange_input"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
                 android:layout_below="@id/edt_id_person_fill"
                 android:layout_marginTop="5dp"
                 android:background="@drawable/custom_edit_text"
                 android:drawableStart="@drawable/ic_email"
-                android:hint="Email"
-                android:paddingHorizontal="10dp"
+                android:hint="@string/hint_email"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_id_person_fill" />
@@ -146,20 +135,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/edt_email_fill"
-                android:text="Thông tin chuyến đi"
+                android:text="@string/thong_tin_chuyen_di"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_email_fill" />
 
             <EditText
                 android:id="@+id/edt_check_in_date_fill"
                 style="@style/orange_input_disable"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginEnd="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text_fill_infor"
                 android:drawableStart="@drawable/ic_calender_fill"
-                android:hint="Ngày nhận"
-                android:paddingHorizontal="10dp"
+                android:hint="@string/hint_ngay_nhan"
                 app:layout_constraintEnd_toStartOf="@+id/edt_check_out_date_fill"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_info_fill" />
@@ -167,14 +156,13 @@
             <EditText
                 android:id="@+id/edt_check_out_date_fill"
                 style="@style/orange_input_disable"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginStart="@dimen/dp_5"
+                android:layout_marginTop="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text_fill_infor"
                 android:drawableStart="@drawable/ic_calender_fill"
-                android:hint="Ngày trả"
-                android:paddingHorizontal="10dp"
+                android:hint="@string/hint_ngay_tra"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/edt_check_in_date_fill"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_info_fill" />
@@ -182,57 +170,40 @@
             <EditText
                 android:id="@+id/edt_night_fill"
                 style="@style/orange_input_disable"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginEnd="5dp"
                 android:background="@drawable/custom_edit_text_fill_infor"
                 android:drawableStart="@drawable/ic_night"
-                android:hint="Số đêm"
-                android:paddingHorizontal="10dp"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:enabled="false"
+                android:hint="@string/hint_so_dem"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toStartOf="@+id/edt_people_fill"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_check_in_date_fill" />
 
             <EditText
                 android:id="@+id/edt_people_fill"
-                style="@style/orange_input_disable"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
-                android:background="@drawable/custom_edit_text_fill_infor"
-                android:drawableStart="@drawable/ic_people_fill"
-                android:hint="Người lớn"
-                android:inputType="number"
-                android:paddingHorizontal="10dp"
-                app:layout_constraintEnd_toStartOf="@+id/edt_child_fill"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edt_night_fill" />
-
-            <EditText
-                android:id="@+id/edt_child_fill"
                 style="@style/orange_input"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
-                android:layout_weight="1"
                 android:background="@drawable/custom_edit_text_fill_infor"
                 android:drawableStart="@drawable/ic_people_fill"
-                android:hint="Trẻ em"
+                android:hint="@string/hint_so_nguoi"
                 android:inputType="number"
-                android:paddingHorizontal="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/edt_people_fill"
-                app:layout_constraintTop_toBottomOf="@+id/edt_night_fill" />
+                app:layout_constraintStart_toEndOf="@+id/edt_night_fill"
+                app:layout_constraintTop_toBottomOf="@+id/edt_check_out_date_fill" />
 
             <TextView
                 android:id="@+id/tv_request_fill"
                 style="@style/text_title_information"
                 android:layout_width="wrap_content"
-
                 android:layout_height="wrap_content"
-                android:text="Yêu cầu"
+                android:text="@string/yeu_cau"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_people_fill" />
 
@@ -240,30 +211,30 @@
                 android:id="@+id/rg_check"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/dp_5"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/tv_request_fill">
 
                 <RadioButton
                     android:id="@+id/rb_self_fill"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="5dp"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginEnd="@dimen/dp_5"
                     android:layout_weight="1"
                     android:background="@drawable/custom_edit_text_fill_infor"
                     android:checked="true"
-                    android:text="Đặt cho bản thân"
+                    android:text="@string/dat_cho_ban_than"
                     android:textStyle="bold"
                     android:theme="@style/BrandedRadioButton" />
 
                 <RadioButton
                     android:id="@+id/rb_other_fill"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="5dp"
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="@dimen/dp_40"
+                    android:layout_marginStart="@dimen/dp_5"
                     android:layout_weight="1"
                     android:background="@drawable/custom_edit_text_fill_infor"
-                    android:text="Đặt cho người khác"
+                    android:text="@string/dat_cho_nguoi_khac"
                     android:textStyle="bold"
                     android:theme="@style/BrandedRadioButton" />
             </RadioGroup>
@@ -271,14 +242,13 @@
             <EditText
                 android:id="@+id/edt_check_in_time_fill"
                 style="@style/orange_input_disable"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginEnd="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text_fill_infor"
                 android:drawableStart="@drawable/ic_clock"
-                android:hint="Giờ nhận"
-                android:paddingHorizontal="10dp"
+                android:hint="@string/gio_nhan"
                 app:layout_constraintEnd_toStartOf="@+id/edt_check_out_time_fill"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rg_check" />
@@ -286,14 +256,13 @@
             <EditText
                 android:id="@+id/edt_check_out_time_fill"
                 style="@style/orange_input_disable"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginStart="@dimen/dp_5"
+                android:layout_marginTop="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text_fill_infor"
                 android:drawableStart="@drawable/ic_clock"
-                android:hint="Giờ trả"
-                android:paddingHorizontal="10dp"
+                android:hint="@string/gio_tra"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/edt_check_in_time_fill"
                 app:layout_constraintTop_toBottomOf="@+id/rg_check" />
@@ -307,65 +276,99 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_check_in_time_fill" />
 
-            <CheckBox
-                android:id="@+id/cb_pay_fill"
-                style="@style/text_checkbox_pay"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout9"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_alignParentStart="true"
-                android:text="Thanh toán khi nhận phòng"
-                android:theme="@style/BrandedRadioButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_error_fill" />
-
-            <TextView
-                android:id="@+id/tv_title_price_fill"
-                style="@style/text_title_price"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/cb_pay_fill"
-                android:layout_toStartOf="@+id/tv_price_fill"
-                android:text="Đơn giá: "
-                app:layout_constraintEnd_toStartOf="@+id/tv_price_fill"
-                app:layout_constraintTop_toBottomOf="@+id/cb_pay_fill" />
+                android:layout_margin="@dimen/dp_5"
+                android:background="@drawable/bg_color_grey"
+                android:paddingHorizontal="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_10"
+                app:layout_constraintTop_toBottomOf="@+id/tv_error_fill"
+                tools:layout_editor_absoluteX="5dp">
 
-            <TextView
-                android:id="@+id/tv_price_fill"
-                style="@style/text_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cb_pay_fill"
-                android:layout_alignParentEnd="true"
-                android:text="1500000 VNĐ"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cb_pay_fill" />
+                <TextView
+                    android:id="@+id/tv_title_room_fill"
+                    style="@style/text_title_information"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fill_thong_tin_phong"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_room_number_fill"
+                    style="@style/text_room_fill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:text="@string/phong_so"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_room_fill" />
+
+                <TextView
+                    android:id="@+id/tv_room_type_fill"
+                    style="@style/text_room_fill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/loai_phong"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_room_number_fill" />
+
+                <TextView
+                    android:id="@+id/tv_room_rank_fill"
+                    style="@style/text_room_fill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hang_phong"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_room_type_fill" />
+
+                <TextView
+                    android:id="@+id/tv_title_price_fill"
+                    style="@style/text_title_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:text="@string/don_gia"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_price_fill"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_room_rank_fill" />
+
+                <TextView
+                    android:id="@+id/tv_price_fill"
+                    style="@style/text_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="@string/price"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_room_rank_fill" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_cancel_fill"
                 style="@style/text_button_back"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:background="@drawable/custom_button_cancel_detail"
-                android:text="Quay lại"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/quay_lai"
                 app:layout_constraintEnd_toStartOf="@+id/btn_open_check_again"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title_price_fill" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout9" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_open_check_again"
                 style="@style/text_button_continue"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dp_0"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:background="@drawable/custom_button_room_detail"
-                android:text="Tiếp tục"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/tiep_tuc"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btn_cancel_fill"
-                app:layout_constraintTop_toBottomOf="@+id/tv_title_price_fill" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout9" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

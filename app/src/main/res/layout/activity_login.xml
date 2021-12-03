@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_room"
-    android:padding="10dp"
+    android:padding="@dimen/dp_10"
     tools:context=".userloginandsignup.LoginActivity">
 
     <ImageView
@@ -22,8 +22,7 @@
         style="@style/text_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/img_hotel"
-        android:text="FBooking"
+        android:text="@string/fboking"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_hotel" />
@@ -32,9 +31,8 @@
         android:id="@+id/cl_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_login"
         android:background="@drawable/custom_form"
-        android:padding="10dp"
+        android:padding="@dimen/dp_10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_login">
@@ -43,11 +41,10 @@
             android:id="@+id/edt_email_login"
             style="@style/orange_input"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/dp_40"
             android:background="@drawable/custom_edit_text"
             android:drawableStart="@drawable/ic_email"
-            android:hint="Email"
-            android:paddingHorizontal="10dp"
+            android:hint="@string/hint_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -56,13 +53,12 @@
             android:id="@+id/edt_password_login"
             style="@style/orange_input"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginTop="@dimen/dp_5"
             android:background="@drawable/custom_edit_text"
             android:drawableStart="@drawable/ic_password"
-            android:hint="Mật khẩu"
+            android:hint="@string/hint_mat_khau"
             android:inputType="textPassword"
-            android:paddingHorizontal="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_email_login" />
@@ -72,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="@dimen/dp_10"
             android:src="@drawable/ic_hide_show_password"
             app:layout_constraintBottom_toBottomOf="@+id/edt_password_login"
             app:layout_constraintEnd_toEndOf="@+id/edt_password_login"
@@ -82,8 +78,8 @@
             android:id="@+id/cb_remember"
             style="@style/text_remember"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="Nhớ mật khẩu"
+            android:layout_height="@dimen/dp_40"
+            android:text="@string/nho_mat_khau"
             android:theme="@style/BrandedCheckBox"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_password_login" />
@@ -92,8 +88,8 @@
             android:id="@+id/tv_forgot_password"
             style="@style/text_forgot"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:text="Quên mật khẩu?"
+            android:layout_height="@dimen/dp_40"
+            android:text="@string/quen_mat_khau"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_password_login" />
 
@@ -102,11 +98,9 @@
             style="@style/text_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cb_remember"
             android:background="@drawable/custom_button"
-            android:text="Đăng nhập"
+            android:text="@string/dang_nhap"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cb_remember" />
 
@@ -115,9 +109,8 @@
             style="@style/text_suggest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_sign_in"
             android:layout_toStartOf="@+id/tv_open_sign_up"
-            android:text="Chưa có tài khoản?"
+            android:text="@string/chua_co_tai_khoan"
             app:layout_constraintEnd_toStartOf="@+id/tv_open_sign_up"
             app:layout_constraintTop_toBottomOf="@+id/btn_sign_in" />
 
@@ -126,9 +119,8 @@
             style="@style/text_open"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_sign_in"
             android:layout_alignParentEnd="true"
-            android:text="Đăng ký ngay"
+            android:text="@string/dang_ky"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_sign_in" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -139,7 +131,6 @@
         android:layout_height="wrap_content"
         style="@style/text_error"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cl_form" />
 </androidx.constraintlayout.widget.ConstraintLayout>

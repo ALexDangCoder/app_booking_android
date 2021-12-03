@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -52,12 +53,11 @@ import java.util.concurrent.TimeUnit;
 
 public class FillInformationActivity extends AppCompatActivity {
     private EditText edtNameFill, edtPhoneFill, edtIdPersonFill, edtEmailFill,
-            edtCheckInDateFill, edtCheckOutDateFill, edtPeopleFill, edtChildFill,
-            edtNightFill, edtCalTimeFill, edtCheckInTimeFill, edtCheckOutTimeFill;
+            edtCheckInDateFill, edtCheckOutDateFill, edtPeopleFill,
+            edtNightFill, edtCheckInTimeFill, edtCheckOutTimeFill;
     private RadioGroup rgCheck;
     private RadioButton rbSelfFill, rbOtherFill, rbCheck;
-    private CheckBox cbPayFill;
-    private TextView tvPriceFill, tvErrorFill;
+    private TextView tvPriceFill, tvErrorFill, tvRoomNumber, tvRoomRank, tvRoomType, tvRoomPrice;
     private AppCompatButton btnCancelFill, btnOpenCheckAgain, btnOpenLoginFill;
 
     private String amPm;
@@ -66,6 +66,9 @@ public class FillInformationActivity extends AppCompatActivity {
 
     private FirebaseUser user;
     private DatabaseReference reference;
+
+    private String formatDate = "dd/MM/yyyy";
+    private String formatTime = "HH:mm";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +143,7 @@ public class FillInformationActivity extends AppCompatActivity {
         btnCancelFill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(FillInformationActivity.this, RoomDetailActivity.class));
+                finish();
             }
         });
 
@@ -165,7 +168,6 @@ public class FillInformationActivity extends AppCompatActivity {
             }
 
             private void updateCalender() {
-                String formatDate = "dd/MM/yyyy";
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
                 edtCheckInDateFill.setText(simpleDateFormat.format(calendarCheckInDate.getTime()));
             }
@@ -194,7 +196,6 @@ public class FillInformationActivity extends AppCompatActivity {
             }
 
             private void updateCalender() {
-                String formatDate = "dd/MM/yyyy";
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
                 edtCheckOutDateFill.setText(simpleDateFormat.format(calendarCheckOutDate.getTime()));
             }
@@ -252,15 +253,17 @@ public class FillInformationActivity extends AppCompatActivity {
         String checkOutDate = edtCheckOutDateFill.getText().toString();
 
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate);
             Date startDate = simpleDateFormat.parse(checkInDate);
             Date endDate = simpleDateFormat.parse(checkOutDate);
 
+            assert startDate != null;
+            assert endDate != null;
             long duration = (endDate.getTime() - startDate.getTime());
 
             if (startDate.compareTo(endDate) > 0) {
-                tvErrorFill.setText("Sai ngày nhận / trả phòng!");
-                edtNightFill.setText("Lỗi");
+                tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_ngay));
+                edtNightFill.setText(FillInformationActivity.this.getString(R.string.loi));
                 return;
             } else {
                 tvErrorFill.setText("");
@@ -278,12 +281,12 @@ public class FillInformationActivity extends AppCompatActivity {
         String checkInDate = edtCheckInDateFill.getText().toString();
         String checkOutDate = edtCheckOutDateFill.getText().toString();
         try {
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate);
             Date startDate = simpleDateFormat.parse(checkInDate);
             Date endDate = simpleDateFormat.parse(checkOutDate);
             long duration = (endDate.getTime() - startDate.getTime());
 
-            SimpleDateFormat simpleDateFormatTime = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat simpleDateFormatTime = new SimpleDateFormat(formatTime);
             Date startTime = simpleDateFormatTime.parse(checkInTime);
             Date endTime = simpleDateFormatTime.parse(checkOutTime);
 
@@ -299,12 +302,12 @@ public class FillInformationActivity extends AppCompatActivity {
 
             if (startDate.compareTo(endDate) == 0) {
                 if (startTime.compareTo(endTime) > 0) {
-                    tvErrorFill.setText("Sai thời gian nhận / trả phòng!");
-                    edtNightFill.setText("Lỗi");
+                    tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_ngay));
+                    edtNightFill.setText(FillInformationActivity.this.getString(R.string.loi));
                     return;
                 } else {
                     tvErrorFill.setText("");
-                    edtNightFill.setText(TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS) + " đêm");
+                    edtNightFill.setText(FillInformationActivity.this.getString(R.string.dem, String.valueOf(TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS))));
                 }
             }
         } catch (ParseException e) {
@@ -402,7 +405,6 @@ public class FillInformationActivity extends AppCompatActivity {
         String strCheckInDate = edtCheckInDateFill.getText().toString().trim();
         String strCheckOutDate = edtCheckOutDateFill.getText().toString().trim();
         String strPeopleFill = edtPeopleFill.getText().toString().trim();
-        String strChildFill = edtChildFill.getText().toString().trim();
         String strNight = edtNightFill.getText().toString().trim();
 
         int selectedId = rgCheck.getCheckedRadioButtonId();
@@ -414,48 +416,48 @@ public class FillInformationActivity extends AppCompatActivity {
         if (strName.isEmpty() && strPhoneNumber.isEmpty() && strIdPerson.isEmpty() && strEmail.isEmpty()
                 && strCheckInDate.isEmpty() && strCheckOutDate.isEmpty() && strPeopleFill.isEmpty() && strNight.isEmpty()
                 && strCheckInTime.isEmpty() && strCheckOutTime.isEmpty()) {
-            tvErrorFill.setText("Thông tin bị trống!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.thong_tin_bi_trong));
             return;
         }
 
         if (strName.isEmpty()) {
-            tvErrorFill.setText("Bạn chưa nhập họ và tên!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_ho_ten));
             return;
         }
 
         if (strPhoneNumber.isEmpty()) {
-            tvErrorFill.setText("Bạn chưa nhập số điện thoại!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_so_dien_thoai));
             return;
         } else if (!strPhoneNumber.matches(String.valueOf(Patterns.PHONE))) {
-            tvErrorFill.setText("Sai định dạng số điện thoại!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_so_dien_thoai));
             return;
         }
 
         if (strIdPerson.isEmpty()) {
-            tvErrorFill.setText("Bạn chưa nhập CMND/CCCD!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_cmnd));
             return;
         }
 
         if (strEmail.isEmpty()) {
-            tvErrorFill.setText("Bạn chưa nhập email!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_email));
             return;
         } else if (!strEmail.matches(String.valueOf(Patterns.EMAIL_ADDRESS))) {
-            tvErrorFill.setText("Sai định dạng Email!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_dinh_dang_email));
             return;
         }
 
         if (strCheckInDate.isEmpty()) {
-            tvErrorFill.setText("Bạn chưa nhập ngày nhận phòng!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_ngay_nhan));
             return;
         }
 
         if (strCheckOutDate.isEmpty()) {
-            tvErrorFill.setText("Bạn chưa nhập ngày trả phòng!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_ngay_tra));
             return;
         }
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat simpleDateFormatTime = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate);
+        SimpleDateFormat simpleDateFormatTime = new SimpleDateFormat(formatTime);
         try {
             Date startDate = simpleDateFormat.parse(strCheckInDate);
             Date endDate = simpleDateFormat.parse(strCheckOutDate);
@@ -464,11 +466,11 @@ public class FillInformationActivity extends AppCompatActivity {
             Date endTime = simpleDateFormatTime.parse(strCheckOutTime);
 
             if (startDate.compareTo(endDate) > 0) {
-                tvErrorFill.setText("Sai ngày nhận / trả phòng!");
+                tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_ngay_nhan_tra_phong));
                 return;
             } else if (startDate.compareTo(endDate) == 0) {
                 if (startTime.compareTo(endTime) > 0) {
-                    tvErrorFill.setText("Sai thời gian nhận / trả phòng!");
+                    tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_thoi_gian_nhan_tra_phong));
                     return;
                 }
             }
@@ -477,27 +479,22 @@ public class FillInformationActivity extends AppCompatActivity {
         }
 
         if (strPeopleFill.isEmpty()) {
-            tvErrorFill.setText("Bạn chưa nhập số người lớn!");
-            return;
-        }
-
-        if (strChildFill.isEmpty()) {
-            tvErrorFill.setText("Bạn chưa nhập số trẻ em!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_nguoi_lon));
             return;
         }
 
         if (strNight.isEmpty()) {
-            tvErrorFill.setText("Bạn chưa nhập số đêm!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_so_dem));
             return;
         }
 
         if (strCheckInTime.isEmpty()) {
-            tvErrorFill.setText("Bạn chưa nhập ngày nhận phòng!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_thoi_gian_nhan));
             return;
         }
 
         if (strCheckInTime.isEmpty()) {
-            tvErrorFill.setText("Bạn chưa nhập ngày trả phòng!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_thoi_gian_tra));
             return;
         }
 
@@ -514,16 +511,19 @@ public class FillInformationActivity extends AppCompatActivity {
         edtCheckInDateFill = findViewById(R.id.edt_check_in_date_fill);
         edtCheckOutDateFill = findViewById(R.id.edt_check_out_date_fill);
         edtPeopleFill = findViewById(R.id.edt_people_fill);
-        edtChildFill = findViewById(R.id.edt_child_fill);
         edtNightFill = findViewById(R.id.edt_night_fill);
         edtCheckInTimeFill = findViewById(R.id.edt_check_in_time_fill);
         edtCheckOutTimeFill = findViewById(R.id.edt_check_out_time_fill);
 
         rgCheck = findViewById(R.id.rg_check);
-        cbPayFill = findViewById(R.id.cb_pay_fill);
 
         tvPriceFill = findViewById(R.id.tv_price_fill);
         tvErrorFill = findViewById(R.id.tv_error_fill);
+
+        tvRoomNumber = findViewById(R.id.tv_room_number_fill);
+        tvRoomRank = findViewById(R.id.tv_room_rank_fill);
+        tvRoomType = findViewById(R.id.tv_room_type_fill);
+        tvRoomPrice = findViewById(R.id.tv_price_fill);
 
         btnCancelFill = findViewById(R.id.btn_cancel_fill);
         btnOpenCheckAgain = findViewById(R.id.btn_open_check_again);

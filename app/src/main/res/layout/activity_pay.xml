@@ -5,39 +5,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    app:layout_editor_absoluteX="1dp"
-    app:layout_editor_absoluteY="1dp">
+    app:layout_editor_absoluteX="@dimen/dp_1"
+    app:layout_editor_absoluteY="@dimen/dp_1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp"
+        android:padding="@dimen/dp_10"
         tools:context=".booking.PayActivity">
 
         <TextView
             android:id="@+id/textView"
+            style="@style/text_title_information"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="Chuyển khoản ngân hàng"
-            android:textColor="#3F51B5"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:text="@string/chuyen_khoan_ngan_hang"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
+            style="@style/text_title_pay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Chọn tài khoản giao dịch"
-            android:textColor="#000000"
-            android:textSize="18dp"
+            android:text="@string/chon_tai_khoan_giao_dich"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -45,306 +39,165 @@
             android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/dp_5"
             android:background="@drawable/bg_color_grey"
-            android:padding="10dp"
+            android:padding="@dimen/dp_10"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2">
 
             <TextView
                 android:id="@+id/tv_viet_bank_pay"
+                style="@style/text_vietcombank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vietcombank"
-                android:textColor="#358C38"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:text="@string/vietcombank"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:src="@drawable/logo_vietcombank"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_viet_number_pay"
+                android:id="@+id/tv_viet_content"
+                style="@style/text_content_bank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_viet_bank_pay"
-                android:layout_marginTop="10dp"
-                android:text="Số tài khoản: 0451000504702"
-                android:textColor="#000000"
+                android:layout_marginTop="@dimen/dp_5"
+                android:text="@string/noi_dung_vietcombank"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_viet_bank_pay" />
-
-            <TextView
-                android:id="@+id/tv_viet_owner_pay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_viet_number_pay"
-                android:layout_marginTop="5dp"
-                android:text="Chủ tài khoản: Fpoly Hotel"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_viet_number_pay" />
-
-            <TextView
-                android:id="@+id/tv_viet_branch_pay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_viet_owner_pay"
-                android:layout_marginTop="5dp"
-                android:text="Chi nhánh: Hà Nội"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_viet_owner_pay" />
-
-            <TextView
-                android:id="@+id/tv_viet_description_pay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_viet_branch_pay"
-                android:layout_marginTop="5dp"
-                android:text="Nội dung: họ và tên - số phòng - id - đặt cọc tiền phòng  "
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_viet_branch_pay" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/dp_10"
             android:background="@drawable/bg_color_grey"
-            android:padding="10dp"
+            android:padding="@dimen/dp_10"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
             <TextView
                 android:id="@+id/tv_tech_bank_pay"
+                style="@style/text_techcombank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Techcombank"
-                android:textColor="#FF0000"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:text="@string/techcombank"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:src="@drawable/logo_techcombank"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_tech_number_pay"
+                android:id="@+id/tv_tech_content"
+                style="@style/text_content_bank"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_tech_bank_pay"
-                android:layout_marginTop="10dp"
-                android:text="Số tài khoản: 19036190267011"
-                android:textColor="#000000"
+                android:text="@string/noi_dung_techcombank"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_tech_bank_pay" />
-
-            <TextView
-                android:id="@+id/tv_tech_owner_pay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_tech_number_pay"
-                android:layout_marginTop="5dp"
-                android:text="Chủ tài khoản: Fpoly Hotel"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_tech_number_pay" />
-
-            <TextView
-                android:id="@+id/tv_tech_branch_pay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_tech_owner_pay"
-                android:layout_marginTop="5dp"
-                android:text="Chi nhánh: Hà Nội"
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_tech_owner_pay" />
-
-            <TextView
-                android:id="@+id/tv_tech_description_pay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_tech_branch_pay"
-                android:layout_marginTop="5dp"
-                android:text="Nội dung: họ và tên - số phòng - id - đặt cọc tiền phòng  "
-                android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_tech_branch_pay" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/tv_warning_pay"
+            style="@style/text_warning_pay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="*Lưu ý:"
-            android:textColor="#FF0000"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:text="@string/luu_y"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 
         <TextView
-            android:id="@+id/tv_line_1_pay"
+            android:id="@+id/tv_line_4_pay"
+            style="@style/text_content_bank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_warning_pay"
-            android:layout_marginTop="5dp"
-            android:text="- Qúy khách đặt cọc tối thiểu 20% để đặt phòng."
-            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="@string/noi_dung_luu_y"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_warning_pay" />
 
         <TextView
-            android:id="@+id/tv_line_2_pay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_line_1_pay"
-            android:layout_marginTop="5dp"
-            android:text="- Trường hợp khi khách hàng đã thanh toán tại ngân hàng, khi khách hàng huỷ phòng sẽ bị thu 20% hoá đơn."
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_line_1_pay" />
-
-        <TextView
-            android:id="@+id/tv_line_3_pay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_line_2_pay"
-            android:layout_marginTop="5dp"
-            android:text="- Nếu quý khách chuyển 100% tiền phòng, khi hủy phòng thì khách sạn sẽ hoàn lại 80% vào số tài khoản đã chuyển tiền cho khách sạn"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_line_2_pay" />
-
-        <TextView
-            android:id="@+id/tv_line_4_pay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_line_3_pay"
-            android:layout_marginTop="5dp"
-            android:text="- Mọi thắc mắc xin quý khách liên hệ đến số điện thoại 0123456789 để được giải đáp thắc mắc"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_line_3_pay" />
-
-        <TextView
             android:id="@+id/tv_title_deposit_pay"
+            style="@style/text_title_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_line_4_pay"
-            android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@id/tv_deposit_pay"
-            android:text="Tiền đặt cọc: "
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:text="@string/tien_dat_coc"
             app:layout_constraintEnd_toStartOf="@+id/tv_deposit_pay"
             app:layout_constraintTop_toBottomOf="@+id/tv_line_4_pay" />
 
         <TextView
             android:id="@+id/tv_deposit_pay"
+            style="@style/text_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_line_4_pay"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
-            android:text="300000 VNĐ"
-            android:textColor="#FF0000"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:layout_marginTop="@dimen/dp_20"
+            android:text="@string/price"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_line_4_pay" />
 
         <TextView
             android:id="@+id/tv_title_price_pay"
+            style="@style/text_title_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_title_deposit_pay"
-            android:layout_marginTop="10dp"
-            android:layout_toLeftOf="@id/tv_price_pay"
-            android:text="Tổng giá tiền: "
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:layout_marginEnd="@dimen/dp_5"
+            android:text="@string/don_gia"
             app:layout_constraintEnd_toStartOf="@+id/tv_price_pay"
             app:layout_constraintTop_toBottomOf="@+id/tv_title_deposit_pay" />
 
         <TextView
             android:id="@+id/tv_price_pay"
+            style="@style/text_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_deposit_pay"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
-            android:text="1500000 VNĐ"
-            android:textColor="#FF0000"
-            android:textSize="20dp"
-            android:textStyle="bold"
+            android:text="@string/price"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_deposit_pay" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_deposit_pay" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_cancel_pay"
-            android:layout_width="0dp"
+            style="@style/text_button_back"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
-            android:layout_weight="1"
+            android:layout_marginTop="@dimen/dp_20"
             android:background="@drawable/custom_button_cancel_detail"
-            android:text="Quay lại"
-            android:textColor="#FF0000"
-            android:textSize="18dp"
-            android:textStyle="bold"
+            android:text="@string/quay_lai"
             app:layout_constraintEnd_toStartOf="@+id/btn_open_confirm_pay"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title_price_pay" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_open_confirm_pay"
-            android:layout_width="0dp"
+            style="@style/text_button_continue"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
+            android:layout_marginTop="@dimen/dp_20"
             android:background="@drawable/custom_button_room_detail"
-            android:text="Thanh toán"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            android:textStyle="bold"
+            android:text="@string/thanh_toan"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_cancel_pay"
-            app:layout_constraintTop_toBottomOf="@+id/tv_price_pay" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_price_pay" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

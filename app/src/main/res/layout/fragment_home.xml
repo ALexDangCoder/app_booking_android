@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    app:layout_editor_absoluteX="1dp"
-    app:layout_editor_absoluteY="1dp">
+    app:layout_editor_absoluteX="@dimen/dp_1"
+    app:layout_editor_absoluteY="@dimen/dp_1">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:context=".home.HomeFragment">
 
@@ -23,7 +22,7 @@
         <me.relex.circleindicator.CircleIndicator
             android:id="@+id/ci_slide"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="@dimen/dp_20"
             android:layout_gravity="center_horizontal"
             android:background="#FF9800" />
 

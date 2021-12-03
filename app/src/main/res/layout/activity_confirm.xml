@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="5dp"
+    android:padding="@dimen/dp_5"
     tools:context=".booking.ConfirmActivity">
 
     <ImageView
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/img_confirm"
-        android:text="Đặt phòng thành công" />
+        android:text="@string/dat_phong_thanh_cong" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_confirm"
@@ -29,5 +29,5 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/custom_button_room_detail"
-        android:text="Quay về trang chủ" />
+        android:text="@string/quay_ve_trang_chu" />
 </RelativeLayout>

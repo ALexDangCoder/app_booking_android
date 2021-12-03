@@ -6,10 +6,8 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
+
 public class Room implements Serializable {
-    @SerializedName("_id")
-    @Expose
-    private String id;
     @SerializedName("roomPhoto")
     @Expose
     private List<RoomPhoto> roomPhoto = null;
@@ -24,7 +22,7 @@ public class Room implements Serializable {
     private String rankRoom;
     @SerializedName("peopleRoom")
     @Expose
-    private String peopleRoom;
+    private Integer peopleRoom;
     @SerializedName("priceRoom")
     @Expose
     private Integer priceRoom;
@@ -69,43 +67,13 @@ public class Room implements Serializable {
     private Boolean shuttle;
     @SerializedName("other")
     @Expose
-    private Boolean other;
+    private String other;
+    @SerializedName("otherText")
+    @Expose
+    private String otherText;
     @SerializedName("__v")
     @Expose
     private Integer v;
-
-    public Room(String id, List<RoomPhoto> roomPhoto, String roomNumber, String typeRoom, String rankRoom, String peopleRoom, Integer priceRoom, String statusRoom, String description, Boolean wifi, Boolean parking, Boolean receptionist, Boolean gym, Boolean roomMeeting, Boolean laundry, Boolean pool, Boolean restaurant, Boolean elevator, Boolean wheelChairWay, Boolean shuttle, Boolean other, Integer v) {
-        this.id = id;
-        this.roomPhoto = roomPhoto;
-        this.roomNumber = roomNumber;
-        this.typeRoom = typeRoom;
-        this.rankRoom = rankRoom;
-        this.peopleRoom = peopleRoom;
-        this.priceRoom = priceRoom;
-        this.statusRoom = statusRoom;
-        this.description = description;
-        this.wifi = wifi;
-        this.parking = parking;
-        this.receptionist = receptionist;
-        this.gym = gym;
-        this.roomMeeting = roomMeeting;
-        this.laundry = laundry;
-        this.pool = pool;
-        this.restaurant = restaurant;
-        this.elevator = elevator;
-        this.wheelChairWay = wheelChairWay;
-        this.shuttle = shuttle;
-        this.other = other;
-        this.v = v;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public List<RoomPhoto> getRoomPhoto() {
         return roomPhoto;
@@ -139,11 +107,11 @@ public class Room implements Serializable {
         this.rankRoom = rankRoom;
     }
 
-    public String getPeopleRoom() {
+    public Integer getPeopleRoom() {
         return peopleRoom;
     }
 
-    public void setPeopleRoom(String peopleRoom) {
+    public void setPeopleRoom(Integer peopleRoom) {
         this.peopleRoom = peopleRoom;
     }
 
@@ -161,14 +129,6 @@ public class Room implements Serializable {
 
     public void setStatusRoom(String statusRoom) {
         this.statusRoom = statusRoom;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public Boolean getWifi() {
@@ -259,12 +219,20 @@ public class Room implements Serializable {
         this.shuttle = shuttle;
     }
 
-    public Boolean getOther() {
+    public String getOther() {
         return other;
     }
 
-    public void setOther(Boolean other) {
+    public void setOther(String other) {
         this.other = other;
+    }
+
+    public String getOtherText() {
+        return otherText;
+    }
+
+    public void setOtherText(String otherText) {
+        this.otherText = otherText;
     }
 
     public Integer getV() {
@@ -273,5 +241,13 @@ public class Room implements Serializable {
 
     public void setV(Integer v) {
         this.v = v;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

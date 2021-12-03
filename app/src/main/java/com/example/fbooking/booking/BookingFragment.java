@@ -19,18 +19,16 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.fbooking.MainActivity;
 import com.example.fbooking.R;
 
 import com.example.fbooking.retrofit.ApiService;
 import com.example.fbooking.retrofit.RetrofitInstance;
-import com.example.fbooking.room.Data;
+import com.example.fbooking.room.Result;
 import com.example.fbooking.room.OnRoomClickListener;
 import com.example.fbooking.room.Room;
 import com.example.fbooking.room.RoomAdapter;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -95,14 +93,16 @@ public class BookingFragment extends Fragment implements OnRoomClickListener {
     private void getListRoom() {
         Retrofit retrofit = RetrofitInstance.getInstance();
         ApiService apiService = retrofit.create(ApiService.class);
-        apiService.getListRoom().enqueue(new Callback<Data>() {
+        apiService.getListRoom().enqueue(new Callback<Result>() {
             @Override
-            public void onResponse(Call<Data> call, Response<Data> response) {
-                Data data = response.body();
-                assert data != null;
-                roomList = data.getData();
+            public void onResponse(Call<Result> call, Response<Result> response) {
+                roomList = response.body().getData();
+
+                if (roomList == null) return;
 
                 roomAdapter.setData(roomList, BookingFragment.this::onRoomClick);
+                Log.d("ABC", roomList.toString());
+//                Toast.makeText(getActivity().getApplicationContext(), "Cập nhật dữ liệu thành công", Toast.LENGTH_LONG).show();
                 srlBooking.setRefreshing(false);
                 if (progressDialog.isShowing()) {
                     progressDialog.dismiss();
@@ -110,8 +110,11 @@ public class BookingFragment extends Fragment implements OnRoomClickListener {
             }
 
             @Override
-            public void onFailure(Call<Data> call, Throwable t) {
-                Toast.makeText(getContext(), "Không kết nối internet", Toast.LENGTH_LONG).show();
+            public void onFailure(Call<Result> call, Throwable t) {
+                Toast.makeText(getContext(), "Có lỗi xảy ra", Toast.LENGTH_LONG).show();
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
             }
         });
     }
@@ -171,7 +174,7 @@ public class BookingFragment extends Fragment implements OnRoomClickListener {
 
     @Override
     public void onRoomClick(Room room) {
-        Intent intent = new Intent(getActivity(), RoomDetailActivity.class);
+        Intent intent = new Intent(getActivity().getApplicationContext(), RoomDetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("data", room);
         intent.putExtras(bundle);

@@ -3,9 +3,10 @@ package com.example.fbooking.room;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Data {
+public class Result implements Serializable {
     @SerializedName("isSuccess")
     @Expose
     private Boolean isSuccess;
@@ -18,13 +19,6 @@ public class Data {
     @SerializedName("data")
     @Expose
     private List<Room> data = null;
-
-    public Data(Boolean isSuccess, Integer code, String message, List<Room> data) {
-        this.isSuccess = isSuccess;
-        this.code = code;
-        this.message = message;
-        this.data = data;
-    }
 
     public Boolean getIsSuccess() {
         return isSuccess;
@@ -48,14 +42,6 @@ public class Data {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public Boolean getSuccess() {
-        return isSuccess;
-    }
-
-    public void setSuccess(Boolean success) {
-        isSuccess = success;
     }
 
     public List<Room> getData() {

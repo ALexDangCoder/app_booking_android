@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    app:layout_editor_absoluteX="1dp"
-    app:layout_editor_absoluteY="1dp">
+    app:layout_editor_absoluteX="@dimen/dp_1"
+    app:layout_editor_absoluteY="@dimen/dp_1">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/img_room"
-        android:padding="10dp"
+        android:padding="@dimen/dp_10"
         tools:context=".userloginandsignup.SignUpActivity">
 
         <ImageView
@@ -26,15 +26,11 @@
 
         <TextView
             android:id="@+id/tv_sign_up"
+            style="@style/text_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/img_hotel"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/baloo_bhai"
-            android:text="FBooking"
-            android:textColor="#FF9800"
-            android:textSize="40dp"
-            android:textStyle="bold"
+            android:text="@string/fboking"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_hotel" />
@@ -44,9 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_form"
-            android:padding="10dp"
+            android:padding="@dimen/dp_10"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_sign_up">
 
@@ -54,11 +49,10 @@
                 android:id="@+id/edt_name_sign_up"
                 style="@style/orange_input"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/dp_40"
                 android:background="@drawable/custom_edit_text"
                 android:drawableStart="@drawable/ic_name"
-                android:hint="Họ và tên"
-                android:paddingHorizontal="10dp"
+                android:hint="@string/hint_ho_va_ten"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -66,14 +60,13 @@
             <EditText
                 android:id="@+id/edt_date_sign_up"
                 style="@style/orange_input_disable"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="5dp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_5"
+                android:layout_marginEnd="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text"
                 android:drawableStart="@drawable/ic_calender"
-                android:hint="Ngày sinh"
-                android:paddingHorizontal="10dp"
+                android:hint="@string/hint_ngay_sinh"
                 app:layout_constraintEnd_toStartOf="@+id/edt_phone_sign_up"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_name_sign_up" />
@@ -81,16 +74,14 @@
             <EditText
                 android:id="@+id/edt_phone_sign_up"
                 style="@style/orange_input"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_below="@id/edt_date_sign_up"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginStart="@dimen/dp_5"
+                android:layout_marginTop="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text"
                 android:drawableStart="@drawable/ic_phone"
-                android:hint="Số điện thoại"
+                android:hint="@string/hint_so_dien_thoai"
                 android:inputType="phone"
-                android:paddingHorizontal="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/edt_date_sign_up"
                 app:layout_constraintTop_toBottomOf="@+id/edt_name_sign_up" />
@@ -99,12 +90,11 @@
                 android:id="@+id/edt_id_person_sign_up"
                 style="@style/orange_input"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text"
                 android:drawableStart="@drawable/ic_name"
-                android:hint="CCCD/CMND"
-                android:paddingHorizontal="10dp"
+                android:hint="@string/hint_cmnd"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_date_sign_up" />
@@ -113,13 +103,12 @@
                 android:id="@+id/edt_email_sign_up"
                 style="@style/orange_input"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/dp_40"
                 android:layout_below="@+id/edt_id_person_sign_up"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text"
                 android:drawableStart="@drawable/ic_email"
-                android:hint="Email"
-                android:paddingHorizontal="10dp"
+                android:hint="@string/hint_email"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/edt_id_person_sign_up" />
@@ -128,13 +117,12 @@
                 android:id="@+id/edt_password_sign_up"
                 style="@style/orange_input"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text"
                 android:drawableStart="@drawable/ic_password"
-                android:hint="Mật khẩu"
+                android:hint="@string/hint_mat_khau"
                 android:inputType="textPassword"
-                android:paddingHorizontal="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_email_sign_up" />
@@ -155,15 +143,13 @@
                 android:id="@+id/edt_confirm_password_sign_up"
                 style="@style/orange_input"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="5dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginTop="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text"
                 android:drawableStart="@drawable/ic_password"
-                android:hint="Xác nhận mât khẩu"
+                android:hint="@string/hint_xac_nhan_mat_khau"
                 android:inputType="textPassword"
-                android:paddingHorizontal="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_password_sign_up" />
 
@@ -184,11 +170,10 @@
                 style="@style/text_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/dp_5"
                 android:background="@drawable/custom_button"
-                android:text="Đăng ký"
+                android:text="@string/dang_ky"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_confirm_password_sign_up" />
 
@@ -197,9 +182,7 @@
                 style="@style/text_suggest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/btn_sign_up"
-                android:layout_gravity="center"
-                android:text="Đã có tài khoản?"
+                android:text="@string/da_co_tai_khoan"
                 app:layout_constraintEnd_toStartOf="@+id/tv_open_login"
                 app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
 
@@ -208,9 +191,7 @@
                 style="@style/text_open"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/btn_sign_up"
-                android:layout_alignParentEnd="true"
-                android:text="Đăng nhập"
+                android:text="@string/dang_nhap"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_sign_up" />
         </androidx.constraintlayout.widget.ConstraintLayout>

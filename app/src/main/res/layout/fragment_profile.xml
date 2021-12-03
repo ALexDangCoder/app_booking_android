@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    app:layout_editor_absoluteX="1dp"
-    app:layout_editor_absoluteY="1dp">
+    app:layout_editor_absoluteX="@dimen/dp_1"
+    app:layout_editor_absoluteY="@dimen/dp_1">
 
     <FrameLayout
         android:id="@+id/fl_profile"
@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:padding="10dp">
+            android:padding="@dimen/dp_10">
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/srl_profile"
@@ -31,7 +31,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_color_white"
-                        android:padding="10dp">
+                        android:padding="@dimen/dp_10">
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/img_avatar_profile"
@@ -42,159 +42,120 @@
 
                         <TextView
                             android:id="@+id/tv_greeting_profile"
+                            style="@style/text_hello_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/img_avatar_profile"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="17dp"
-                            android:text="Xin chào"
-                            android:textColor="#FF9800"
-                            android:textSize="20dp"
-                            android:textStyle="bold" />
+                            android:text="@string/xin_chao" />
 
                         <TextView
                             android:id="@+id/tv_title_date_of_birth_profile"
+                            style="@style/text_title_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_greeting_profile"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Ngày sinh: "
-                            android:textColor="#3F51B5"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:text="@string/ngay_sinh" />
 
                         <TextView
                             android:id="@+id/tv_date_of_birth_profile"
+                            style="@style/text_info_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv_greeting_profile"
-                            android:layout_marginTop="10dp"
-                            android:layout_toRightOf="@+id/tv_title_date_of_birth_profile"
-                            android:text="Chưa cập nhật"
-                            android:textColor="#FF9800"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_toEndOf="@+id/tv_title_date_of_birth_profile"
+                            android:text="@string/chua_cap_nhat" />
 
                         <TextView
                             android:id="@+id/tv_title_phone_number_profile"
+                            style="@style/text_title_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_title_date_of_birth_profile"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Số điện thoại: "
-                            android:textColor="#3F51B5"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:text="@string/so_dien_thoai" />
 
                         <TextView
                             android:id="@+id/tv_phone_number_profile"
+                            style="@style/text_info_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv_title_date_of_birth_profile"
-                            android:layout_marginTop="10dp"
-                            android:layout_toRightOf="@+id/tv_title_phone_number_profile"
-                            android:text="Chưa cập nhật"
-                            android:textColor="#FF9800"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_toEndOf="@+id/tv_title_phone_number_profile"
+                            android:text="@string/chua_cap_nhat" />
 
                         <TextView
                             android:id="@+id/tv_title_id_person_profile"
+                            style="@style/text_title_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_title_phone_number_profile"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="10dp"
-                            android:text="CCCD/CMND: "
-                            android:textColor="#3F51B5"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:text="@string/cmnd" />
 
                         <TextView
                             android:id="@+id/tv_id_person_profile"
+                            style="@style/text_info_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/tv_title_phone_number_profile"
-                            android:layout_marginTop="10dp"
-                            android:layout_toRightOf="@+id/tv_title_id_person_profile"
-                            android:text="Chưa cập nhật"
-                            android:textColor="#FF9800"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_toEndOf="@+id/tv_title_id_person_profile"
+                            android:text="@string/chua_cap_nhat" />
 
                         <TextView
                             android:id="@+id/tv_title_email_profile"
+                            style="@style/text_title_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_title_id_person_profile"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Email: "
-                            android:textColor="#3F51B5"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:text="@string/email" />
 
                         <TextView
                             android:id="@+id/tv_email_profile"
+                            style="@style/text_info_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_title_id_person_profile"
-                            android:layout_marginTop="10dp"
-                            android:layout_toRightOf="@id/tv_title_email_profile"
-                            android:text="Chưa cập nhật"
-                            android:textColor="#FF9800"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_toEndOf="@id/tv_title_email_profile"
+                            android:text="@string/chua_cap_nhat" />
 
                         <TextView
                             android:id="@+id/tv_title_password_profile"
+                            style="@style/text_title_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_title_email_profile"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Mật khẩu: "
-                            android:textColor="#3F51B5"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:text="@string/mat_khau" />
 
                         <TextView
                             android:id="@+id/tv_password_profile"
+                            style="@style/text_another_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_title_email_profile"
-                            android:layout_marginTop="10dp"
-                            android:layout_toRightOf="@id/tv_title_password_profile"
-                            android:text="Chưa cập nhật"
-                            android:textColor="#616161"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:layout_marginStart="@dimen/dp_5"
+                            android:layout_toEndOf="@id/tv_title_password_profile"
+                            android:text="@string/chua_cap_nhat" />
 
                         <TextView
                             android:id="@+id/tv_open_change_password"
+                            style="@style/text_another_profile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_title_email_profile"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginTop="10dp"
-                            android:text="Đổi mật khẩu"
-                            android:textColor="#000000"
-                            android:textSize="15dp"
-                            android:textStyle="bold" />
+                            android:layout_alignParentEnd="true"
+                            android:text="@string/doi_mat_khau" />
 
                         <androidx.appcompat.widget.AppCompatButton
                             android:id="@+id/btn_open_update_profile"
+                            style="@style/text_button"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_title_password_profile"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="@dimen/dp_10"
                             android:background="@drawable/custom_button"
-                            android:text="Cập nhật"
-                            android:textColor="@color/white"
-                            android:textSize="18dp"
-                            android:textStyle="bold" />
+                            android:text="@string/cap_nhat" />
                     </RelativeLayout>
                 </RelativeLayout>
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -205,7 +166,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/custom_button_cancel"
-                android:padding="5dp"
+                android:padding="@dimen/dp_5"
                 android:src="@drawable/ic_sigt_out" />
         </RelativeLayout>
     </FrameLayout>

@@ -2,6 +2,7 @@ package com.example.fbooking.room;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.fbooking.R;
+import com.example.fbooking.booking.FillInformationActivity;
+import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
 
-public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder>{
+public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder> {
     private View view;
 
     Context context;
@@ -51,13 +55,14 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder>{
         NumberFormat formatter = new DecimalFormat("#,###");
         String formattedMoney = formatter.format(room.getPriceRoom());
 
-        holder.tvRoomNumber.setText(room.getRoomNumber() + "");
-        holder.tvTypeRoom.setText(room.getTypeRoom() + "");
-        holder.tvRankRoom.setText(room.getRankRoom() + "");
-        holder.tvStatusRoom.setText(room.getStatusRoom() + "");
-        holder.tvPriceRoom.setText(formattedMoney + " đ");
+        holder.tvRoomNumber.setText(String.valueOf(room.getRoomNumber()));
+        holder.tvTypeRoom.setText(String.valueOf(room.getTypeRoom()));
+        holder.tvRankRoom.setText(String.valueOf(room.getRankRoom()));
+        holder.tvStatusRoom.setText(String.valueOf(room.getStatusRoom()));
+        holder.tvPriceRoom.setText(context.getString(R.string.vnd, formattedMoney));
 
-//        Glide.with(context).load(room.getImageRoom().getMainImage()).into(holder.imgRoom);
+        String path = room.getRoomPhoto().get(0).getFilename();
+        Picasso.get().load(context.getString(R.string.path, path)).into(holder.imgRoom);
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override

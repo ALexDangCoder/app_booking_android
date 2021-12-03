@@ -18,9 +18,9 @@ import java.text.NumberFormat;
 
 public class CheckAgainActivity extends AppCompatActivity {
     private TextView tvDateCheckInAgain, tvNightAgain, tvDateCheckOutAgain,
-                    tvRoomNumberAgain, tvRoomTypeAgain, tvRankAgain, tvPeopleAgain, tvDescriptionAgain,
-                    tvNameAgain, tvPhoneNumberAgain, tvIdPersonAgain, tvEmailAgain,
-                    tvOrderAgain, tvCheckInTimeAgain, tvPriceAgain;
+            tvRoomNumberAgain, tvRoomTypeAgain, tvRankAgain, tvPeopleAgain, tvDescriptionAgain,
+            tvNameAgain, tvPhoneNumberAgain, tvIdPersonAgain, tvEmailAgain,
+            tvOrderAgain, tvCheckInTimeAgain, tvPriceAgain;
     private ImageView imgRoomAgain;
     private AppCompatButton btnCancelAgain, btnOpenPay;
 
@@ -43,22 +43,22 @@ public class CheckAgainActivity extends AppCompatActivity {
         NumberFormat formatter = new DecimalFormat("#,###");
 //        String formattedMoney = formatter.format(room.getPriceRoom());
 
-        tvDateCheckInAgain.setText("Nhận phòng: " + "");
-        tvNightAgain.setText("Số đêm: " + "");
-        tvDateCheckOutAgain.setText("Trả phòng: " + "");
-        tvRoomNumberAgain.setText("Phòng số: " + "");
-        tvRoomTypeAgain.setText("Số người/phòng: " + "");
-        tvRankAgain.setText("Mô tả: " + "");
-        tvPeopleAgain.setText("Tầm nhìn: " + "");
-        tvDescriptionAgain.setText("Mô tả: " + "Điều hòa các thứ...");
+        tvDateCheckInAgain.setText(CheckAgainActivity.this.getString(R.string.check_nhan_phong, ""));
+        tvNightAgain.setText(CheckAgainActivity.this.getString(R.string.check_so_dem, ""));
+        tvDateCheckOutAgain.setText(CheckAgainActivity.this.getString(R.string.check_tra_phong, ""));
+        tvRoomNumberAgain.setText(CheckAgainActivity.this.getString(R.string.check_phong_so, ""));
+        tvRoomTypeAgain.setText(CheckAgainActivity.this.getString(R.string.check_loai_phong, ""));
+        tvRankAgain.setText(CheckAgainActivity.this.getString(R.string.check_hang_phong, ""));
+        tvPeopleAgain.setText(CheckAgainActivity.this.getString(R.string.check_so_nguoi, ""));
+        tvDescriptionAgain.setText(CheckAgainActivity.this.getString(R.string.check_mo_ta, ""));
 
-        tvNameAgain.setText("Tên khác hàng: " + "");
-        tvPhoneNumberAgain.setText("Số điện thoại: " + "");
-        tvIdPersonAgain.setText("CCCD/CMND: " + "");
-        tvEmailAgain.setText("Email: " + "");
+        tvNameAgain.setText(CheckAgainActivity.this.getString(R.string.check_ten_khach, ""));
+        tvPhoneNumberAgain.setText(CheckAgainActivity.this.getString(R.string.check_so_dien_thoai, ""));
+        tvIdPersonAgain.setText(CheckAgainActivity.this.getString(R.string.check_cmnd, ""));
+        tvEmailAgain.setText(CheckAgainActivity.this.getString(R.string.check_email, ""));
 
-        tvOrderAgain.setText("Đặt phòng: " + "");
-        tvCheckInTimeAgain.setText("Giờ đến: " + "");
+        tvOrderAgain.setText(CheckAgainActivity.this.getString(R.string.check_dat_phong_cho, ""));
+        tvCheckInTimeAgain.setText(CheckAgainActivity.this.getString(R.string.check_gio_den, ""));
 
         tvPriceAgain.setText("1,500,000" + " đ");
 
@@ -68,7 +68,7 @@ public class CheckAgainActivity extends AppCompatActivity {
         btnCancelAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(CheckAgainActivity.this, FillInformationActivity.class));
+                finish();
             }
         });
 

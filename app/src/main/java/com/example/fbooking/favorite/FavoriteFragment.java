@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fbooking.booking.RoomDetailActivity;
 import com.example.fbooking.room.OnRoomClickListener;
@@ -44,6 +46,7 @@ public class FavoriteFragment extends Fragment implements OnRoomClickListener {
 
     private FirebaseUser user;
     private DatabaseReference reference;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -54,10 +57,10 @@ public class FavoriteFragment extends Fragment implements OnRoomClickListener {
 
         showFrom();
 
-        rcvRoomFavorite.setLayoutManager(linearLayoutManager);
-        roomAdapter = new RoomAdapter(getActivity());
-        roomAdapter.setData(getListRoom(), this::onRoomClick);
-        rcvRoomFavorite.setAdapter(roomAdapter);
+//        rcvRoomFavorite.setLayoutManager(linearLayoutManager);
+//        roomAdapter = new RoomAdapter(getActivity());
+//        roomAdapter.setData(getListRoom(), this::onRoomClick);
+//        rcvRoomFavorite.setAdapter(roomAdapter);
 
         return view;
     }
@@ -86,7 +89,6 @@ public class FavoriteFragment extends Fragment implements OnRoomClickListener {
     private void showFrom() {
         if (user == null) {
             lnLoginFavorite.setVisibility(View.VISIBLE);
-            btnOpenLogin.setEnabled(true);
             btnOpenLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -99,7 +101,6 @@ public class FavoriteFragment extends Fragment implements OnRoomClickListener {
             rcvRoomFavorite.setVisibility(View.GONE);
         } else {
             lnLoginFavorite.setVisibility(View.GONE);
-            btnOpenLogin.setEnabled(false);
 
             tvTitleFavorite.setVisibility(View.VISIBLE);
             tvDeleteAll.setVisibility(View.VISIBLE);

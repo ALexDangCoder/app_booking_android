@@ -8,19 +8,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/dp_10"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="@dimen/dp_10"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginRight="5dp"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
@@ -31,48 +31,35 @@
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/custom_edit_text_search"
-                    android:hint="Số người"
-                    android:lineHeight="40dp"
-                    android:maxLines="1"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
+                    android:hint="@string/hint_so_nguoi"
+                    android:paddingHorizontal="@dimen/dp_10"
                     android:textColorHint="#838383" />
 
                 <ImageView
                     android:id="@+id/btn_search_person"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_height="@dimen/dp_40"
                     android:background="@drawable/custom_button_search"
                     android:src="@drawable/ic_search" />
             </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_sort"
+                style="@style/text_button_booking"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_weight="1"
+                android:layout_height="@dimen/dp_40"
                 android:background="@drawable/custom_button_booking"
-                android:drawableLeft="@drawable/ic_sort"
-                android:drawablePadding="5dp"
-                android:padding="10dp"
-                android:text="Giá tiền"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:drawableStart="@drawable/ic_sort"
+                android:text="@string/gia_tien" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_open_bottom_sheet"
+                style="@style/text_button_booking_another"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
+                android:layout_height="@dimen/dp_40"
+                android:layout_marginStart="@dimen/dp_5"
                 android:background="@drawable/custom_button_booking"
-                android:padding="10dp"
-                android:text="Tiện ích"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:text="@string/tien_ich" />
         </LinearLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

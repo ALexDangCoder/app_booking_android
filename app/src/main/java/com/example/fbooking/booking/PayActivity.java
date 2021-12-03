@@ -28,7 +28,7 @@ public class PayActivity extends AppCompatActivity {
         btnCancelPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PayActivity.this, CheckAgainActivity.class));
+                finish();
             }
         });
 
