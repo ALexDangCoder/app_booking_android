@@ -28,14 +28,14 @@ public class PayActivity extends AppCompatActivity {
         btnCancelPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+
             }
         });
 
         btnConfirmPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(PayActivity.this, ConfirmActivity.class));
+
             }
         });
     }

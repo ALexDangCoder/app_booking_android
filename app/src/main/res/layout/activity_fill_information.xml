@@ -135,7 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/edt_email_fill"
-                android:text="@string/thong_tin_chuyen_di"
+                android:text="@string/yeu_cau_chuyen_di"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_email_fill" />
 
@@ -198,47 +198,6 @@
                 app:layout_constraintStart_toEndOf="@+id/edt_night_fill"
                 app:layout_constraintTop_toBottomOf="@+id/edt_check_out_date_fill" />
 
-            <TextView
-                android:id="@+id/tv_request_fill"
-                style="@style/text_title_information"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yeu_cau"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edt_people_fill" />
-
-            <RadioGroup
-                android:id="@+id/rg_check"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp_5"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/tv_request_fill">
-
-                <RadioButton
-                    android:id="@+id/rb_self_fill"
-                    android:layout_width="@dimen/dp_0"
-                    android:layout_height="@dimen/dp_40"
-                    android:layout_marginEnd="@dimen/dp_5"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_edit_text_fill_infor"
-                    android:checked="true"
-                    android:text="@string/dat_cho_ban_than"
-                    android:textStyle="bold"
-                    android:theme="@style/BrandedRadioButton" />
-
-                <RadioButton
-                    android:id="@+id/rb_other_fill"
-                    android:layout_width="@dimen/dp_0"
-                    android:layout_height="@dimen/dp_40"
-                    android:layout_marginStart="@dimen/dp_5"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_edit_text_fill_infor"
-                    android:text="@string/dat_cho_nguoi_khac"
-                    android:textStyle="bold"
-                    android:theme="@style/BrandedRadioButton" />
-            </RadioGroup>
-
             <EditText
                 android:id="@+id/edt_check_in_time_fill"
                 style="@style/orange_input_disable"
@@ -251,7 +210,7 @@
                 android:hint="@string/gio_nhan"
                 app:layout_constraintEnd_toStartOf="@+id/edt_check_out_time_fill"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rg_check" />
+                app:layout_constraintTop_toBottomOf="@+id/edt_night_fill" />
 
             <EditText
                 android:id="@+id/edt_check_out_time_fill"
@@ -265,13 +224,15 @@
                 android:hint="@string/gio_tra"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/edt_check_in_time_fill"
-                app:layout_constraintTop_toBottomOf="@+id/rg_check" />
+                app:layout_constraintTop_toBottomOf="@+id/edt_people_fill" />
 
             <TextView
                 android:id="@+id/tv_error_fill"
                 style="@style/text_error"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_check_in_time_fill" />
@@ -280,7 +241,8 @@
                 android:id="@+id/constraintLayout9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/dp_5"
+                android:layout_marginHorizontal="@dimen/dp_5"
+                android:layout_marginVertical="@dimen/dp_10"
                 android:background="@drawable/bg_color_grey"
                 android:paddingHorizontal="@dimen/dp_10"
                 android:paddingBottom="@dimen/dp_10"

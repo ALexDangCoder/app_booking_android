@@ -30,9 +30,13 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.fbooking.R;
+import com.example.fbooking.retrofit.ApiService;
+import com.example.fbooking.retrofit.RetrofitInstance;
+import com.example.fbooking.room.Room;
 import com.example.fbooking.userloginandsignup.LoginActivity;
 import com.example.fbooking.userloginandsignup.SignUpActivity;
 import com.example.fbooking.userloginandsignup.User;
+import com.example.fbooking.utils.PriceFormatUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -51,13 +55,16 @@ import java.util.Locale;
 import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+
 public class FillInformationActivity extends AppCompatActivity {
     private EditText edtNameFill, edtPhoneFill, edtIdPersonFill, edtEmailFill,
             edtCheckInDateFill, edtCheckOutDateFill, edtPeopleFill,
             edtNightFill, edtCheckInTimeFill, edtCheckOutTimeFill;
-    private RadioGroup rgCheck;
-    private RadioButton rbSelfFill, rbOtherFill, rbCheck;
-    private TextView tvPriceFill, tvErrorFill, tvRoomNumber, tvRoomRank, tvRoomType, tvRoomPrice;
+    private TextView tvErrorFill, tvRoomNumber, tvRoomRank, tvRoomType, tvRoomPrice;
     private AppCompatButton btnCancelFill, btnOpenCheckAgain, btnOpenLoginFill;
 
     private String amPm;
@@ -77,15 +84,32 @@ public class FillInformationActivity extends AppCompatActivity {
 
         initUi();
 
-//        showFrom();
+        Room room = (Room) getIntent().getExtras().get("data_next");
+
+        tvRoomNumber.setText(FillInformationActivity.this.getString(R.string.fill_phong_so, room.getRoomNumber()));
+        tvRoomType.setText(FillInformationActivity.this.getString(R.string.fill_loai_phong, room.getTypeRoom()));
+        tvRoomRank.setText(FillInformationActivity.this.getString(R.string.fill_hang_phong, room.getRankRoom()));
+        tvRoomPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
 
         showUserInformation();
+
+        showRoomInfomation();
 
         onChoseDate();
 
         onChoseTime();
 
         onClickButton();
+    }
+
+    //Hien thi thong tin phong
+    private void showRoomInfomation() {
+        Room room = (Room) getIntent().getExtras().get("data_next");
+
+        tvRoomNumber.setText(FillInformationActivity.this.getString(R.string.fill_phong_so, room.getRoomNumber()));
+        tvRoomType.setText(FillInformationActivity.this.getString(R.string.fill_loai_phong, room.getTypeRoom()));
+        tvRoomRank.setText(FillInformationActivity.this.getString(R.string.fill_hang_phong, room.getRankRoom()));
+        tvRoomPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
     }
 
     //Hien thi form dang nhap khi nguoi dung chua dang nhap
@@ -134,9 +158,6 @@ public class FillInformationActivity extends AppCompatActivity {
                 }
             });
         }
-
-        NumberFormat formatter = new DecimalFormat("#,###");
-        tvPriceFill.setText("1,500,000" + " đ");
     }
 
     private void onClickButton() {
@@ -151,6 +172,7 @@ public class FillInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openCheckInformationAgain();
+//                createBooking();
             }
         });
     }
@@ -399,16 +421,36 @@ public class FillInformationActivity extends AppCompatActivity {
     private void openCheckInformationAgain() {
         String strName = edtNameFill.getText().toString().trim();
         String strPhoneNumber = edtPhoneFill.getText().toString().trim();
+
+        int idPerson = 0;
         String strIdPerson = edtIdPersonFill.getText().toString().trim();
+        try {
+            idPerson = Integer.parseInt(strIdPerson);
+        } catch (NumberFormatException e) {
+
+        }
+
         String strEmail = edtEmailFill.getText().toString().trim();
 
         String strCheckInDate = edtCheckInDateFill.getText().toString().trim();
         String strCheckOutDate = edtCheckOutDateFill.getText().toString().trim();
-        String strPeopleFill = edtPeopleFill.getText().toString().trim();
-        String strNight = edtNightFill.getText().toString().trim();
 
-        int selectedId = rgCheck.getCheckedRadioButtonId();
-        rbCheck = findViewById(selectedId);
+        int people = 0;
+        String strPeopleFill = edtPeopleFill.getText().toString().trim();
+        try {
+            people = Integer.parseInt(strPeopleFill);
+            Log.d("PEOPLE", String.valueOf(people));
+        } catch (NumberFormatException e) {
+
+        }
+
+        int night = 0;
+        String strNight = edtNightFill.getText().toString().trim();
+        try {
+            night = Integer.parseInt(strNight);
+        } catch (NumberFormatException e) {
+
+        }
 
         String strCheckInTime = edtCheckInTimeFill.getText().toString().trim();
         String strCheckOutTime = edtCheckOutTimeFill.getText().toString().trim();
@@ -498,9 +540,93 @@ public class FillInformationActivity extends AppCompatActivity {
             return;
         }
 
+        Room room = (Room) getIntent().getExtras().get("data_next");
+
+        tvRoomNumber.setText(room.getRoomNumber());
+        tvRoomType.setText(room.getTypeRoom());
+        tvRoomRank.setText(room.getRankRoom());
+        tvRoomPrice.setText(String.valueOf(room.getPriceRoom()));
+
+        String roomId = room.getRoomId();
+        String roomNumber = tvRoomNumber.getText().toString();
+        String roomType = tvRoomType.getText().toString();
+        String roomRank = tvRoomRank.getText().toString();
+
+        double price = room.getPriceRoom();
+        String roomPrice = tvRoomPrice.getText().toString();
+        try {
+            price = Double.parseDouble(roomPrice);
+        } catch (NumberFormatException e) {
+
+        }
+
         tvErrorFill.setText("");
 
-        startActivity(new Intent(FillInformationActivity.this, CheckAgainActivity.class));
+
+        Booking booking = new Booking(room.getRoomId(),
+                room.getRoomNumber(), strName, strPhoneNumber, room.getTypeRoom(),
+                room.getRankRoom(), 1, strEmail, strCheckInDate,
+                strCheckOutDate, 1, 1,
+                strCheckInTime, strCheckOutTime, room.getPriceRoom());
+
+//        Booking booking = new Booking("61ab35ac7140436ae6942b10",
+//                "301", "Nguyễn Thành Nhật", "123456789", "1",
+//                "1", 987654321, "nhatbeo@gmail.com", "1/1/2022",
+//                "1/1/2022", 2, 1,
+//                "12:30", "12:30", 1000000);
+
+        Retrofit retrofit = RetrofitInstance.getInstance();
+        ApiService apiService = retrofit.create(ApiService.class);
+        apiService.createOrder(booking).enqueue(new Callback<Booking>() {
+            @Override
+            public void onResponse(Call<Booking> call, Response<Booking> response) {
+                Toast.makeText(FillInformationActivity.this, "Success", Toast.LENGTH_SHORT).show();
+
+                Booking o = response.body();
+                String data = null;
+                data = o.getHangPhong();
+                Log.d("BOOKING", data + "");
+            }
+
+            @Override
+            public void onFailure(Call<Booking> call, Throwable t) {
+                Toast.makeText(FillInformationActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Intent intent = new Intent(FillInformationActivity.this, CheckAgainActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("booking", booking);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    private void createBooking() {
+        Booking booking = new Booking("61ab35ac7140436ae6942b10",
+                "301", "Nguyễn Thành Nhật", "123456789", "1",
+                "1", 987654321, "nhatbeo@gmail.com", "1/1/2022",
+                "1/1/2022", 2, 1,
+                "12:30", "12:30", 1000000);
+
+        Retrofit retrofit = RetrofitInstance.getInstance();
+        ApiService apiService = retrofit.create(ApiService.class);
+
+        apiService.createOrder(booking).enqueue(new Callback<Booking>() {
+            @Override
+            public void onResponse(Call<Booking> call, Response<Booking> response) {
+                Toast.makeText(FillInformationActivity.this, "Success", Toast.LENGTH_SHORT).show();
+
+                Booking o = response.body();
+                String data = null;
+                data = o.getHangPhong();
+                Log.d("BOOKING", data + "");
+            }
+
+            @Override
+            public void onFailure(Call<Booking> call, Throwable t) {
+                Toast.makeText(FillInformationActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void initUi() {
@@ -515,9 +641,6 @@ public class FillInformationActivity extends AppCompatActivity {
         edtCheckInTimeFill = findViewById(R.id.edt_check_in_time_fill);
         edtCheckOutTimeFill = findViewById(R.id.edt_check_out_time_fill);
 
-        rgCheck = findViewById(R.id.rg_check);
-
-        tvPriceFill = findViewById(R.id.tv_price_fill);
         tvErrorFill = findViewById(R.id.tv_error_fill);
 
         tvRoomNumber = findViewById(R.id.tv_room_number_fill);

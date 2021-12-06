@@ -35,7 +35,6 @@
     <string name="price">1500000 đ</string>
 
     <string name="quay_lai">Quay lại</string>
-    <string name="toi_thanh_toan">Tới thanh toán</string>
 
     <!--    Confirm-->
     <string name="dat_phong_thanh_cong">Đặt phòng thành công</string>
@@ -55,7 +54,7 @@
     <string name="hint_nguoi_lon">Người lớn</string>
     <string name="hint_tre_em">Trẻ em</string>
 
-    <string name="yeu_cau">Yêu cầu</string>
+    <string name="yeu_cau_chuyen_di">Yêu cầu chuyến đi</string>
     <string name="dat_cho_ban_than">Đặt cho bản thân</string>
     <string name="dat_cho_nguoi_khac">Đặt cho người khác</string>
     <string name="gio_nhan">Giờ nhận</string>
@@ -222,4 +221,11 @@
     <string name="check_gio_den">Giờ đến: %1$s</string>
 
     <string name="check_don_gia">Đơn giá: %1$s</string>
+
+<!--    Value - Fill infomation-->
+    <string name="fill_phong_so">Phòng số: %1$s</string>
+    <string name="fill_loai_phong">Loại phòng: %1$s</string>
+    <string name="fill_hang_phong">Hạng phòng: %1$s</string>
+    <string name="fill_gia_phong">Giá phòng: %1$s</string>
+
 </resources>

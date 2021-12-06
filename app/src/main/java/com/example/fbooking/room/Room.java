@@ -8,6 +8,9 @@ import java.util.List;
 
 
 public class Room implements Serializable {
+    @SerializedName("_id")
+    @Expose
+    private String roomId;
     @SerializedName("roomPhoto")
     @Expose
     private List<RoomPhoto> roomPhoto = null;
@@ -25,7 +28,7 @@ public class Room implements Serializable {
     private Integer peopleRoom;
     @SerializedName("priceRoom")
     @Expose
-    private Integer priceRoom;
+    private double priceRoom;
     @SerializedName("statusRoom")
     @Expose
     private String statusRoom;
@@ -75,6 +78,14 @@ public class Room implements Serializable {
     @Expose
     private Integer v;
 
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
+
     public List<RoomPhoto> getRoomPhoto() {
         return roomPhoto;
     }
@@ -115,11 +126,11 @@ public class Room implements Serializable {
         this.peopleRoom = peopleRoom;
     }
 
-    public Integer getPriceRoom() {
+    public double getPriceRoom() {
         return priceRoom;
     }
 
-    public void setPriceRoom(Integer priceRoom) {
+    public void setPriceRoom(double priceRoom) {
         this.priceRoom = priceRoom;
     }
 

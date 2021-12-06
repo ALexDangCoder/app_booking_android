@@ -10,12 +10,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.fbooking.MainActivity;
 import com.example.fbooking.R;
 import com.example.fbooking.room.Room;
 import com.example.fbooking.room.RoomPhoto;
+import com.example.fbooking.utils.PriceFormatUtils;
+import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -40,11 +43,7 @@ public class RoomDetailActivity extends AppCompatActivity {
     }
 
     private void showRoomDetail() {
-
         Room room = (Room) getIntent().getExtras().get("data");
-
-        NumberFormat formatter = new DecimalFormat("#,###");
-        String formattedMoney = formatter.format(room.getPriceRoom());
 
         tvRoomNumberDetail.setText(RoomDetailActivity.this.getString(R.string.phong_detail, room.getRoomNumber()));
         tvRankDetail.setText(RoomDetailActivity.this.getString(R.string.hang_detail, room.getRankRoom()));
@@ -52,26 +51,25 @@ public class RoomDetailActivity extends AppCompatActivity {
         tvPeopleDetail.setText(RoomDetailActivity.this.getString(R.string.so_nguoi_detail, String.valueOf(room.getPeopleRoom())));
         tvDescriptionDetai.setText(RoomDetailActivity.this.getString(R.string.mo_ta_detail, room.getDescription()));
 
-//        String path = room.getRoomPhoto().get(0).getFilename();
-//        Glide.with(getApplicationContext()).load(RoomDetailActivity.this.getString(R.string.path, path)).into(imgRoomDetail1);
+//        Toast.makeText(RoomDetailActivity.this, "ROOM ID: " + room.getRoomId(), Toast.LENGTH_SHORT).show();
 
         try {
             for (int i = 0; i <= room.getRoomPhoto().size(); i++) {
                 if (i == 0) {
-                    Glide.with(getApplicationContext()).load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail1);
+                    Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail1);
                 } else if (i == 1) {
-                    Glide.with(RoomDetailActivity.this).load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail2);
+                    Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail2);
                 } else if (i == 2) {
-                    Glide.with(RoomDetailActivity.this).load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail4);
+                    Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail4);
                 } else if (i == 3) {
-                    Glide.with(RoomDetailActivity.this).load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail4);
+                    Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail4);
                 }
             }
         } catch (IndexOutOfBoundsException ex) {
             Log.d("EXCEPTION", ex.getMessage());
         }
 
-        tvPriceDetail.setText(RoomDetailActivity.this.getString(R.string.vnd, formattedMoney));
+        tvPriceDetail.setText(RoomDetailActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
     }
 
     private void onClickButton() {
@@ -85,7 +83,13 @@ public class RoomDetailActivity extends AppCompatActivity {
         btnBookingDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(RoomDetailActivity.this, FillInformationActivity.class));
+                Room room = (Room) getIntent().getExtras().get("data");
+
+                Intent intent = new Intent(RoomDetailActivity.this, FillInformationActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("data_next", room);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }
@@ -107,7 +111,6 @@ public class RoomDetailActivity extends AppCompatActivity {
         btnBookingDetail = findViewById(R.id.btn_open_booking_detail);
 
         int height = Resources.getSystem().getDisplayMetrics().heightPixels;
-        imgRoomDetail1.getLayoutParams().height = height / 5;
         imgRoomDetail2.getLayoutParams().height = height / 6;
         imgRoomDetail3.getLayoutParams().height = height / 6;
         imgRoomDetail4.getLayoutParams().height = height / 6;

@@ -6,15 +6,25 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.fbooking.R;
+import com.example.fbooking.retrofit.ApiService;
+import com.example.fbooking.retrofit.RetrofitInstance;
+import com.example.fbooking.utils.PriceFormatUtils;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class CheckAgainActivity extends AppCompatActivity {
     private TextView tvDateCheckInAgain, tvNightAgain, tvDateCheckOutAgain,
@@ -43,25 +53,104 @@ public class CheckAgainActivity extends AppCompatActivity {
         NumberFormat formatter = new DecimalFormat("#,###");
 //        String formattedMoney = formatter.format(room.getPriceRoom());
 
-        tvDateCheckInAgain.setText(CheckAgainActivity.this.getString(R.string.check_nhan_phong, ""));
-        tvNightAgain.setText(CheckAgainActivity.this.getString(R.string.check_so_dem, ""));
-        tvDateCheckOutAgain.setText(CheckAgainActivity.this.getString(R.string.check_tra_phong, ""));
-        tvRoomNumberAgain.setText(CheckAgainActivity.this.getString(R.string.check_phong_so, ""));
-        tvRoomTypeAgain.setText(CheckAgainActivity.this.getString(R.string.check_loai_phong, ""));
-        tvRankAgain.setText(CheckAgainActivity.this.getString(R.string.check_hang_phong, ""));
-        tvPeopleAgain.setText(CheckAgainActivity.this.getString(R.string.check_so_nguoi, ""));
-        tvDescriptionAgain.setText(CheckAgainActivity.this.getString(R.string.check_mo_ta, ""));
+        Booking booking = (Booking) getIntent().getExtras().get("booking");
 
-        tvNameAgain.setText(CheckAgainActivity.this.getString(R.string.check_ten_khach, ""));
-        tvPhoneNumberAgain.setText(CheckAgainActivity.this.getString(R.string.check_so_dien_thoai, ""));
-        tvIdPersonAgain.setText(CheckAgainActivity.this.getString(R.string.check_cmnd, ""));
-        tvEmailAgain.setText(CheckAgainActivity.this.getString(R.string.check_email, ""));
+        tvDateCheckInAgain.setText(booking.getNgaynhan());
+        tvNightAgain.setText(String.valueOf(booking.getSodem()));
+        tvDateCheckOutAgain.setText(booking.getNgayTra());
+        tvRoomNumberAgain.setText(booking.getSophong());
+        tvRoomTypeAgain.setText("1");
+        tvRankAgain.setText("1");
+        tvPeopleAgain.setText(String.valueOf(booking.getSoNguoi()));
+        tvDescriptionAgain.setText("1");
 
-        tvOrderAgain.setText(CheckAgainActivity.this.getString(R.string.check_dat_phong_cho, ""));
-        tvCheckInTimeAgain.setText(CheckAgainActivity.this.getString(R.string.check_gio_den, ""));
+        tvNameAgain.setText(booking.getHoten());
+        tvPhoneNumberAgain.setText(booking.getSophong());
+        tvIdPersonAgain.setText(String.valueOf(booking.getCccd()));
+        tvEmailAgain.setText(booking.getEmail());
 
-        tvPriceAgain.setText("1,500,000" + " đ");
+        tvOrderAgain.setText("1");
+        tvCheckInTimeAgain.setText("1");
 
+        tvPriceAgain.setText(CheckAgainActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(booking.getGiaPhong()))));
+
+        //Chuyen du lieu
+        String dateCheckIn = tvDateCheckInAgain.getText().toString();
+
+        int night = booking.getSodem();
+        String checkNight = tvNightAgain.getText().toString();
+        try {
+            night = Integer.parseInt(checkNight);
+        } catch (NumberFormatException e) {
+
+        }
+
+        String dateCheckOut = tvDateCheckOutAgain.getText().toString();
+        String roomNumber = tvRoomNumberAgain.getText().toString();
+
+        int people = booking.getSoNguoi();
+        String checkPeople = tvPeopleAgain.getText().toString();
+        try {
+            people = Integer.parseInt(checkPeople);
+            Log.d("SONGUOICHECK", String.valueOf(people));
+        } catch (NumberFormatException e) {
+
+        }
+
+        String name = tvNameAgain.getText().toString();
+        String phoneNumber = tvPhoneNumberAgain.getText().toString();
+
+        Number idPerson = booking.getCccd();
+        String checkIdPerson = tvIdPersonAgain.getText().toString();
+        try {
+            idPerson = Integer.parseInt(checkIdPerson);
+        } catch (NumberFormatException e) {
+
+        }
+
+        String email = tvEmailAgain.getText().toString();
+        Log.d("EMAIL CUA TOI", email);
+
+        double price = booking.getGiaPhong();
+        String checkPrice = tvIdPersonAgain.getText().toString();
+        try {
+            price = Double.parseDouble(checkPrice);
+        } catch (NumberFormatException e) {
+
+        }
+
+        String roomId = booking.getRoomid();
+        Log.d("ROOMID", roomId);
+        String checkInTime = booking.getGioNhanPhong();
+        String checkOutTime = booking.getGioTra();
+
+//        booking = new Booking(roomId, roomNumber, name, phoneNumber, idPerson, email,
+//                dateCheckIn, dateCheckOut, night, people, checkInTime, checkOutTime, price);
+//
+//        Retrofit retrofit = RetrofitInstance.getInstance();
+//        ApiService apiService = retrofit.create(ApiService.class);
+//
+//        Booking finalBooking = booking;
+//        btnOpenPay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                apiService.createOrder(finalBooking).enqueue(new Callback<Booking>() {
+//                    @Override
+//                    public void onResponse(Call<Booking> call, Response<Booking> response) {
+//                        Toast.makeText(CheckAgainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+//
+//                        Booking o = response.body();
+//                        Log.d("BOOKING", o.toString());
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<Booking> call, Throwable t) {
+//                        Toast.makeText(CheckAgainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+//                startActivity(new Intent(CheckAgainActivity.this, ConfirmActivity.class));
+//            }
+//        });
     }
 
     private void onClickButton() {
@@ -69,13 +158,6 @@ public class CheckAgainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-            }
-        });
-
-        btnOpenPay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(CheckAgainActivity.this, PayActivity.class));
             }
         });
     }

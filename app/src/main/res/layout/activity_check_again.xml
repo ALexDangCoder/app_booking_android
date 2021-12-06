@@ -46,37 +46,58 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_date_check_in_again"
+                android:id="@+id/tv_title_date_check_in_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ngay_nhan_phong"
                 app:drawableStartCompat="@drawable/ic_calender_check"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
             <TextView
-                android:id="@+id/tv_night_again"
+                android:id="@+id/tv_date_check_in_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_date_check_in_again"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/tv_title_night_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/so_dem"
                 app:drawableStartCompat="@drawable/ic_night_check"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_date_check_in_again" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_date_check_in_again" />
+
+            <TextView
+                android:id="@+id/tv_night_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_night_again"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_date_check_in_again" />
+
+            <TextView
+                android:id="@+id/tv_title_date_check_out_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ngay_tra_phong"
+                app:drawableLeftCompat="@drawable/ic_calender_check"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_night_again" />
 
             <TextView
                 android:id="@+id/tv_date_check_out_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ngay_tra_phong"
-                app:drawableLeftCompat="@drawable/ic_calender_check"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_night_again" />
+                app:layout_constraintStart_toEndOf="@+id/tv_title_date_check_out_again"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_night_again" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -111,54 +132,89 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
             <TextView
-                android:id="@+id/tv_room_number_again"
+                android:id="@+id/tv_title_room_number_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/phong_so"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_room_again" />
 
             <TextView
-                android:id="@+id/tv_room_type_again"
+                android:id="@+id/tv_room_number_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_room_number_again"
+                app:layout_constraintTop_toBottomOf="@+id/img_room_again" />
+
+            <TextView
+                android:id="@+id/tv_title_room_type_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/loai_phong"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_room_number_again" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_room_number_again" />
+
+            <TextView
+                android:id="@+id/tv_room_type_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_room_type_again"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_room_number_again" />
+
+            <TextView
+                android:id="@+id/tv_title_rank_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hang_phong"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_room_type_again" />
 
             <TextView
                 android:id="@+id/tv_rank_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/hang_phong"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_rank_again"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_room_type_again" />
+
+            <TextView
+                android:id="@+id/tv_title_people_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/so_nguoi"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_room_type_again" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_rank_again" />
 
             <TextView
                 android:id="@+id/tv_people_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/so_nguoi"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_people_again"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_rank_again" />
+
+            <TextView
+                android:id="@+id/tv_title_description_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/mo_ta"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_rank_again" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_people_again" />
 
             <TextView
                 android:id="@+id/tv_description_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/mo_ta"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_people_again" />
+                app:layout_constraintStart_toEndOf="@+id/tv_title_description_again"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_people_again" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -192,44 +248,72 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tv_name_again"
+                android:id="@+id/tv_title_name_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ten_khach_hang"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
             <TextView
-                android:id="@+id/tv_phone_number_again"
+                android:id="@+id/tv_name_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_name_again"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <TextView
+                android:id="@+id/tv_title_phone_number_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/so_dien_thoai"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_name_again" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_name_again" />
+
+            <TextView
+                android:id="@+id/tv_phone_number_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_phone_number_again"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_name_again" />
+
+            <TextView
+                android:id="@+id/tv_title_id_person_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cmnd"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_phone_number_again" />
 
             <TextView
                 android:id="@+id/tv_id_person_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cmnd"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_id_person_again"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_phone_number_again" />
+
+            <TextView
+                android:id="@+id/tv_title_email_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_phone_number_again" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_id_person_again" />
 
             <TextView
                 android:id="@+id/tv_email_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/email"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_id_person_again" />
+                app:layout_constraintStart_toEndOf="@+id/tv_title_email_again"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_id_person_again" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -239,27 +323,41 @@
                 android:text="@string/yeu_cau_khach_hang"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_email_again" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_email_again" />
 
             <TextView
-                android:id="@+id/tv_order_again"
+                android:id="@+id/tv_title_order_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/dat_cho"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
             <TextView
-                android:id="@+id/tv_check_in_time_again"
+                android:id="@+id/tv_order_again"
                 style="@style/text_content_check_again"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_order_again"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/tv_title_check_in_time_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gio_den"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_order_again" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_order_again" />
+
+            <TextView
+                android:id="@+id/tv_check_in_time_again"
+                style="@style/text_content_check_again"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/tv_title_check_in_time_again"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_order_again" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -301,7 +399,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button_room_detail"
-            android:text="@string/toi_thanh_toan"
+            android:text="@string/thanh_toan"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btn_cancel_again"
             app:layout_constraintTop_toBottomOf="@+id/tv_title_price_again" />
