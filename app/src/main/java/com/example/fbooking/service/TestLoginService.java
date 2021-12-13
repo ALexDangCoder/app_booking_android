@@ -5,12 +5,42 @@ public class TestLoginService {
     String gmail;
     String password;
     String name;
+    String birthday;
+    String phoneNumber;
+    String cccd;
 
-    public TestLoginService(boolean success, String gmail, String password, String name) {
+    public TestLoginService(boolean success, String gmail, String password, String name, String birthday, String phoneNumber, String cccd) {
         this.success = success;
         this.gmail = gmail;
         this.password = password;
         this.name = name;
+        this.birthday = birthday;
+        this.phoneNumber = phoneNumber;
+        this.cccd = cccd;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCccd() {
+        return cccd;
+    }
+
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
     }
 
     public boolean getSuccess() {

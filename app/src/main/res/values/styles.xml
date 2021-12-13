@@ -39,6 +39,13 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="text_button_back_pay">
+        <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:textColor">#FF0000</item>
+        <item name="android:textSize">@dimen/sp_18</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="text_button_continue">
         <item name="android:layout_marginTop">@dimen/dp_10</item>
         <item name="android:layout_marginStart">@dimen/dp_5</item>
@@ -112,7 +119,7 @@
         <item name="android:layout_marginEnd">@dimen/dp_5</item>
         <item name="android:layout_marginTop">@dimen/dp_5</item>
     </style>
-
+t
     <style name="text_price">
         <item name="android:textColor">#FF0000</item>
         <item name="android:textSize">@dimen/sp_20</item>
@@ -126,6 +133,7 @@
         <item name="android:textSize">@dimen/sp_20</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">@dimen/dp_10</item>
+        <item name="android:layout_marginEnd">@dimen/dp_10</item>
     </style>
 
     <style name="text_title_information">
@@ -133,6 +141,12 @@
         <item name="android:textSize">@dimen/sp_20</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">@dimen/dp_10</item>
+    </style>
+
+    <style name="text_title_home">
+        <item name="android:textColor">#3F51B5</item>
+        <item name="android:textSize">@dimen/sp_20</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="text_checkbox_pay">
@@ -333,5 +347,13 @@
         <item name="android:textColor">#000000</item>
         <item name="android:layout_marginTop">@dimen/dp_5</item>
         <item name="android:textSize">@dimen/sp_17</item>
+    </style>
+
+    <style name="bottom_sheet">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/sp_17</item>
+        <item name="android:padding">@dimen/dp_5</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

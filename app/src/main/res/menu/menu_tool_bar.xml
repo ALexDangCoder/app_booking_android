@@ -2,8 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/waitToAccept"
+        android:icon="@drawable/ic_accept"
+        android:title="Chờ xác nhận"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/history"
         android:icon="@drawable/ic_history"
-        android:title="History"
+        android:title="Lịch sử"
         app:showAsAction="always" />
 </menu>

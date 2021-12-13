@@ -1,40 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    app:layout_editor_absoluteX="@dimen/dp_1"
-    app:layout_editor_absoluteY="@dimen/dp_1">
+    android:orientation="vertical"
+    tools:context=".home.HomeFragment">
 
-    <LinearLayout
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_slide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <me.relex.circleindicator.CircleIndicator
+        android:id="@+id/ci_slide"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_20"
+        android:layout_gravity="center_horizontal"
+        android:background="#FF9800" />
+
+    <TextView
+        style="@style/text_hello_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_5"
+        android:text="@string/dich_vu_khach_san" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_service"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context=".home.HomeFragment">
+        android:layout_marginHorizontal="@dimen/dp_5" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/vp_slide"
+    <TextView
+        style="@style/text_hello_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_5"
+        android:text="Phòng được đặt nhiều" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/dp_5"
+        android:layout_marginBottom="@dimen/dp_5">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_room_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-        <me.relex.circleindicator.CircleIndicator
-            android:id="@+id/ci_slide"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_20"
-            android:layout_gravity="center_horizontal"
-            android:background="#FF9800" />
-
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/srl_home"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcv_room_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    </LinearLayout>
-</ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>

@@ -8,11 +8,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fbooking.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RoomViewHolder extends RecyclerView.ViewHolder {
-    public ImageView imgRoom;
+    public ImageView imgRoom, ivUnFavorite;
     public TextView tvRoomNumber, tvTypeRoom, tvRankRoom, tvStatusRoom, tvPriceRoom;
     public View view;
+
+    public FirebaseUser user;
+    public DatabaseReference reference;
 
     public RoomViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -23,5 +30,10 @@ public class RoomViewHolder extends RecyclerView.ViewHolder {
         tvRankRoom = itemView.findViewById(R.id.tv_rank_room);
         tvStatusRoom = itemView.findViewById(R.id.tv_status_room);
         tvPriceRoom = itemView.findViewById(R.id.tv_price_room);
+
+        ivUnFavorite = itemView.findViewById(R.id.iv_un_favorite);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
     }
 }

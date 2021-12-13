@@ -70,6 +70,19 @@ public class RoomDetailActivity extends AppCompatActivity {
         }
 
         tvPriceDetail.setText(RoomDetailActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
+
+        if (room.getStatusRoom().equalsIgnoreCase("Hết phòng")) {
+            btnBookingDetail.setEnabled(false);
+            Toast.makeText(RoomDetailActivity.this, "Phòng đã hết!", Toast.LENGTH_SHORT).show();
+            btnBookingDetail.setBackgroundResource(R.drawable.bg_color_grey);
+            btnBookingDetail.setText("HẾT PHÒNG");
+            return;
+        } else if (room.getStatusRoom().equalsIgnoreCase("Chờ xác nhận")) {
+            Toast.makeText(RoomDetailActivity.this, "Phòng đang chờ xác nhận!", Toast.LENGTH_SHORT).show();
+            btnBookingDetail.setBackgroundResource(R.drawable.bg_color_grey);
+            btnBookingDetail.setText("CHỜ XÁC NHẬN");
+            return;
+        }
     }
 
     private void onClickButton() {

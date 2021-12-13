@@ -16,11 +16,20 @@
         android:src="@drawable/ic_done" />
 
     <TextView
+        android:id="@+id/tv_text_success"
         style="@style/text_success"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/img_confirm"
         android:text="@string/dat_phong_thanh_cong" />
+
+    <TextView
+        style="@style/text_info_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_text_success"
+        android:layout_margin="@dimen/dp_20"
+        android:text="@string/quy_khach" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_confirm"

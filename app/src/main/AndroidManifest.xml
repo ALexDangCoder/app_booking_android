@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -16,37 +17,31 @@
         android:label="FPOLY HOTEL"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.AppColor">
+        android:theme="@style/Theme.AppColor"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".accept.WaitToAcceptAcitivity"
+            android:exported="true"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".booking.ConfirmActivity"
             android:exported="true"
-            android:label="Xác nhận giao dịch"/>
+            android:label="Xác nhận giao dịch" />
         <activity
             android:name=".booking.PayActivity"
             android:exported="true"
-            android:label="Thanh toán" >
-
-
-        </activity>
+            android:label="Thanh toán" />
         <activity
             android:name=".booking.CheckAgainActivity"
             android:exported="true"
-            android:label="Kiểm tra thông tin">
-
-        </activity>
+            android:label="Kiểm tra thông tin" />
         <activity
             android:name=".booking.FillInformationActivity"
             android:exported="true"
-            android:label="Điền thông tin">
-
-
-        </activity>
+            android:label="Điền thông tin" />
         <activity
             android:name=".booking.RoomDetailActivity"
-            android:exported="true" >
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".introduction.IntroductionActivity"
             android:exported="true"
@@ -54,9 +49,13 @@
         <activity
             android:name=".splashscreen.SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.Light.NoActionBar" >
+            android:theme="@style/Theme.Design.Light.NoActionBar">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -78,27 +77,18 @@
         <activity
             android:name=".userloginandsignup.LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.Light.NoActionBar" >
-
-
-        </activity>
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".userloginandsignup.SignUpActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.Light.NoActionBar" >
-
-
-        </activity>
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
+        <receiver android:name=".utils.AlarmReceiver" />
 
         <meta-data
             android:name="preloaded_fonts"

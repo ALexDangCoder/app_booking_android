@@ -53,45 +53,11 @@
                 android:layout_toEndOf="@id/tv_title_room_number" />
 
             <TextView
-                android:id="@+id/tv_title_type_room"
-                style="@style/text_title_room"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_title_room_number"
-                android:text="@string/loai_phong" />
-
-            <TextView
-                android:id="@+id/tv_type_room"
-                style="@style/text_info_room"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_title_room_number"
-                android:layout_marginStart="@dimen/dp_5"
-                android:layout_toEndOf="@id/tv_title_type_room" />
-
-            <TextView
-                android:id="@+id/tv_title_rank_room"
-                style="@style/text_title_room"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_title_type_room"
-                android:text="@string/hang_phong" />
-
-            <TextView
-                android:id="@+id/tv_rank_room"
-                style="@style/text_info_room"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tv_title_type_room"
-                android:layout_marginStart="@dimen/dp_5"
-                android:layout_toEndOf="@id/tv_title_rank_room" />
-
-            <TextView
                 android:id="@+id/tv_title_status_room"
                 style="@style/text_title_room"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_title_rank_room"
+                android:layout_below="@+id/tv_title_room_number"
                 android:text="@string/tinh_trang" />
 
             <TextView
@@ -99,16 +65,50 @@
                 style="@style/text_status_room"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_title_rank_room"
+                android:layout_below="@+id/tv_title_room_number"
                 android:layout_marginStart="@dimen/dp_5"
                 android:layout_toEndOf="@id/tv_title_status_room" />
+
+            <TextView
+                android:id="@+id/tv_title_rank_room"
+                style="@style/text_title_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_status_room"
+                android:text="@string/hang_phong" />
+
+            <TextView
+                android:id="@+id/tv_rank_room"
+                style="@style/text_info_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_status_room"
+                android:layout_marginStart="@dimen/dp_5"
+                android:layout_toEndOf="@id/tv_title_rank_room" />
+
+            <TextView
+                android:id="@+id/tv_title_type_room"
+                style="@style/text_title_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title_rank_room"
+                android:text="@string/loai_phong" />
+
+            <TextView
+                android:id="@+id/tv_type_room"
+                style="@style/text_info_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_title_rank_room"
+                android:layout_marginStart="@dimen/dp_5"
+                android:layout_toEndOf="@id/tv_title_type_room" />
 
             <TextView
                 android:id="@+id/tv_title_price_room"
                 style="@style/text_title_room_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_status_room"
+                android:layout_below="@id/tv_type_room"
                 android:layout_marginBottom="@dimen/dp_5"
                 android:text="@string/don_gia" />
 
@@ -117,11 +117,21 @@
                 style="@style/text_room_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_status_room"
+                android:layout_below="@id/tv_type_room"
                 android:layout_marginStart="@dimen/dp_5"
                 android:layout_marginBottom="@dimen/dp_5"
                 android:layout_toRightOf="@+id/tv_title_price_room"
                 android:text="@string/price" />
+
+            <ImageView
+                android:id="@+id/iv_un_favorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_title_hotel"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="-5dp"
+                android:layout_marginRight="@dimen/dp_5"
+                android:src="@drawable/ic_favorite_border" />
         </RelativeLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

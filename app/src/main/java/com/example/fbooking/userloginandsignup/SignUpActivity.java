@@ -1,9 +1,5 @@
 package com.example.fbooking.userloginandsignup;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,6 +14,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import com.example.fbooking.R;
 import com.example.fbooking.service.ApiService;
@@ -170,7 +170,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        postAccountToService(strEmail, strPassword, strName);
+                                        postAccountToService(strEmail, strPassword, strName, strBirth, strPhoneNumber, strIdPerson);
                                         progressDialog.dismiss();
                                         Intent intent = new Intent(SignUpActivity.this, LoginActivity.class);
                                         startActivity(intent);
@@ -190,11 +190,10 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     //post account
-    private void postAccountToService(String email, String pass, String name) {
-        ApiService.apiService.covertApi(email, pass, name).enqueue(new Callback<TestLoginService>() {
+    private void postAccountToService(String email, String pass, String name, String birthday, String phoneNumber, String cccd) {
+        ApiService.apiService.covertApi(email, pass, name, birthday, phoneNumber, cccd).enqueue(new Callback<TestLoginService>() {
             @Override
             public void onResponse(Call<TestLoginService> call, Response<TestLoginService> response) {
-                Toast.makeText(SignUpActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 TestLoginService testLoginService = response.body();
 
                 if (testLoginService.getSuccess() == true) {

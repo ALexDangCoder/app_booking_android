@@ -23,184 +23,229 @@
             android:layout_marginBottom="@dimen/dp_10"
             android:background="#3F51B5" />
 
-        <LinearLayout
+        <TextView
+            style="@style/bottom_sheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/bg_bottom_sheet_text"
+            android:text="@string/tien_ich" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_regular_room"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/pho_thong" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_high_class_room"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/cao_cap" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_luxury_room"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/sang_trong" />
-        </LinearLayout>
-
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_button_filter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_margin="@dimen/dp_5" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_single_room"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/phong_don" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_twin_room"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/phong_doi" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_two_bed_room"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/phong_hai_giuong" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_filter"
+            style="@style/bottom_sheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_margin="@dimen/dp_5"
+            android:background="@drawable/custom_button_search"
+            android:text="Lọc" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_wifi"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/wifi" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_pool"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/be_boi" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_parking"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/do_xe" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            style="@style/bottom_sheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/bg_bottom_sheet_text"
+            android:text="Hạng phòng" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_restaurant"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/nha_hang" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_button_rank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_receptionist"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/le_tan" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_elevator"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/thang_may" />
-        </LinearLayout>
-
-        <LinearLayout
+        <TextView
+            style="@style/bottom_sheet"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/bg_bottom_sheet_text"
+            android:text="Loại phòng" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_wheel_chair"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/loi_xe_lan" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_gym"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/tap_gym" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_meeting"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/phong_hop" />
-        </LinearLayout>
-
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_button_type"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content" />
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal">-->
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_taking"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/dua_don" />
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_regular_room"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/pho_thong" />-->
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_laundary"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/giat_la" />
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_high_class_room"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/cao_cap" />-->
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_diffrent"
-                style="@style/text_button_sheet"
-                android:layout_width="@dimen/dp_0"
-                android:layout_height="match_parent"
-                android:background="@drawable/custom_button_utilities"
-                android:text="@string/khac" />
-        </LinearLayout>
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_luxury_room"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/sang_trong" />-->
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal">-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_single_room"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/phong_don" />-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_twin_room"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/phong_doi" />-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_two_bed_room"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/phong_hai_giuong" />-->
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal">-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_wifi"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/wifi" />-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_pool"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/be_boi" />-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_parking"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/do_xe" />-->
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal">-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_restaurant"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/nha_hang" />-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_receptionist"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/le_tan" />-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_elevator"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/thang_may" />-->
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal">-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_wheel_chair"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/loi_xe_lan" />-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_gym"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/tap_gym" />-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_meeting"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/phong_hop" />-->
+        <!--        </LinearLayout>-->
+
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:orientation="horizontal">-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_taking"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/dua_don" />-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_laundary"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/giat_la" />-->
+
+        <!--            <androidx.appcompat.widget.AppCompatButton-->
+        <!--                android:id="@+id/btn_diffrent"-->
+        <!--                style="@style/text_button_sheet"-->
+        <!--                android:layout_width="@dimen/dp_0"-->
+        <!--                android:layout_height="match_parent"-->
+        <!--                android:background="@drawable/custom_button_utilities"-->
+        <!--                android:text="@string/khac" />-->
+        <!--        </LinearLayout>-->
     </LinearLayout>
 </LinearLayout>

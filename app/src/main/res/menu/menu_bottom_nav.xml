@@ -10,7 +10,7 @@
 
     <item android:id="@+id/action_favorite"
         android:icon="@drawable/ic_favorite"
-        android:title="Yêu thích"/>
+        android:title="Phổ biến"/>
 
     <item android:id="@+id/action_profile"
         android:icon="@drawable/ic_account"

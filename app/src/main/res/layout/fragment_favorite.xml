@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="Đăng nhập để tiếp tục!" />
+            android:text="@string/dang_nhap_tiep_tuc" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_open_login_favorite"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_10"
             android:background="@drawable/custom_button"
-            android:text="Đăng nhập" />
+            android:text="@string/dang_nhap" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -54,19 +54,9 @@
                 style="@style/text_title_history"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/danh_sach_yeu_thich"
+                android:text="@string/phong_dat_nhieu"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv_delete_all"
-                style="@style/text_delete_history"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/xoa_tat_ca"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

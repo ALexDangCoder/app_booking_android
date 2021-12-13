@@ -1,17 +1,17 @@
 package com.example.fbooking.introduction;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.viewpager.widget.ViewPager;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.fbooking.userloginandsignup.LoginActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.viewpager.widget.ViewPager;
+
 import com.example.fbooking.MainActivity;
 import com.example.fbooking.R;
+import com.example.fbooking.userloginandsignup.LoginActivity;
 
 import java.util.ArrayList;
 import java.util.List;

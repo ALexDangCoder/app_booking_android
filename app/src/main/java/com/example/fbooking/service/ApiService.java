@@ -14,17 +14,22 @@ import retrofit2.http.POST;
 
 public interface ApiService {
     //https://run.mocky.io/v3/58db7c12-6e40-446b-a8b9-028a5f563261
+    //https://hotelfpoly.herokuapp.com/api/insert-acount
     Gson gson = new GsonBuilder()
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:3000/")
+            .baseUrl("https://hotelfpoly.herokuapp.com/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);
 
     @FormUrlEncoded
-    @POST("addAccount")
+    @POST("insert-acount")
     Call<TestLoginService> covertApi(@Field("gmail") String gmail,
-                                     @Field("password") String password, @Field("name") String name);
+                                     @Field("password") String password,
+                                     @Field("name") String name,
+                                     @Field("birthday") String birthday,
+                                     @Field("phoneNumber") String phoneNumber,
+                                     @Field("cccd") String cccd);
 }

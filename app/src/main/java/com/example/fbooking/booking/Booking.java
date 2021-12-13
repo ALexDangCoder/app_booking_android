@@ -9,65 +9,51 @@ public class Booking implements Serializable {
     @SerializedName("Roomid")
     @Expose
     private String Roomid;
-
     @SerializedName("sophong")
     @Expose
     private String sophong;
-
     @SerializedName("hoten")
     @Expose
     private String hoten;
-
     @SerializedName("sdt")
     @Expose
     private String sdt;
-
     @SerializedName("loaiPhong")
     @Expose
     private String loaiPhong;
-
     @SerializedName("hangPhong")
     @Expose
     private String hangPhong;
-
     @SerializedName("cccd")
     @Expose
-    private Number cccd;
-
+    private int cccd;
     @SerializedName("email")
     @Expose
     private String email;
-
     @SerializedName("ngaynhan")
     @Expose
     private String ngaynhan;
-
     @SerializedName("ngayTra")
     @Expose
     private String ngayTra;
-
     @SerializedName("sodem")
     @Expose
     private int sodem;
-
     @SerializedName("soNguoi")
     @Expose
     private int soNguoi;
-
     @SerializedName("gioNhanPhong")
     @Expose
     private String gioNhanPhong;
-
     @SerializedName("gioTra")
     @Expose
     private String gioTra;
-
     @SerializedName("giaPhong")
     @Expose
     private double giaPhong;
 
-    public Booking(String roomid, String sophong, String hoten, String sdt, String loaiPhong, String hangPhong, int cccd, String email, String ngaynhan, String ngayTra, int sodem, int soNguoi, String gioNhanPhong, String gioTra, double giaPhong) {
-        Roomid = roomid;
+    public Booking(String Roomid, String sophong, String hoten, String sdt, String loaiPhong, String hangPhong, int cccd, String email, String ngaynhan, String ngayTra, int sodem, int soNguoi, String gioNhanPhong, String gioTra, double giaPhong) {
+        this.Roomid = Roomid;
         this.sophong = sophong;
         this.hoten = hoten;
         this.sdt = sdt;
@@ -132,11 +118,11 @@ public class Booking implements Serializable {
         this.hangPhong = hangPhong;
     }
 
-    public Number getCccd() {
+    public int getCccd() {
         return cccd;
     }
 
-    public void setCccd(Number cccd) {
+    public void setCccd(int cccd) {
         this.cccd = cccd;
     }
 

@@ -13,15 +13,23 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.fbooking.R;
+import com.example.fbooking.booking.BookingFragment;
 import com.example.fbooking.booking.RoomDetailActivity;
+import com.example.fbooking.retrofit.ApiService;
+import com.example.fbooking.retrofit.RetrofitInstance;
+import com.example.fbooking.room.OnFavoriteClickListener;
 import com.example.fbooking.room.OnRoomClickListener;
+import com.example.fbooking.room.Result;
 import com.example.fbooking.room.Room;
 import com.example.fbooking.room.RoomAdapter;
+import com.example.fbooking.room.RoomHorizontalAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +37,10 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,15 +53,21 @@ public class HomeFragment extends Fragment implements OnRoomClickListener {
     private PhotoAdapter photoAdapter;
     private List<Photo> photoList;
     private Timer timer;
-    private List<Room> roomList;
 
+    //Danh sach dich vu
+    private RecyclerView rcvService;
+    private LinearLayoutManager serviceLayoutManager;
+    private ServiceAdapter serviceAdapter;
+    private List<Service> serviceList;
+
+    //Danh sach phong
     private RecyclerView rcvRoom;
     private LinearLayoutManager linearLayoutManager;
-    private SwipeRefreshLayout srlHome;
+    private RoomHorizontalAdapter roomHorizontalAdapter;
+    private List<Room> roomList;
 
     private ProgressDialog progressDialog;
-
-    private RoomAdapter roomAdapter;
+    private SwipeRefreshLayout srlHome;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,34 +76,26 @@ public class HomeFragment extends Fragment implements OnRoomClickListener {
         view = LayoutInflater.from(container.getContext()).inflate(R.layout.fragment_home, container, false);
 
         initUi();
-        rcvRoom.setLayoutManager(linearLayoutManager);
-        roomAdapter = new RoomAdapter(getActivity());
-        roomAdapter.setData(getListRoom(), HomeFragment.this::onRoomClick);
-        rcvRoom.setAdapter(roomAdapter);
+
         autoSlideShow();
-        roomList = new ArrayList<>();
-        // callApi();
+
+        showProgressDialog();
+        getListRoom();
+
+        srlHome.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showProgressDialog();
+                getListRoom();
+            }
+        });
         return view;
     }
 
-    private List<Room> getListRoom() {
-        List<Room> list = new ArrayList<>();
-//        for (int i = 1; i <= 20; i++) {
-//            list.add(new Room(301, "Phòng đơn", "Cao cấp", 2,
-//                    1500000.0, "Còn phòng", true, true, true, true, true,
-//                    true, true, true, true, true, true,
-//                    "sdadsadsadsadsadsa", new ImageRoom("https://vcdn-vnexpress.vnecdn.net/2021/07/07/Aventador-Ultimae-3-4-Front-92-5094-9826-1625659942.jpg", "", "", "")));
-//        }
-        return list;
-    }
-
-    @Override
-    public void onRoomClick(Room room) {
-        Intent intent = new Intent(getActivity(), RoomDetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("data", room);
-        intent.putExtras(bundle);
-        startActivity(intent);
+    private void showProgressDialog() {
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
 
     //Slide anh
@@ -136,6 +146,20 @@ public class HomeFragment extends Fragment implements OnRoomClickListener {
         }, 500, 3000);
     }
 
+    //Slide anh
+    private List<Service> getListService() {
+        List<Service> list = new ArrayList<>();
+        list.add(new Service(R.drawable.bar_service));
+        list.add(new Service(R.drawable.pool_service));
+        list.add(new Service(R.drawable.gym_service));
+        list.add(new Service(R.drawable.bar_service));
+        list.add(new Service(R.drawable.tennis_service));
+        list.add(new Service(R.drawable.laundry_service));
+        list.add(new Service(R.drawable.meeting_service));
+
+        return list;
+    }
+
     private void initUi() {
         vpSlide = view.findViewById(R.id.vp_slide);
         ciSlide = view.findViewById(R.id.ci_slide);
@@ -149,9 +173,60 @@ public class HomeFragment extends Fragment implements OnRoomClickListener {
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Đang tải lại dữ liệu...");
-        srlHome = view.findViewById(R.id.srl_home);
+
+        //Danh sách dịch vụ
+        rcvService = view.findViewById(R.id.rcv_service);
+        serviceLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        rcvService.setLayoutManager(serviceLayoutManager);
+        serviceAdapter = new ServiceAdapter(getContext(), getListService());
+        rcvService.setAdapter(serviceAdapter);
+
+        //Danh sach phong
         rcvRoom = view.findViewById(R.id.rcv_room_home);
-        linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        rcvRoom.setLayoutManager(linearLayoutManager);
+        roomHorizontalAdapter = new RoomHorizontalAdapter(getContext());
+        rcvRoom.setAdapter(roomHorizontalAdapter);
+
+        srlHome = view.findViewById(R.id.srl_home);
+    }
+
+    @Override
+    public void onRoomClick(Room room) {
+        Intent intent = new Intent(getActivity(), RoomDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("data", room);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    private void getListRoom() {
+        Retrofit retrofit = RetrofitInstance.getInstance();
+        ApiService apiService = retrofit.create(ApiService.class);
+        apiService.getListRoom().enqueue(new Callback<Result>() {
+            @Override
+            public void onResponse(Call<Result> call, Response<Result> response) {
+                roomList = response.body().getData();
+
+                if (roomList == null) return;
+
+                roomHorizontalAdapter.setData(roomList, HomeFragment.this::onRoomClick);
+                Log.d("ROOMLISTSIZE", roomList.size() + "");
+
+                srlHome.setRefreshing(false);
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Result> call, Throwable t) {
+                Toast.makeText(getContext(), "Có lỗi xảy ra", Toast.LENGTH_LONG).show();
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+            }
+        });
     }
 
     @Override

@@ -4,6 +4,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -77,6 +79,11 @@ public class Room implements Serializable {
     @SerializedName("__v")
     @Expose
     private Integer v;
+    @SerializedName("favorite")
+    @Expose
+    private List<String> favorite = null;
+
+    private boolean isChecked;
 
     public String getRoomId() {
         return roomId;
@@ -261,4 +268,34 @@ public class Room implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public List<String> getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(List<String> favorite) {
+        this.favorite = favorite;
+    }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public static Comparator<Room> roomComparatorMinToMaxPrice = new Comparator<Room>() {
+        @Override
+        public int compare(Room o1, Room o2) {
+            return Double.valueOf(o1.getPriceRoom()).compareTo(o2.priceRoom);
+        }
+    };
+
+    public static Comparator<Room> roomComparatorMaxToMinPrice = new Comparator<Room>() {
+        @Override
+        public int compare(Room o1, Room o2) {
+            return Double.valueOf(o2.getPriceRoom()).compareTo(o1.priceRoom);
+        }
+    };
 }

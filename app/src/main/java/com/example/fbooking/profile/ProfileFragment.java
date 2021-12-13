@@ -5,6 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -13,16 +19,10 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
-import com.example.fbooking.userloginandsignup.LoginActivity;
 import com.example.fbooking.R;
+import com.example.fbooking.booking.PayActivity;
+import com.example.fbooking.userloginandsignup.LoginActivity;
 import com.example.fbooking.userloginandsignup.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -41,7 +41,7 @@ public class ProfileFragment extends Fragment {
     private ImageView imgAvatarProfile, btnSignOut;
     private TextView tvNameProfile, tvDateOfBirthProfile, tvPhoneNumberProfile,
             tvIdPersonProfile, tvEmailProfile, tvPasswordProfile, tvOpenChangePassword;
-    private AppCompatButton btnOpenUpdateProfile;
+    private AppCompatButton btnOpenUpdateProfile, btnOpenPay;
 
     private FirebaseUser user;
     private DatabaseReference reference;
@@ -73,7 +73,19 @@ public class ProfileFragment extends Fragment {
 
         onClickSignOut();
 
+        openPay();
+
         return view;
+    }
+
+    private void openPay() {
+        btnOpenPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PayActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     //Hien thi thong tin nguoi dung
@@ -180,9 +192,11 @@ public class ProfileFragment extends Fragment {
     public void onClickSignOut() {
         if (user == null) {
             btnSignOut.setVisibility(View.GONE);
+            btnOpenPay.setVisibility(View.GONE);
             btnSignOut.setEnabled(false);
         } else {
             btnSignOut.setVisibility(View.VISIBLE);
+            btnOpenPay.setVisibility(View.VISIBLE);
             btnSignOut.setEnabled(true);
             btnSignOut.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -224,6 +238,7 @@ public class ProfileFragment extends Fragment {
         tvOpenChangePassword.setPaintFlags(tvOpenChangePassword.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         btnOpenUpdateProfile = view.findViewById(R.id.btn_open_update_profile);
+        btnOpenPay = view.findViewById(R.id.btn_open_pay_profile);
         btnSignOut = view.findViewById(R.id.btn_sign_out);
 
         progressDialog = new ProgressDialog(getActivity());

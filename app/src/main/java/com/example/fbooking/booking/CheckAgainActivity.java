@@ -3,8 +3,14 @@ package com.example.fbooking.booking;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.app.AlarmManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,10 +22,16 @@ import com.bumptech.glide.Glide;
 import com.example.fbooking.R;
 import com.example.fbooking.retrofit.ApiService;
 import com.example.fbooking.retrofit.RetrofitInstance;
+import com.example.fbooking.utils.AlarmReceiver;
 import com.example.fbooking.utils.PriceFormatUtils;
+import com.google.android.material.timepicker.MaterialTimePicker;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,22 +39,22 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class CheckAgainActivity extends AppCompatActivity {
+    private Calendar calendar;
+    private AlarmManager alarmManager;
+    private PendingIntent pendingIntent;
+
     private TextView tvDateCheckInAgain, tvNightAgain, tvDateCheckOutAgain,
-            tvRoomNumberAgain, tvRoomTypeAgain, tvRankAgain, tvPeopleAgain, tvDescriptionAgain,
-            tvNameAgain, tvPhoneNumberAgain, tvIdPersonAgain, tvEmailAgain,
-            tvOrderAgain, tvCheckInTimeAgain, tvPriceAgain;
-    private ImageView imgRoomAgain;
+            tvRoomNumberAgain, tvRoomTypeAgain, tvRankAgain, tvPeopleAgain,
+            tvNameAgain, tvPhoneNumberAgain, tvIdPersonAgain, tvEmailAgain, tvPriceAgain;
     private AppCompatButton btnCancelAgain, btnOpenPay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_again);
+        creatNotificationChanel();
 
         initUi();
-
-        int height = Resources.getSystem().getDisplayMetrics().heightPixels;
-        imgRoomAgain.getLayoutParams().height = height / 5;
 
         showRoomDetail();
 
@@ -50,107 +62,79 @@ public class CheckAgainActivity extends AppCompatActivity {
     }
 
     private void showRoomDetail() {
-        NumberFormat formatter = new DecimalFormat("#,###");
-//        String formattedMoney = formatter.format(room.getPriceRoom());
-
         Booking booking = (Booking) getIntent().getExtras().get("booking");
 
         tvDateCheckInAgain.setText(booking.getNgaynhan());
         tvNightAgain.setText(String.valueOf(booking.getSodem()));
         tvDateCheckOutAgain.setText(booking.getNgayTra());
         tvRoomNumberAgain.setText(booking.getSophong());
-        tvRoomTypeAgain.setText("1");
-        tvRankAgain.setText("1");
+        tvRoomTypeAgain.setText(booking.getLoaiPhong());
+        tvRankAgain.setText(booking.getHangPhong());
         tvPeopleAgain.setText(String.valueOf(booking.getSoNguoi()));
-        tvDescriptionAgain.setText("1");
 
         tvNameAgain.setText(booking.getHoten());
         tvPhoneNumberAgain.setText(booking.getSophong());
         tvIdPersonAgain.setText(String.valueOf(booking.getCccd()));
         tvEmailAgain.setText(booking.getEmail());
 
-        tvOrderAgain.setText("1");
-        tvCheckInTimeAgain.setText("1");
-
         tvPriceAgain.setText(CheckAgainActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(booking.getGiaPhong()))));
 
-        //Chuyen du lieu
-        String dateCheckIn = tvDateCheckInAgain.getText().toString();
+        //Call API
+        Retrofit retrofit = RetrofitInstance.getInstance();
+        ApiService apiService = retrofit.create(ApiService.class);
 
-        int night = booking.getSodem();
-        String checkNight = tvNightAgain.getText().toString();
-        try {
-            night = Integer.parseInt(checkNight);
-        } catch (NumberFormatException e) {
+        btnOpenPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                apiService.createOrder(booking).enqueue(new Callback<Booking>() {
+                    @Override
+                    public void onResponse(Call<Booking> call, Response<Booking> response) {
+                        Toast.makeText(CheckAgainActivity.this, "Success", Toast.LENGTH_SHORT).show();
 
+                        Booking o = response.body();
+                        Log.d("BOOKING", o.toString());
+
+                        //Dat thoi gian
+                        String currentDate = booking.getNgaynhan() + " " + booking.getGioNhanPhong();
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+                        Date parseDate = null;
+                        try {
+                            parseDate = format.parse(currentDate);
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        long milliseconds = parseDate.getTime();
+
+                        alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                        Intent intent = new Intent(CheckAgainActivity.this, AlarmReceiver.class);
+                        pendingIntent = PendingIntent.getBroadcast(CheckAgainActivity.this, 0, intent, 0);
+                        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, milliseconds,
+                                AlarmManager.INTERVAL_DAY, pendingIntent);
+                        Log.d("DATE", milliseconds + "");
+                        Toast.makeText(CheckAgainActivity.this, "Đặt thời gian thành công!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Booking> call, Throwable t) {
+                        Toast.makeText(CheckAgainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                startActivity(new Intent(CheckAgainActivity.this, ConfirmActivity.class));
+            }
+        });
+    }
+
+    private void creatNotificationChanel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "FbookingReminderChanel";
+            String description = "Notify Manager";
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel("fbookingid", name, importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
         }
-
-        String dateCheckOut = tvDateCheckOutAgain.getText().toString();
-        String roomNumber = tvRoomNumberAgain.getText().toString();
-
-        int people = booking.getSoNguoi();
-        String checkPeople = tvPeopleAgain.getText().toString();
-        try {
-            people = Integer.parseInt(checkPeople);
-            Log.d("SONGUOICHECK", String.valueOf(people));
-        } catch (NumberFormatException e) {
-
-        }
-
-        String name = tvNameAgain.getText().toString();
-        String phoneNumber = tvPhoneNumberAgain.getText().toString();
-
-        Number idPerson = booking.getCccd();
-        String checkIdPerson = tvIdPersonAgain.getText().toString();
-        try {
-            idPerson = Integer.parseInt(checkIdPerson);
-        } catch (NumberFormatException e) {
-
-        }
-
-        String email = tvEmailAgain.getText().toString();
-        Log.d("EMAIL CUA TOI", email);
-
-        double price = booking.getGiaPhong();
-        String checkPrice = tvIdPersonAgain.getText().toString();
-        try {
-            price = Double.parseDouble(checkPrice);
-        } catch (NumberFormatException e) {
-
-        }
-
-        String roomId = booking.getRoomid();
-        Log.d("ROOMID", roomId);
-        String checkInTime = booking.getGioNhanPhong();
-        String checkOutTime = booking.getGioTra();
-
-//        booking = new Booking(roomId, roomNumber, name, phoneNumber, idPerson, email,
-//                dateCheckIn, dateCheckOut, night, people, checkInTime, checkOutTime, price);
-//
-//        Retrofit retrofit = RetrofitInstance.getInstance();
-//        ApiService apiService = retrofit.create(ApiService.class);
-//
-//        Booking finalBooking = booking;
-//        btnOpenPay.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                apiService.createOrder(finalBooking).enqueue(new Callback<Booking>() {
-//                    @Override
-//                    public void onResponse(Call<Booking> call, Response<Booking> response) {
-//                        Toast.makeText(CheckAgainActivity.this, "Success", Toast.LENGTH_SHORT).show();
-//
-//                        Booking o = response.body();
-//                        Log.d("BOOKING", o.toString());
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<Booking> call, Throwable t) {
-//                        Toast.makeText(CheckAgainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//                startActivity(new Intent(CheckAgainActivity.this, ConfirmActivity.class));
-//            }
-//        });
     }
 
     private void onClickButton() {
@@ -170,17 +154,12 @@ public class CheckAgainActivity extends AppCompatActivity {
         tvRoomTypeAgain = findViewById(R.id.tv_room_type_again);
         tvRankAgain = findViewById(R.id.tv_rank_again);
         tvPeopleAgain = findViewById(R.id.tv_people_again);
-        tvDescriptionAgain = findViewById(R.id.tv_description_again);
         tvNameAgain = findViewById(R.id.tv_name_again);
         tvPhoneNumberAgain = findViewById(R.id.tv_phone_number_again);
         tvIdPersonAgain = findViewById(R.id.tv_id_person_again);
         tvEmailAgain = findViewById(R.id.tv_email_again);
-        tvOrderAgain = findViewById(R.id.tv_order_again);
-        tvCheckInTimeAgain = findViewById(R.id.tv_check_in_time_again);
 
         tvPriceAgain = findViewById(R.id.tv_price_again);
-
-        imgRoomAgain = findViewById(R.id.img_room_again);
 
         btnCancelAgain = findViewById(R.id.btn_cancel_again);
         btnOpenPay = findViewById(R.id.btn_open_pay_again);

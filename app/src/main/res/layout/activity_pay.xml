@@ -134,70 +134,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_warning_pay" />
 
-        <TextView
-            android:id="@+id/tv_title_deposit_pay"
-            style="@style/text_title_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_20"
-            android:layout_marginEnd="@dimen/dp_5"
-            android:text="@string/tien_dat_coc"
-            app:layout_constraintEnd_toStartOf="@+id/tv_deposit_pay"
-            app:layout_constraintTop_toBottomOf="@+id/tv_line_4_pay" />
-
-        <TextView
-            android:id="@+id/tv_deposit_pay"
-            style="@style/text_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_20"
-            android:text="@string/price"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_line_4_pay" />
-
-        <TextView
-            android:id="@+id/tv_title_price_pay"
-            style="@style/text_title_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_title_deposit_pay"
-            android:layout_marginEnd="@dimen/dp_5"
-            android:text="@string/don_gia"
-            app:layout_constraintEnd_toStartOf="@+id/tv_price_pay"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_deposit_pay" />
-
-        <TextView
-            android:id="@+id/tv_price_pay"
-            style="@style/text_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_deposit_pay"
-            android:text="@string/price"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_deposit_pay" />
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_cancel_pay"
-            style="@style/text_button_back"
-            android:layout_width="@dimen/dp_0"
+            style="@style/text_button_back_pay"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_20"
             android:background="@drawable/custom_button_cancel_detail"
             android:text="@string/quay_lai"
-            app:layout_constraintEnd_toStartOf="@+id/btn_open_confirm_pay"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_price_pay" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_open_confirm_pay"
-            style="@style/text_button_continue"
-            android:layout_width="@dimen/dp_0"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_20"
-            android:background="@drawable/custom_button_room_detail"
-            android:text="@string/thanh_toan"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_cancel_pay"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_price_pay" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_line_4_pay" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

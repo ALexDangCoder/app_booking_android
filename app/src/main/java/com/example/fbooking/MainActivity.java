@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.fbooking.accept.WaitToAcceptAcitivity;
 import com.example.fbooking.history.HistoryActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -111,6 +112,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
         }
 
+        if (id == R.id.waitToAccept) {
+            Intent i = new Intent(MainActivity.this, WaitToAcceptAcitivity.class);
+            startActivity(i);
+        }
         return super.onOptionsItemSelected(item);
     }
 

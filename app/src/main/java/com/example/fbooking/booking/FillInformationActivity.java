@@ -74,9 +74,12 @@ public class FillInformationActivity extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference reference;
 
-    private String formatDate = "dd/MM/yyyy";
+    private String formatDate = "yyyy-MM-dd";
     private String formatTime = "HH:mm";
+    private Room room;
 
+    double total;
+    int night;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,12 +87,12 @@ public class FillInformationActivity extends AppCompatActivity {
 
         initUi();
 
-        Room room = (Room) getIntent().getExtras().get("data_next");
+        room = (Room) getIntent().getExtras().get("data_next");
 
         tvRoomNumber.setText(FillInformationActivity.this.getString(R.string.fill_phong_so, room.getRoomNumber()));
         tvRoomType.setText(FillInformationActivity.this.getString(R.string.fill_loai_phong, room.getTypeRoom()));
         tvRoomRank.setText(FillInformationActivity.this.getString(R.string.fill_hang_phong, room.getRankRoom()));
-        tvRoomPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
+//        tvRoomPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
 
         showUserInformation();
 
@@ -104,12 +107,10 @@ public class FillInformationActivity extends AppCompatActivity {
 
     //Hien thi thong tin phong
     private void showRoomInfomation() {
-        Room room = (Room) getIntent().getExtras().get("data_next");
-
         tvRoomNumber.setText(FillInformationActivity.this.getString(R.string.fill_phong_so, room.getRoomNumber()));
         tvRoomType.setText(FillInformationActivity.this.getString(R.string.fill_loai_phong, room.getTypeRoom()));
         tvRoomRank.setText(FillInformationActivity.this.getString(R.string.fill_hang_phong, room.getRankRoom()));
-        tvRoomPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
+        tvRoomPrice.setText("0 đ");
     }
 
     //Hien thi form dang nhap khi nguoi dung chua dang nhap
@@ -178,6 +179,7 @@ public class FillInformationActivity extends AppCompatActivity {
     }
 
     private void onChoseDate() {
+        //Check in
         Calendar calendarCheckInDate = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener checkInDate = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -186,14 +188,10 @@ public class FillInformationActivity extends AppCompatActivity {
                 calendarCheckInDate.set(Calendar.MONTH, month);
                 calendarCheckInDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                updateCalender();
-            }
-
-            private void updateCalender() {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
-                edtCheckInDateFill.setText(simpleDateFormat.format(calendarCheckInDate.getTime()));
+                updateCheckInCalender(calendarCheckInDate);
             }
         };
+
         edtCheckInDateFill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -206,6 +204,7 @@ public class FillInformationActivity extends AppCompatActivity {
             }
         });
 
+        //Check out
         Calendar calendarCheckOutDate = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener checkOutDate = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -214,12 +213,8 @@ public class FillInformationActivity extends AppCompatActivity {
                 calendarCheckOutDate.set(Calendar.MONTH, month);
                 calendarCheckOutDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                updateCalender();
-            }
-
-            private void updateCalender() {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
-                edtCheckOutDateFill.setText(simpleDateFormat.format(calendarCheckOutDate.getTime()));
+                updateCheckOutCalender(calendarCheckOutDate);
+                calculateDates();
             }
         };
 
@@ -234,40 +229,16 @@ public class FillInformationActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+    }
 
-        edtCheckInDateFill.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+    private void updateCheckInCalender(Calendar calendarCheckInDate) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
+        edtCheckInDateFill.setText(simpleDateFormat.format(calendarCheckInDate.getTime()));
+    }
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                calculateDates();
-            }
-        });
-
-        edtCheckOutDateFill.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                calculateDates();
-            }
-        });
+    private void updateCheckOutCalender(Calendar calendarCheckOutDate) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate, Locale.getDefault());
+        edtCheckOutDateFill.setText(simpleDateFormat.format(calendarCheckOutDate.getTime()));
     }
 
     private void calculateDates() {
@@ -287,50 +258,15 @@ public class FillInformationActivity extends AppCompatActivity {
                 tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_ngay));
                 edtNightFill.setText(FillInformationActivity.this.getString(R.string.loi));
                 return;
+            } else if (startDate.compareTo(endDate) == 0) {
+                tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_so_dem));
+                edtNightFill.setText(TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS) + " đêm");
+                return;
             } else {
                 tvErrorFill.setText("");
                 edtNightFill.setText(TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS) + " đêm");
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void calculateTimes() {
-        String checkInTime = edtCheckInTimeFill.getText().toString();
-        String checkOutTime = edtCheckOutTimeFill.getText().toString();
-
-        String checkInDate = edtCheckInDateFill.getText().toString();
-        String checkOutDate = edtCheckOutDateFill.getText().toString();
-        try {
-            @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate);
-            Date startDate = simpleDateFormat.parse(checkInDate);
-            Date endDate = simpleDateFormat.parse(checkOutDate);
-            long duration = (endDate.getTime() - startDate.getTime());
-
-            SimpleDateFormat simpleDateFormatTime = new SimpleDateFormat(formatTime);
-            Date startTime = simpleDateFormatTime.parse(checkInTime);
-            Date endTime = simpleDateFormatTime.parse(checkOutTime);
-
-            long difference = (endTime.getTime() - startTime.getTime());
-            if (difference < 0) {
-                Date dateMax = simpleDateFormatTime.parse("24:00");
-                Date dateMin = simpleDateFormatTime.parse("00:00");
-                difference = (dateMax.getTime() - startTime.getTime()) + (endTime.getTime() - dateMin.getTime());
-            }
-            int days = (int) (difference / (1000 * 60 * 60 * 24));
-            int hours = (int) ((difference - (1000 * 60 * 60 * 24 * days)) / (1000 * 60 * 60));
-            int min = (int) (difference - (1000 * 60 * 60 * 24 * days) - (1000 * 60 * 60 * hours)) / (1000 * 60);
-
-            if (startDate.compareTo(endDate) == 0) {
-                if (startTime.compareTo(endTime) > 0) {
-                    tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_ngay));
-                    edtNightFill.setText(FillInformationActivity.this.getString(R.string.loi));
-                    return;
-                } else {
-                    tvErrorFill.setText("");
-                    edtNightFill.setText(FillInformationActivity.this.getString(R.string.dem, String.valueOf(TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS))));
-                }
+                total = room.getPriceRoom() * TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS);
+                tvRoomPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(total)));
             }
         } catch (ParseException e) {
             e.printStackTrace();
@@ -383,23 +319,6 @@ public class FillInformationActivity extends AppCompatActivity {
             }
         });
 
-        edtCheckInTimeFill.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                calculateTimes();
-            }
-        });
-
         edtCheckOutTimeFill.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -444,12 +363,20 @@ public class FillInformationActivity extends AppCompatActivity {
 
         }
 
-        int night = 0;
         String strNight = edtNightFill.getText().toString().trim();
+        String checkInDate = edtCheckInDateFill.getText().toString();
+        String checkOutDate = edtCheckOutDateFill.getText().toString();
         try {
-            night = Integer.parseInt(strNight);
-        } catch (NumberFormatException e) {
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate);
+            Date startDate = simpleDateFormat.parse(checkInDate);
+            Date endDate = simpleDateFormat.parse(checkOutDate);
 
+            assert startDate != null;
+            assert endDate != null;
+            long duration = (endDate.getTime() - startDate.getTime());
+            night = (int) TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
         String strCheckInTime = edtCheckInTimeFill.getText().toString().trim();
@@ -540,34 +467,17 @@ public class FillInformationActivity extends AppCompatActivity {
             return;
         }
 
-        Room room = (Room) getIntent().getExtras().get("data_next");
-
         tvRoomNumber.setText(room.getRoomNumber());
         tvRoomType.setText(room.getTypeRoom());
         tvRoomRank.setText(room.getRankRoom());
-        tvRoomPrice.setText(String.valueOf(room.getPriceRoom()));
 
         String roomId = room.getRoomId();
+        Log.d("IDROOM", roomId);
         String roomNumber = tvRoomNumber.getText().toString();
         String roomType = tvRoomType.getText().toString();
         String roomRank = tvRoomRank.getText().toString();
 
-        double price = room.getPriceRoom();
-        String roomPrice = tvRoomPrice.getText().toString();
-        try {
-            price = Double.parseDouble(roomPrice);
-        } catch (NumberFormatException e) {
-
-        }
-
         tvErrorFill.setText("");
-
-
-        Booking booking = new Booking(room.getRoomId(),
-                room.getRoomNumber(), strName, strPhoneNumber, room.getTypeRoom(),
-                room.getRankRoom(), 1, strEmail, strCheckInDate,
-                strCheckOutDate, 1, 1,
-                strCheckInTime, strCheckOutTime, room.getPriceRoom());
 
 //        Booking booking = new Booking("61ab35ac7140436ae6942b10",
 //                "301", "Nguyễn Thành Nhật", "123456789", "1",
@@ -575,58 +485,15 @@ public class FillInformationActivity extends AppCompatActivity {
 //                "1/1/2022", 2, 1,
 //                "12:30", "12:30", 1000000);
 
-        Retrofit retrofit = RetrofitInstance.getInstance();
-        ApiService apiService = retrofit.create(ApiService.class);
-        apiService.createOrder(booking).enqueue(new Callback<Booking>() {
-            @Override
-            public void onResponse(Call<Booking> call, Response<Booking> response) {
-                Toast.makeText(FillInformationActivity.this, "Success", Toast.LENGTH_SHORT).show();
-
-                Booking o = response.body();
-                String data = null;
-                data = o.getHangPhong();
-                Log.d("BOOKING", data + "");
-            }
-
-            @Override
-            public void onFailure(Call<Booking> call, Throwable t) {
-                Toast.makeText(FillInformationActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
+        Booking booking = new Booking(roomId, roomNumber, strName, strPhoneNumber, roomType, roomRank,
+                idPerson, strEmail, strCheckInDate, strCheckOutDate, night, people, strCheckInTime,
+                strCheckOutTime, total);
 
         Intent intent = new Intent(FillInformationActivity.this, CheckAgainActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("booking", booking);
         intent.putExtras(bundle);
         startActivity(intent);
-    }
-
-    private void createBooking() {
-        Booking booking = new Booking("61ab35ac7140436ae6942b10",
-                "301", "Nguyễn Thành Nhật", "123456789", "1",
-                "1", 987654321, "nhatbeo@gmail.com", "1/1/2022",
-                "1/1/2022", 2, 1,
-                "12:30", "12:30", 1000000);
-
-        Retrofit retrofit = RetrofitInstance.getInstance();
-        ApiService apiService = retrofit.create(ApiService.class);
-
-        apiService.createOrder(booking).enqueue(new Callback<Booking>() {
-            @Override
-            public void onResponse(Call<Booking> call, Response<Booking> response) {
-                Toast.makeText(FillInformationActivity.this, "Success", Toast.LENGTH_SHORT).show();
-
-                Booking o = response.body();
-                String data = null;
-                data = o.getHangPhong();
-                Log.d("BOOKING", data + "");
-            }
-
-            @Override
-            public void onFailure(Call<Booking> call, Throwable t) {
-                Toast.makeText(FillInformationActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private void initUi() {

@@ -11,8 +11,7 @@ import android.widget.TextView;
 import com.example.fbooking.R;
 
 public class PayActivity extends AppCompatActivity {
-    private TextView tvDepositPay, tvPricePay;
-    private AppCompatButton btnCancelPay, btnConfirmPay;
+    private AppCompatButton btnCancelPay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,23 +27,12 @@ public class PayActivity extends AppCompatActivity {
         btnCancelPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-            }
-        });
-
-        btnConfirmPay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
+                finish();
             }
         });
     }
 
     private void initUi() {
-        tvDepositPay = findViewById(R.id.tv_deposit_pay);
-        tvPricePay = findViewById(R.id.tv_price_pay);
-
         btnCancelPay = findViewById(R.id.btn_cancel_pay);
-        btnConfirmPay = findViewById(R.id.btn_open_confirm_pay);
     }
 }
