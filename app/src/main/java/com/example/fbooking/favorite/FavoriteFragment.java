@@ -20,11 +20,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fbooking.accept.DeleteIdAccept;
 import com.example.fbooking.booking.BookingFragment;
 import com.example.fbooking.booking.RoomDetailActivity;
 import com.example.fbooking.history.HistoryActivity;
 import com.example.fbooking.retrofit.ApiService;
 import com.example.fbooking.retrofit.RetrofitInstance;
+import com.example.fbooking.room.FavoriteResult;
 import com.example.fbooking.room.OnFavoriteClickListener;
 import com.example.fbooking.room.OnRoomClickListener;
 import com.example.fbooking.room.Result;
@@ -68,7 +70,7 @@ public class FavoriteFragment extends Fragment implements OnRoomClickListener, O
     private SwipeRefreshLayout srlFavorite;
     private ProgressDialog progressDialog;
     private List<Room> roomList;
-    private FavoriteAdapter favoriteAdapter;
+    private RoomAdapter roomAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,14 +82,11 @@ public class FavoriteFragment extends Fragment implements OnRoomClickListener, O
 
         showFrom();
 
-        showProgressDialog();
-        getListRoom();
-
         srlFavorite.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 showProgressDialog();
-                getListRoom();
+                getListRoom(user.getEmail());
             }
         });
 
@@ -125,7 +124,7 @@ public class FavoriteFragment extends Fragment implements OnRoomClickListener, O
                     User userProfile = snapshot.getValue(User.class);
                     if (userProfile != null) {
                         showProgressDialog();
-                        getListRoom();
+                        getListRoom(userProfile.getEmail());
                     }
                 }
 
@@ -138,17 +137,17 @@ public class FavoriteFragment extends Fragment implements OnRoomClickListener, O
         }
     }
 
-    private void getListRoom() {
+    private void getListRoom(String email) {
         Retrofit retrofit = RetrofitInstance.getInstance();
         ApiService apiService = retrofit.create(ApiService.class);
-        apiService.getListFavorite().enqueue(new Callback<Result>() {
+        apiService.getListFavoriteByUser(email).enqueue(new Callback<Result>() {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {
                 roomList = response.body().getData();
 
                 if (roomList == null) return;
 
-                favoriteAdapter.setData(roomList, FavoriteFragment.this::onRoomClick);
+                roomAdapter.setData(roomList, FavoriteFragment.this::onRoomClick, FavoriteFragment.this::onClickFavorite);
 
                 srlFavorite.setRefreshing(false);
                 if (progressDialog.isShowing()) {
@@ -182,8 +181,8 @@ public class FavoriteFragment extends Fragment implements OnRoomClickListener, O
         rcvRoomFavorite = view.findViewById(R.id.rcv_room_favorite);
         linearLayoutManager = new LinearLayoutManager(getContext());
         rcvRoomFavorite.setLayoutManager(linearLayoutManager);
-        favoriteAdapter = new FavoriteAdapter(getContext());
-        rcvRoomFavorite.setAdapter(favoriteAdapter);
+        roomAdapter = new RoomAdapter(getContext());
+        rcvRoomFavorite.setAdapter(roomAdapter);
     }
 
     @Override
@@ -197,6 +196,41 @@ public class FavoriteFragment extends Fragment implements OnRoomClickListener, O
 
     @Override
     public void onClickFavorite(Room room) {
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
+        reference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userProfile = snapshot.getValue(User.class);
+                if (userProfile != null) {
+                    Retrofit retrofit = RetrofitInstance.getInstance();
+                    ApiService apiService = retrofit.create(ApiService.class);
+                    String idRoom = room.getRoomId();
+                    String userEmail = userProfile.getEmail();
+                    DeleteIdAccept deleteIdAccept = new DeleteIdAccept();
+                    deleteIdAccept.setIdRoom(idRoom);
+                    deleteIdAccept.setUserEmail(userEmail);
+                    apiService.setFavoriteRoom(deleteIdAccept).enqueue(new Callback<FavoriteResult>() {
+                        @Override
+                        public void onResponse(Call<FavoriteResult> call, Response<FavoriteResult> response) {
+                            Toast.makeText(getActivity().getApplicationContext(), "Đã hủy yêu thích!", Toast.LENGTH_SHORT).show();
+                            getListRoom(userEmail);
+                        }
 
+                        @Override
+                        public void onFailure(Call<FavoriteResult> call, Throwable t) {
+                            Log.d("ERRORMESS", t.getMessage());
+                            Toast.makeText(getActivity().getApplicationContext(), "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity().getApplicationContext(), "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
+                showProgressDialog();
+            }
+        });
     }
 }

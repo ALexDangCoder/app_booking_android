@@ -89,11 +89,6 @@ public class FillInformationActivity extends AppCompatActivity {
 
         room = (Room) getIntent().getExtras().get("data_next");
 
-        tvRoomNumber.setText(FillInformationActivity.this.getString(R.string.fill_phong_so, room.getRoomNumber()));
-        tvRoomType.setText(FillInformationActivity.this.getString(R.string.fill_loai_phong, room.getTypeRoom()));
-        tvRoomRank.setText(FillInformationActivity.this.getString(R.string.fill_hang_phong, room.getRankRoom()));
-//        tvRoomPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
-
         showUserInformation();
 
         showRoomInfomation();
@@ -107,9 +102,9 @@ public class FillInformationActivity extends AppCompatActivity {
 
     //Hien thi thong tin phong
     private void showRoomInfomation() {
-        tvRoomNumber.setText(FillInformationActivity.this.getString(R.string.fill_phong_so, room.getRoomNumber()));
-        tvRoomType.setText(FillInformationActivity.this.getString(R.string.fill_loai_phong, room.getTypeRoom()));
-        tvRoomRank.setText(FillInformationActivity.this.getString(R.string.fill_hang_phong, room.getRankRoom()));
+        tvRoomNumber.setText(room.getRoomNumber());
+        tvRoomType.setText(room.getTypeRoom());
+        tvRoomRank.setText(room.getRankRoom());
         tvRoomPrice.setText("0 đ");
     }
 
@@ -189,6 +184,7 @@ public class FillInformationActivity extends AppCompatActivity {
                 calendarCheckInDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
                 updateCheckInCalender(calendarCheckInDate);
+                calculateDates();
             }
         };
 

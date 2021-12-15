@@ -6,6 +6,16 @@
     android:orientation="vertical"
     tools:context=".home.HomeFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_service"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_10"
+        android:background="#FF9800" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_slide"
         android:layout_width="match_parent"
@@ -18,18 +28,18 @@
         android:layout_gravity="center_horizontal"
         android:background="#FF9800" />
 
-    <TextView
-        style="@style/text_hello_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp_5"
-        android:text="@string/dich_vu_khach_san" />
+    <!--    <TextView-->
+    <!--        style="@style/text_hello_profile"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginStart="@dimen/dp_5"-->
+    <!--        android:text="@string/dich_vu_khach_san" />-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_service"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp_5" />
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+    <!--        android:id="@+id/rcv_service"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginHorizontal="@dimen/dp_5" />-->
 
     <TextView
         style="@style/text_hello_profile"
@@ -41,7 +51,7 @@
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/srl_home"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp_5"
         android:layout_marginBottom="@dimen/dp_5">
 

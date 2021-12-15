@@ -41,6 +41,7 @@ public class ProfileFragment extends Fragment {
     private ImageView imgAvatarProfile, btnSignOut;
     private TextView tvNameProfile, tvDateOfBirthProfile, tvPhoneNumberProfile,
             tvIdPersonProfile, tvEmailProfile, tvPasswordProfile, tvOpenChangePassword;
+    private TextView tvOpenUse;
     private AppCompatButton btnOpenUpdateProfile, btnOpenPay;
 
     private FirebaseUser user;
@@ -71,11 +72,23 @@ public class ProfileFragment extends Fragment {
 
         onOpenChangePassword();
 
-        onClickSignOut();
-
         openPay();
 
+        openHowToUse();
+
+        onClickSignOut();
+
         return view;
+    }
+
+    private void openHowToUse() {
+        tvOpenUse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), HowToUseActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void openPay() {
@@ -233,6 +246,8 @@ public class ProfileFragment extends Fragment {
         tvIdPersonProfile = view.findViewById(R.id.tv_id_person_profile);
         tvEmailProfile = view.findViewById(R.id.tv_email_profile);
         tvPasswordProfile = view.findViewById(R.id.tv_password_profile);
+
+        tvOpenUse = view.findViewById(R.id.tv_open_use);
 
         tvOpenChangePassword = view.findViewById(R.id.tv_open_change_password);
         tvOpenChangePassword.setPaintFlags(tvOpenChangePassword.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);

@@ -90,7 +90,22 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder> implements
                 holder.ivUnFavorite.setBackgroundResource(R.drawable.ic_favorite_border);
             }
         } else {
-            Toast.makeText(context, "Bạn chưa đăng nhập!", Toast.LENGTH_SHORT).show();
+            holder.tvRoomNumber.setText(String.valueOf(room.getRoomNumber()));
+            holder.tvTypeRoom.setText(String.valueOf(room.getTypeRoom()));
+            holder.tvRankRoom.setText(String.valueOf(room.getRankRoom()));
+            holder.tvStatusRoom.setText(String.valueOf(room.getStatusRoom()));
+
+            holder.tvPriceRoom.setText(context.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
+
+            String path = room.getRoomPhoto().get(0).getFilename();
+            Picasso.get().load(context.getString(R.string.path, path)).into(holder.imgRoom);
+
+            holder.view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onRoomClickListener.onRoomClick(room);
+                }
+            });
             return;
         }
 

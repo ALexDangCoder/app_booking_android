@@ -4,6 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">MapsActivity</string>
 
+    <string name="chua_co_phong_yeu_thich">Bạn chưa yêu thích phòng nào</string>
+
     <!--    Check again-->
     <string name="khach_san">Khách sạn FPOLY</string>
 
@@ -123,6 +125,9 @@
 
     <string name="thanh_toan">Thanh toán</string>
 
+    <!--    How to use-->
+
+
     <!--    Room detail-->
     <string name="fboking_hotel">FBOOKING - FPOLY HOTEL</string>
 
@@ -181,6 +186,7 @@
     <string name="cap_nhat">Cập nhật</string>
     <string name="thong_tin_chuyen_khoan">Thông tin chuyển khoản</string>
 
+    <string name="huong_dan_su_dung">Hướng dẫn sử dụng</string>
     <!--    Update profile-->
     <string name="cap_nhat_thong_tin_ca_nhan">Cập nhật thông tin cá nhân</string>
 
@@ -241,11 +247,47 @@
     <string name="his_email">Email: %1$s</string>
     <string name="his_thoi_gian_nhan">Ngày nhận: %1$s / Thời gian nhận: %2$s</string>
     <string name="his_thoi_gian_tra">Thời trả: %1$s / Thời gian trả %2$s</string>
-    <string name="his_so_dien_thoai">Phòng số: %1$s</string>
+    <string name="his_so_dien_thoai">Số điện thoại: %1$s</string>
     <string name="his_gia_tien">Đơn giá: %1$s</string>
 
     <!--    Wait to accept-->
     <string name="phong_cho_xac_nhan">Danh sách phòng chờ xác nhận</string>
 
     <string name="dich_vu_khach_san">Dịch vụ khách sạn</string>
+
+    <!--    How to use-->
+    <string name="huong_dan">Sau khi tải về máy, quý khách có thể đăng nhập hoặc bắt đầu vào
+        trang chủ luôn (Qúy khách nên đăng nhập luôn hoặc đăng ký tài khoản để có được trải
+        nghiệm tốt nhất)\n\nKhi người dùng vuốt sang phải (hoặc ấn nút phía dưới), quý khách
+        có thể sẽ sang được 4 màn hình khác bao gồm: Trang chủ, Danh sách phòng, phòng yêu thích,
+        Thông tin người dùng.\n\nỞ màn hình đầu tiên là "Trang chủ", nơi sẽ giới thiệu phòng và
+        dịch vụ thông qua ảnh, đồng thời sẽ có một danh sách (vuốt ngang) phòng được đặt nhiều
+        trong thời gian vừa qua.\n\nTiếp theo là màn hình "Danh sách phòng", tại đây bạn có
+        thể bấm yêu thích phòng và thông tin sẽ được lưu ở màn hình Yêu thích để quý khách không
+        bỏ lỡ những phòng mà mình yêu thích.\n- Nếu quý khách ấn vào một mục trên danh sách phòng
+        thì sẽ di chuyển đến màn hình thông tin phòng chi tiết.\n- Sau khi ấn nút "Tới đặt phòng",
+        quý khách sẽ điền thông tin cá nhân của mình vào ô nhập liệu, đồng thời thông tin của phòng
+        sẽ được hiển thị ở bên dưới.\n- Sau khi đặt phòng, quý khách sẽ được kiểm tra lại thông tin
+        mà mình đã điền để có được sự chính xác.\n- Nếu quý khách ấn xác nhận, thông tin của quý khách
+        sẽ được gửi lên "Hệ quản trị khách sạn", quý khách sẽ chờ khoảng từ 5 -> 10 phút để các bạn
+        lễ tân có thể gọi điện và xác nhận thông tin của người dùng.\n- Đồng thời thông tin đặt phòng
+        của quý khách sẽ được lưu tại màn hình "Danh sách phòng chờ" (Qúy khách sẽ bấm vào nút hình
+        bàn tay) để kiểm tra những phòng đang được chờ xác nhận.\n- Sau khi được xác nhận đặt phòng,
+        quý khách sẽ sang màn hình "Thông tin người dùng", sau đó ấn nút "Thông tin chuyển khoản để
+        có được hướng dẫn cũng như là số tài khoản ngân hàng của khách sạn để chuyển tiền.\n\nTiếp theo
+        là màn hình "Yêu thích", tại đây sẽ là danh sách những phòng mà quý khách đã lựa chọn yêu thích
+        lúc trước, quý khách có thể bỏ yêu thích bằng cách ấn vào nút hình trái tim một lần nữa.\n\nMàn
+        hình "Thông tin người dùng" sẽ là nơi quý khách có thể xem được thông tin của mình. Qúy khách có
+        thể thay đổi thông tin cá nhân theo các mục có sẵn.\n- Ở đây sẽ có 2 nút đó là "Hướng dẫn sử dụng"
+        và "Thông tin chuyển khoản" để giúp quý khách có thể nắm rõ được thông tin của khách sạn cũng như
+        là hướng dẫn sử dụng.\n- Ở cuối màn hình sẽ có nút đăng xuất giúp cho người dùng có thể thoát tài
+        khoản khỏi ứng dụng.\n\nỞ trên cùng sẽ có 2 nút là "Danh sách phòng chờ" và "Lịch sử đặt phòng",
+        ở 2 màn hình này sẽ giúp cho quý khách có thể kiểm tra lại những phòng mình đã đặt và cũng có
+        thể hủy phòng đang chờ xác nhận.\n- Nếu như quý khách muốn hủy đặt phòng sau khi đã xác nhận,
+        quý khách vui lòng liên hệ đến lễ tân của khách sạn theo số điện thoại: 0987654321 để được hủy
+        phòng.\n\nCuối cùng, cảm ơn quý khách đã lựa chọn và tin tưởng khách sạn FPOLY HOTEL là nơi nghỉ
+        ngơi cũng như là thư giãn.\nMọi thông tin liên hệ, xin quý khách hãy liên hệ theo đường dây nóng:
+        1900 6996 hoặc 0987654321 để được giải đáp thắc mắc của mình về khách sạn cũng như là cách sử dụng
+        ứng dụng. Xin chân thành cảm ơn!
+    </string>
 </resources>
