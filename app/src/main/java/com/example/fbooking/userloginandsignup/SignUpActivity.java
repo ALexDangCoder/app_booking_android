@@ -182,7 +182,7 @@ public class SignUpActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             progressDialog.dismiss();
-                            Toast.makeText(SignUpActivity.this, "Đăng ký thất bại!",
+                            Toast.makeText(SignUpActivity.this, "Email đã tồn tại, vui lòng sử dụng email khác!!",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }

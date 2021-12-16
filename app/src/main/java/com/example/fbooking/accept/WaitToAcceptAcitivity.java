@@ -1,6 +1,7 @@
 package com.example.fbooking.accept;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,7 +50,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class WaitToAcceptAcitivity extends AppCompatActivity implements OnClickAcceptListener{
+public class WaitToAcceptAcitivity extends AppCompatActivity implements OnClickAcceptListener {
     private RecyclerView rcvRoomAccept;
     private LinearLayoutManager linearLayoutManager;
 
@@ -67,6 +69,7 @@ public class WaitToAcceptAcitivity extends AppCompatActivity implements OnClickA
 
     private AlarmManager alarmManager;
     private PendingIntent pendingIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +77,7 @@ public class WaitToAcceptAcitivity extends AppCompatActivity implements OnClickA
 
         initUi();
 
-        showProgressDialog();
+//        showProgressDialog();
         showUserInformation();
     }
 
@@ -180,6 +183,9 @@ public class WaitToAcceptAcitivity extends AppCompatActivity implements OnClickA
         clLogin = findViewById(R.id.cl_login_accept);
         lnAccept = findViewById(R.id.ln_accept);
         btnOpenLogin = findViewById(R.id.btn_open_login_accept);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
     }
 
     @Override
@@ -187,35 +193,52 @@ public class WaitToAcceptAcitivity extends AppCompatActivity implements OnClickA
         Retrofit retrofit = RetrofitInstance.getInstance();
         ApiService apiService = retrofit.create(ApiService.class);
         DeleteIdAccept deleteIdAccept = new DeleteIdAccept(accept.getId());
-        apiService.deleteAccept(deleteIdAccept).enqueue(new Callback<Accept>() {
-            @Override
-            public void onResponse(Call<Accept> call, Response<Accept> response) {
-                //Huy dat thoi gian
-                Intent intent = new Intent(WaitToAcceptAcitivity.this, AlarmReceiver.class);
-                pendingIntent = PendingIntent.getBroadcast(WaitToAcceptAcitivity.this, 0, intent, 0);
-                if (alarmManager == null) {
-                    alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                }
-                alarmManager.cancel(pendingIntent);
-                Toast.makeText(WaitToAcceptAcitivity.this, "Hủy đặt giờ", Toast.LENGTH_SHORT).show();
 
-                srlAccept.setRefreshing(false);
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
-                }
-                Toast.makeText(WaitToAcceptAcitivity.this, "Xóa dữ liệu thành công!", Toast.LENGTH_SHORT).show();
-                Log.d("ACCEPTID", accept.getId());
-                Log.d("NEWACCEPTID", deleteIdAccept + "");
-            }
+        AlertDialog.Builder builder = new AlertDialog.Builder(WaitToAcceptAcitivity.this);
+        builder.setMessage("Bạn có muốn hủy đặt phòng?")
+                .setPositiveButton("Xác nhận", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        apiService.deleteAccept(deleteIdAccept).enqueue(new Callback<Accept>() {
+                            @Override
+                            public void onResponse(Call<Accept> call, Response<Accept> response) {
+                                //Huy dat thoi gian
+                                Intent intent = new Intent(WaitToAcceptAcitivity.this, AlarmReceiver.class);
+                                pendingIntent = PendingIntent.getBroadcast(WaitToAcceptAcitivity.this, 0, intent, 0);
+                                if (alarmManager == null) {
+                                    alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                                }
+                                alarmManager.cancel(pendingIntent);
+                                srlAccept.setRefreshing(false);
 
-            @Override
-            public void onFailure(Call<Accept> call, Throwable t) {
-                srlAccept.setRefreshing(false);
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
-                }
-                Toast.makeText(WaitToAcceptAcitivity.this, "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
-            }
-        });
+                                //Tao lai danh sach
+                                callApiAccept(user.getEmail());
+
+                                srlAccept.setRefreshing(false);
+                                if (progressDialog.isShowing()) {
+                                    progressDialog.dismiss();
+                                }
+
+                                Toast.makeText(WaitToAcceptAcitivity.this, "Hủy đặt phòng thành công!", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(Call<Accept> call, Throwable t) {
+                                srlAccept.setRefreshing(false);
+                                if (progressDialog.isShowing()) {
+                                    progressDialog.dismiss();
+                                }
+                                Toast.makeText(WaitToAcceptAcitivity.this, "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                })
+                .setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        builder.show();
     }
 }

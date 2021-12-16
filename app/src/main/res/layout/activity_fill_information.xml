@@ -259,34 +259,59 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_room_number_fill"
+                    android:id="@+id/tv_title_room_number_fill"
                     style="@style/text_room_fill"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dp_5"
                     android:text="@string/phong_so"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_title_room_fill" />
 
                 <TextView
-                    android:id="@+id/tv_room_type_fill"
+                    android:id="@+id/tv_room_number_fill"
                     style="@style/text_room_fill"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_5"
+                    app:layout_constraintStart_toEndOf="@+id/tv_title_room_number_fill"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_room_fill" />
+
+                <TextView
+                    android:id="@+id/tv_title_room_type_fill"
+                    style="@style/text_room_fill"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/loai_phong"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_room_number_fill" />
 
                 <TextView
-                    android:id="@+id/tv_room_rank_fill"
+                    android:id="@+id/tv_room_type_fill"
                     style="@style/text_room_fill"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_5"
+                    app:layout_constraintStart_toEndOf="@+id/tv_title_room_type_fill"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_room_number_fill" />
+
+                <TextView
+                    android:id="@+id/tv_title_room_rank_fill"
+                    style="@style/text_room_fill"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/hang_phong"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_room_type_fill" />
+
+                <TextView
+                    android:id="@+id/tv_room_rank_fill"
+                    style="@style/text_room_fill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_5"
+                    app:layout_constraintStart_toEndOf="@+id/tv_title_room_rank_fill"
                     app:layout_constraintTop_toBottomOf="@+id/tv_room_type_fill" />
 
                 <TextView
@@ -297,7 +322,7 @@
                     android:layout_marginEnd="@dimen/dp_5"
                     android:text="@string/don_gia"
                     app:layout_constraintEnd_toStartOf="@+id/tv_price_fill"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_room_rank_fill" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_room_rank_fill" />
 
                 <TextView
                     android:id="@+id/tv_price_fill"
@@ -306,7 +331,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_room_rank_fill" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_room_rank_fill" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatButton
