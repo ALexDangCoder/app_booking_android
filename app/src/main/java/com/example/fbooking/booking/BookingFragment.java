@@ -117,7 +117,7 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
 
         openBottomSheet();
 
-        showProgressDialog();
+//        showProgressDialog();
         getListRoom();
 
         filterList();
@@ -173,7 +173,7 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
         List<RankRoom> list = new ArrayList<>();
         list.add(new RankRoom("Phổ thông", false));
         list.add(new RankRoom("Cao cấp", false));
-        list.add(new RankRoom("Sang trọng", false));
+         list.add(new RankRoom("Sang trọng", false));
         return list;
     }
 
@@ -379,6 +379,7 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
                     apiService.setFavoriteRoom(deleteIdAccept).enqueue(new Callback<FavoriteResult>() {
                         @Override
                         public void onResponse(Call<FavoriteResult> call, Response<FavoriteResult> response) {
+                            Toast.makeText(getActivity().getApplicationContext(), "Đã thêm vào mục yêu thích!", Toast.LENGTH_SHORT).show();
                             getListRoom();
                         }
 

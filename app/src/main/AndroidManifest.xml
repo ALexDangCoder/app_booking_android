@@ -20,9 +20,14 @@
         android:theme="@style/Theme.AppColor"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".profile.HowToUseActivity"
+            android:exported="true"
+            android:label="Hướng dẫn sử dụng"/>
+        <activity
             android:name=".accept.WaitToAcceptAcitivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:label="Chờ xác nhận"/>
         <activity
             android:name=".booking.ConfirmActivity"
             android:exported="true"
@@ -30,7 +35,7 @@
         <activity
             android:name=".booking.PayActivity"
             android:exported="true"
-            android:label="Thanh toán" />
+            android:label="Thông tin ngân hàng" />
         <activity
             android:name=".booking.CheckAgainActivity"
             android:exported="true"
@@ -41,7 +46,8 @@
             android:label="Điền thông tin" />
         <activity
             android:name=".booking.RoomDetailActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:label="Thông tin chi tiết"/>
         <activity
             android:name=".introduction.IntroductionActivity"
             android:exported="true"
@@ -50,7 +56,6 @@
             android:name=".splashscreen.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Design.Light.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,9 +89,17 @@
             android:theme="@style/Theme.Design.Light.NoActionBar" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" />
 
-        </activity>
+        <service android:name=".utils.MyFirebaseInstanceIDService"
+            android:enabled="true"
+            android:exported="true"
+            android:stopWithTask="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
         <receiver android:name=".utils.AlarmReceiver" />
 

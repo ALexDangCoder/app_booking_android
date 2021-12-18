@@ -78,7 +78,7 @@ public class HistoryActivity extends AppCompatActivity implements OnHistoryClick
 
         initUi();
 
-        showProgressDialog();
+//        showProgressDialog();
         showUserInformation();
 
         deleteListHistory();
@@ -97,11 +97,14 @@ public class HistoryActivity extends AppCompatActivity implements OnHistoryClick
                 apiService.deleteAllHistory(email).enqueue(new Callback<ResultHistory>() {
                     @Override
                     public void onResponse(Call<ResultHistory> call, Response<ResultHistory> response) {
+                        callApiHistory(user.getEmail());
+                        Toast.makeText(HistoryActivity.this, "Xóa lịch sử thành công!", Toast.LENGTH_SHORT).show();
+                        Log.d("NEWEMAIL", email + "");
+
+                        srlHistory.setRefreshing(false);
                         if (progressDialog.isShowing()) {
                             progressDialog.dismiss();
                         }
-                        Toast.makeText(HistoryActivity.this, "Xóa dữ liệu thành công!", Toast.LENGTH_SHORT).show();
-                        Log.d("NEWEMAIL", email + "");
                     }
 
                     @Override
@@ -213,6 +216,9 @@ public class HistoryActivity extends AppCompatActivity implements OnHistoryClick
         clLogin = findViewById(R.id.cl_login_history);
         lnHistory = findViewById(R.id.ln_history);
         btnOpenLogin = findViewById(R.id.btn_open_login_hisory);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        reference = FirebaseDatabase.getInstance().getReference("Users");
     }
 
     @Override
@@ -223,11 +229,15 @@ public class HistoryActivity extends AppCompatActivity implements OnHistoryClick
         apiService.deleteHistory(deleteIdHistory).enqueue(new Callback<History>() {
             @Override
             public void onResponse(Call<History> call, Response<History> response) {
-                srlHistory.setRefreshing(false);
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
-                }
-                Toast.makeText(HistoryActivity.this, "Xóa dữ liệu thành công!", Toast.LENGTH_SHORT).show();
+                callApiHistory(user.getEmail());
+
+                Toast.makeText(HistoryActivity.this, "Xóa mục thành công!", Toast.LENGTH_SHORT).show();
+//                for (int i = 0; i < historyList.size(); i++) {
+//                    if (historyList.get(i).getId().equalsIgnoreCase(response.body().getId())) {
+//                        historyList.remove(i);
+//                    }
+//                }
+//                adapter.updateData(historyList);
                 Log.d("HISTORYID", history.getId());
                 Log.d("NEWHISTORYID", deleteIdHistory + "");
             }

@@ -165,7 +165,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(getApplicationContext(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Sai tên đăng nhập hoặc sai mật khẩu", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }

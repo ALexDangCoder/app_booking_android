@@ -51,9 +51,12 @@ public class Booking implements Serializable {
     @SerializedName("giaPhong")
     @Expose
     private double giaPhong;
+    @SerializedName("tokenUser")
+    @Expose
+    private String tokenUser;
 
-    public Booking(String Roomid, String sophong, String hoten, String sdt, String loaiPhong, String hangPhong, int cccd, String email, String ngaynhan, String ngayTra, int sodem, int soNguoi, String gioNhanPhong, String gioTra, double giaPhong) {
-        this.Roomid = Roomid;
+    public Booking(String roomid, String sophong, String hoten, String sdt, String loaiPhong, String hangPhong, int cccd, String email, String ngaynhan, String ngayTra, int sodem, int soNguoi, String gioNhanPhong, String gioTra, double giaPhong, String tokenUser) {
+        Roomid = roomid;
         this.sophong = sophong;
         this.hoten = hoten;
         this.sdt = sdt;
@@ -68,6 +71,7 @@ public class Booking implements Serializable {
         this.gioNhanPhong = gioNhanPhong;
         this.gioTra = gioTra;
         this.giaPhong = giaPhong;
+        this.tokenUser = tokenUser;
     }
 
     public String getRoomid() {
@@ -188,5 +192,13 @@ public class Booking implements Serializable {
 
     public void setGiaPhong(double giaPhong) {
         this.giaPhong = giaPhong;
+    }
+
+    public String getTokenUser() {
+        return tokenUser;
+    }
+
+    public void setTokenUser(String tokenUser) {
+        this.tokenUser = tokenUser;
     }
 }

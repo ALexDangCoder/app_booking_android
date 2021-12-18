@@ -157,6 +157,20 @@
                             android:layout_marginTop="@dimen/dp_10"
                             android:background="@drawable/custom_button"
                             android:text="@string/cap_nhat" />
+
+                        <TextView
+                            android:id="@+id/tv_open_use"
+                            style="@style/text_info_room"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/btn_open_update_profile"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginTop="@dimen/dp_5"
+                            android:background="#3F51B5"
+                            android:paddingHorizontal="@dimen/dp_10"
+                            android:text="@string/huong_dan_su_dung"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
                     </RelativeLayout>
                 </RelativeLayout>
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -167,7 +181,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@+id/btn_sign_out"
-                android:layout_marginTop="@dimen/dp_10"
                 android:layout_marginBottom="@dimen/dp_10"
                 android:background="@drawable/custom_button_abort"
                 android:text="@string/thong_tin_chuyen_khoan" />

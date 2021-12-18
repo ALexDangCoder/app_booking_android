@@ -36,6 +36,7 @@ import com.example.fbooking.room.Room;
 import com.example.fbooking.userloginandsignup.LoginActivity;
 import com.example.fbooking.userloginandsignup.SignUpActivity;
 import com.example.fbooking.userloginandsignup.User;
+import com.example.fbooking.utils.MyFirebaseInstanceIDService;
 import com.example.fbooking.utils.PriceFormatUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -89,11 +90,6 @@ public class FillInformationActivity extends AppCompatActivity {
 
         room = (Room) getIntent().getExtras().get("data_next");
 
-        tvRoomNumber.setText(FillInformationActivity.this.getString(R.string.fill_phong_so, room.getRoomNumber()));
-        tvRoomType.setText(FillInformationActivity.this.getString(R.string.fill_loai_phong, room.getTypeRoom()));
-        tvRoomRank.setText(FillInformationActivity.this.getString(R.string.fill_hang_phong, room.getRankRoom()));
-//        tvRoomPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
-
         showUserInformation();
 
         showRoomInfomation();
@@ -107,9 +103,9 @@ public class FillInformationActivity extends AppCompatActivity {
 
     //Hien thi thong tin phong
     private void showRoomInfomation() {
-        tvRoomNumber.setText(FillInformationActivity.this.getString(R.string.fill_phong_so, room.getRoomNumber()));
-        tvRoomType.setText(FillInformationActivity.this.getString(R.string.fill_loai_phong, room.getTypeRoom()));
-        tvRoomRank.setText(FillInformationActivity.this.getString(R.string.fill_hang_phong, room.getRankRoom()));
+        tvRoomNumber.setText(room.getRoomNumber());
+        tvRoomType.setText(room.getTypeRoom());
+        tvRoomRank.setText(room.getRankRoom());
         tvRoomPrice.setText("0 đ");
     }
 
@@ -189,6 +185,7 @@ public class FillInformationActivity extends AppCompatActivity {
                 calendarCheckInDate.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
                 updateCheckInCalender(calendarCheckInDate);
+                calculateDates();
             }
         };
 
@@ -485,9 +482,12 @@ public class FillInformationActivity extends AppCompatActivity {
 //                "1/1/2022", 2, 1,
 //                "12:30", "12:30", 1000000);
 
+        String token = MyFirebaseInstanceIDService.getToken(FillInformationActivity.this);
+        Log.d("TOKENCHECK", token);
+
         Booking booking = new Booking(roomId, roomNumber, strName, strPhoneNumber, roomType, roomRank,
                 idPerson, strEmail, strCheckInDate, strCheckOutDate, night, people, strCheckInTime,
-                strCheckOutTime, total);
+                strCheckOutTime, total, token);
 
         Intent intent = new Intent(FillInformationActivity.this, CheckAgainActivity.class);
         Bundle bundle = new Bundle();

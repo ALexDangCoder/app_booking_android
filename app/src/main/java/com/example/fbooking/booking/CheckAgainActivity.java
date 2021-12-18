@@ -23,6 +23,7 @@ import com.example.fbooking.R;
 import com.example.fbooking.retrofit.ApiService;
 import com.example.fbooking.retrofit.RetrofitInstance;
 import com.example.fbooking.utils.AlarmReceiver;
+import com.example.fbooking.utils.MyFirebaseInstanceIDService;
 import com.example.fbooking.utils.PriceFormatUtils;
 import com.google.android.material.timepicker.MaterialTimePicker;
 
@@ -32,6 +33,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,6 +51,7 @@ public class CheckAgainActivity extends AppCompatActivity {
             tvNameAgain, tvPhoneNumberAgain, tvIdPersonAgain, tvEmailAgain, tvPriceAgain;
     private AppCompatButton btnCancelAgain, btnOpenPay;
 
+    private Booking booking;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +66,7 @@ public class CheckAgainActivity extends AppCompatActivity {
     }
 
     private void showRoomDetail() {
-        Booking booking = (Booking) getIntent().getExtras().get("booking");
+//        booking = (Booking) getIntent().getExtras().get("booking");
 
         tvDateCheckInAgain.setText(booking.getNgaynhan());
         tvNightAgain.setText(String.valueOf(booking.getSodem()));
@@ -83,40 +87,50 @@ public class CheckAgainActivity extends AppCompatActivity {
         Retrofit retrofit = RetrofitInstance.getInstance();
         ApiService apiService = retrofit.create(ApiService.class);
 
+        //Lay thoi gian
+        String getDate = booking.getNgaynhan();
+        String getTime = booking.getGioNhanPhong();
+        String getDateAndTime = getDate + " " + getTime;
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy" + " " + "hh:mm a");
+        Calendar calendar = new GregorianCalendar(TimeZone.getTimeZone(getDate));
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        Log.d("CALENDER", format.format(calendar.getTime()));
+        Log.d("NGAYNHAN", booking.getNgaynhan());
+        Log.d("GIONHAN", booking.getGioNhanPhong());
+        Log.d("NGAYVAGIONHAN", getDateAndTime);
+        Date parseDate = new Date();
+        try {
+            parseDate = format.parse(calendar + " " + booking.getGioNhanPhong());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        long milliseconds = parseDate.getTime();
+        Log.d("MILLISECONDS", format.format(milliseconds));
+
         btnOpenPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 apiService.createOrder(booking).enqueue(new Callback<Booking>() {
                     @Override
                     public void onResponse(Call<Booking> call, Response<Booking> response) {
-                        Toast.makeText(CheckAgainActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CheckAgainActivity.this, "Đặt phòng thành công!", Toast.LENGTH_SHORT).show();
 
                         Booking o = response.body();
                         Log.d("BOOKING", o.toString());
 
                         //Dat thoi gian
-                        String currentDate = booking.getNgaynhan() + " " + booking.getGioNhanPhong();
-                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm");
-                        Date parseDate = null;
-                        try {
-                            parseDate = format.parse(currentDate);
-                        } catch (ParseException e) {
-                            e.printStackTrace();
-                        }
-                        long milliseconds = parseDate.getTime();
-
                         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                         Intent intent = new Intent(CheckAgainActivity.this, AlarmReceiver.class);
                         pendingIntent = PendingIntent.getBroadcast(CheckAgainActivity.this, 0, intent, 0);
                         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, milliseconds,
                                 AlarmManager.INTERVAL_DAY, pendingIntent);
-                        Log.d("DATE", milliseconds + "");
-                        Toast.makeText(CheckAgainActivity.this, "Đặt thời gian thành công!", Toast.LENGTH_SHORT).show();
+                        Log.d("DATEMILLI", format.format(milliseconds));
+//                        Toast.makeText(CheckAgainActivity.this, "Đặt thời gian thành công!", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onFailure(Call<Booking> call, Throwable t) {
-                        Toast.makeText(CheckAgainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CheckAgainActivity.this, "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
                     }
                 });
                 startActivity(new Intent(CheckAgainActivity.this, ConfirmActivity.class));
@@ -163,5 +177,7 @@ public class CheckAgainActivity extends AppCompatActivity {
 
         btnCancelAgain = findViewById(R.id.btn_cancel_again);
         btnOpenPay = findViewById(R.id.btn_open_pay_again);
+
+        booking = (Booking) getIntent().getExtras().get("booking");
     }
 }

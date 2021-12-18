@@ -67,4 +67,8 @@ public interface ApiService {
     //Yeu thich
     @POST("api/update-favorite")
     Call<FavoriteResult> setFavoriteRoom(@Body DeleteIdAccept body);
+
+    //Danh sach phong minh da yeu thich
+    @GET("api/get-list-favorite-by-user")
+    Call<Result> getListFavoriteByUser(@Query("email") String email);
 }

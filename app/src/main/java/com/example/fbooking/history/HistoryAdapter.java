@@ -60,8 +60,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
         holder.tvEmail.setText(context.getString(R.string.his_email, history.getEmail()));
         holder.tvCheckIn.setText(context.getString(R.string.his_thoi_gian_nhan, history.getNgayNhan(), history.getGioNhanPhong()));
         holder.tvCheckOut.setText(context.getString(R.string.his_thoi_gian_tra, history.getNgayTra(), history.getGioTraPhong()));
-        holder.tvPhone.setText(context.getString(R.string.his_phong_so, String.valueOf(history.getSdt())));
-        holder.tvPrice.setText(PriceFormatUtils.format(String.valueOf(history.getGiaPhong())));
+        holder.tvPhone.setText(context.getString(R.string.his_so_dien_thoai, String.valueOf(history.getSdt())));
+        holder.tvPrice.setText(PriceFormatUtils.format(String.valueOf(history.getGiaPhong())) + " đ");
 
         holder.ivDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,4 +78,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
         }
         return 0;
     }
+
+//    public void updateData(List<History> listUpdated) {
+//        historyList.clear();
+//        historyList.addAll(listUpdated);
+//        notifyDataSetChanged();
+//    }
 }

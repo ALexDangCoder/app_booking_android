@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="@dimen/dp_5"
-    app:cardElevation="@dimen/dp_10"
-    android:layout_margin="@dimen/dp_5">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/img_service"
         android:layout_width="match_parent"
-        android:scaleType="fitXY"
-        android:layout_height="@dimen/dp_80" />
+        android:layout_height="@dimen/dp_80"
+        android:scaleType="fitXY" />
 </androidx.cardview.widget.CardView>
