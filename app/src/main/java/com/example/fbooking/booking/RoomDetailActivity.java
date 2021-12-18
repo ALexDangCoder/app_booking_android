@@ -78,6 +78,7 @@ public class RoomDetailActivity extends AppCompatActivity {
             btnBookingDetail.setText("HẾT PHÒNG");
             return;
         } else if (room.getStatusRoom().equalsIgnoreCase("Chờ xác nhận")) {
+            btnBookingDetail.setEnabled(false);
             Toast.makeText(RoomDetailActivity.this, "Phòng đang chờ xác nhận!", Toast.LENGTH_SHORT).show();
             btnBookingDetail.setBackgroundResource(R.drawable.bg_color_grey);
             btnBookingDetail.setText("CHỜ XÁC NHẬN");

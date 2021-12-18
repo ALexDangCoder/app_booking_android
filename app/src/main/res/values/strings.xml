@@ -41,8 +41,8 @@
     <!--    Confirm-->
     <string name="dat_phong_thanh_cong">Đặt phòng thành công</string>
     <string name="quay_ve_trang_chu">Quay về trang chủ</string>
-    <string name="quy_khach">Qúy khách vui lòng vào phần thông tin tài khoản và ấn nút
-        "Thông tin chuyển khoản" để đọc thông tin và chuyển khoản</string>
+    <string name="quy_khach_1">Bước 1: Qúy khách vui lòng vào đợi lễ tân xác nhận và ấn vào thông tin chuyển khoản ở màn hình "Thông tin người dùng".</string>
+    <string name="quy_khach_2">Bước 2: Qúy khách vui lòng ấn vào nút "Thông tin chuyển khoản" để đọc chi tiết về ngân hàng cũng như là lưu ý của khách sạn.</string>
 
     <!--    Fill infomation-->
     <string name="thong_tin_lien_he">Thông tin liên hệ</string>

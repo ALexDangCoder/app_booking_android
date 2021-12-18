@@ -21,7 +21,7 @@
             android:layout_height="@dimen/dp_5"
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/dp_10"
-            android:background="#3F51B5" />
+            android:background="#ff5916" />
 
         <TextView
             style="@style/bottom_sheet"
@@ -42,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_5"
-            android:background="@drawable/custom_button_search"
+            android:background="@drawable/custom_button_booking_fragment"
             android:text="Lọc" />
 
         <TextView

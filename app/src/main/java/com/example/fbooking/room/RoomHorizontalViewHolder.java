@@ -11,7 +11,7 @@ import com.example.fbooking.R;
 
 public class RoomHorizontalViewHolder extends RecyclerView.ViewHolder {
     public ImageView imgRoom;
-    public TextView tvRoomNumber, tvTypeRoom, tvRankRoom;
+    public TextView tvRoomNumber, tvTypeRoom, tvRankRoom, tvCount;
     public View view;
 
     public RoomHorizontalViewHolder(@NonNull View itemView) {
@@ -21,5 +21,6 @@ public class RoomHorizontalViewHolder extends RecyclerView.ViewHolder {
         tvRoomNumber = itemView.findViewById(R.id.tv_room_number_home);
         tvTypeRoom = itemView.findViewById(R.id.tv_room_type_home);
         tvRankRoom = itemView.findViewById(R.id.tv_room_rank_home);
+        tvCount = itemView.findViewById(R.id.tv_count);
     }
 }

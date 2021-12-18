@@ -50,6 +50,7 @@ public class RoomHorizontalAdapter extends RecyclerView.Adapter<RoomHorizontalVi
         holder.tvRoomNumber.setText(room.getRoomNumber());
         holder.tvTypeRoom.setText(room.getTypeRoom());
         holder.tvRankRoom.setText(room.getRankRoom());
+        holder.tvCount.setText(room.getCountAccept() + " lượt đặt");
 
         String path = room.getRoomPhoto().get(0).getFilename();
         Picasso.get().load(context.getString(R.string.path, path)).into(holder.imgRoom);

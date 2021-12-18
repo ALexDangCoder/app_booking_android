@@ -82,6 +82,9 @@ public class Room implements Serializable {
     @SerializedName("favorite")
     @Expose
     private List<String> favorite = null;
+    @SerializedName("countAccept")
+    @Expose
+    private Number countAccept;
 
     private boolean isChecked;
 
@@ -275,6 +278,14 @@ public class Room implements Serializable {
 
     public void setFavorite(List<String> favorite) {
         this.favorite = favorite;
+    }
+
+    public Number getCountAccept() {
+        return countAccept;
+    }
+
+    public void setCountAccept(Number countAccept) {
+        this.countAccept = countAccept;
     }
 
     public boolean isChecked() {

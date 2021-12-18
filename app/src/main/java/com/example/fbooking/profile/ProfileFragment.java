@@ -38,11 +38,13 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class ProfileFragment extends Fragment {
     private View view;
-    private ImageView imgAvatarProfile, btnSignOut;
+    private ImageView imgAvatarProfile;
     private TextView tvNameProfile, tvDateOfBirthProfile, tvPhoneNumberProfile,
             tvIdPersonProfile, tvEmailProfile, tvPasswordProfile, tvOpenChangePassword;
     private TextView tvOpenUse;
     private AppCompatButton btnOpenUpdateProfile, btnOpenPay;
+
+    private TextView btnSignOut;
 
     private FirebaseUser user;
     private DatabaseReference reference;

@@ -166,11 +166,10 @@
                             android:layout_below="@id/btn_open_update_profile"
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="@dimen/dp_5"
-                            android:background="#3F51B5"
                             android:paddingHorizontal="@dimen/dp_10"
                             android:text="@string/huong_dan_su_dung"
-                            android:textColor="@color/white"
-                            android:textStyle="bold" />
+                            android:textColor="@color/black"
+                            android:textStyle="italic" />
                     </RelativeLayout>
                 </RelativeLayout>
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
@@ -185,14 +184,19 @@
                 android:background="@drawable/custom_button_abort"
                 android:text="@string/thong_tin_chuyen_khoan" />
 
-            <ImageView
+            <TextView
                 android:id="@+id/btn_sign_out"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:background="@drawable/custom_button_cancel"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/allerta_stencil"
                 android:padding="@dimen/dp_5"
-                android:src="@drawable/ic_sigt_out" />
+                android:src="@drawable/ic_sigt_out"
+                android:text="Đăng xuất"
+                android:textColor="#FF0000"
+                android:textSize="@dimen/sp_20"
+                android:textStyle="bold" />
         </RelativeLayout>
     </FrameLayout>
 </ScrollView>

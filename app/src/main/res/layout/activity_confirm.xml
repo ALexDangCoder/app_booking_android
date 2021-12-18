@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:padding="@dimen/dp_5"
     tools:context=".booking.ConfirmActivity">
 
@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/dp_20"
         android:src="@drawable/ic_done" />
 
     <TextView
@@ -24,12 +24,41 @@
         android:text="@string/dat_phong_thanh_cong" />
 
     <TextView
+        android:id="@+id/quy_khach_1"
         style="@style/text_info_room"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_text_success"
-        android:layout_margin="@dimen/dp_20"
-        android:text="@string/quy_khach" />
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_20"
+        android:text="@string/quy_khach_1" />
+
+    <ImageView
+        android:id="@+id/img_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quy_khach_1"
+        android:layout_marginStart="@dimen/dp_10"
+        android:src="@drawable/huong_dan_1" />
+
+    <TextView
+        android:id="@+id/quy_khach_2"
+        style="@style/text_info_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_1"
+        android:layout_marginHorizontal="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="@string/quy_khach_2" />
+
+    <ImageView
+        android:id="@+id/img_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/quy_khach_2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/dp_10"
+        android:src="@drawable/huong_dan_chuyen_khoan" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_confirm"
@@ -37,6 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/dp_20"
         android:background="@drawable/custom_button_room_detail"
         android:text="@string/quay_ve_trang_chu" />
 </RelativeLayout>
