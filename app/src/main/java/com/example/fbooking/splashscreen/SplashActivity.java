@@ -15,7 +15,7 @@ import com.example.fbooking.R;
 import com.example.fbooking.introduction.IntroductionActivity;
 
 public class SplashActivity extends AppCompatActivity {
-    private static int SPLASH_SCREEN = 5000;
+    private static int SPLASH_SCREEN = 3000;
 
     Animation topAnim, bottomAnim;
     ImageView logoSplashScreen;
