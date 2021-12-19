@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/dp_5"
+    android:alpha="30"
     app:cardCornerRadius="@dimen/dp_5">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,22 +24,24 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/bg_home_item"
             android:padding="@dimen/dp_10"
+            android:alpha="0.8"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.example.fbooking.utils.CustomTextView
+            <TextView
                 android:id="@+id/tv_room_number_home"
-                style="@style/text_out_line"
+                style="@style/text_home_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="301"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.example.fbooking.utils.CustomTextView
+            <TextView
                 android:id="@+id/tv_room_rank_home"
-                style="@style/text_out_line"
+                style="@style/text_home_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_5"
@@ -46,9 +49,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_room_number_home" />
 
-            <com.example.fbooking.utils.CustomTextView
+            <TextView
                 android:id="@+id/tv_room_type_home"
-                style="@style/text_out_line"
+                style="@style/text_home_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_5"
@@ -56,9 +59,9 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_room_rank_home" />
 
-            <com.example.fbooking.utils.CustomTextView
+            <TextView
                 android:id="@+id/tv_count"
-                style="@style/text_out_line"
+                style="@style/text_home_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp_5"

@@ -58,7 +58,7 @@ public class RoomDetailActivity extends AppCompatActivity {
         try {
             for (int i = 0; i <= room.getRoomPhoto().size(); i++) {
                 if (i == 0) {
-                    Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail1);
+                    Glide.with(RoomDetailActivity.this).load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail1);
                 }
 //                else if (i == 1) {
 //                    Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail2);

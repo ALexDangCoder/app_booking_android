@@ -449,6 +449,14 @@ public class FillInformationActivity extends AppCompatActivity {
             return;
         }
 
+        if (people <= 0) {
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.so_nguoi_lon_hon));
+            return;
+        } else if (people > 5){
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.so_nguoi_be_hon));
+            return;
+        }
+
         if (strNight.isEmpty()) {
             tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_so_dem));
             return;

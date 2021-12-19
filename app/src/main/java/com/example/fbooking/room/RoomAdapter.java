@@ -97,8 +97,18 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder> implements
 
             holder.tvPriceRoom.setText(context.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
 
+            if (room.getStatusRoom().equalsIgnoreCase("Hết phòng")) {
+                holder.tvStatusRoom.setTextColor(Color.RED);
+            } else if (room.getStatusRoom().equalsIgnoreCase("Chờ xác nhận")) {
+                holder.tvStatusRoom.setTextColor(Color.BLUE);
+            } else {
+                holder.tvStatusRoom.setTextColor(Color.parseColor("#30C536"));
+            }
+
+            holder.ivUnFavorite.setVisibility(View.GONE);
+
             String path = room.getRoomPhoto().get(0).getFilename();
-            Picasso.get().load(context.getString(R.string.path, path)).into(holder.imgRoom);
+            Glide.with(context).load(context.getString(R.string.path, path)).into(holder.imgRoom);
 
             holder.view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -125,7 +135,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder> implements
         holder.tvPriceRoom.setText(context.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
 
         String path = room.getRoomPhoto().get(0).getFilename();
-        Picasso.get().load(context.getString(R.string.path, path)).into(holder.imgRoom);
+        Glide.with(context).load(context.getString(R.string.path, path)).into(holder.imgRoom);
         Log.d("ANH", path);
 
         holder.view.setOnClickListener(new View.OnClickListener() {
