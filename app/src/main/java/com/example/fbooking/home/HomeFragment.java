@@ -54,11 +54,11 @@ public class HomeFragment extends Fragment implements OnRoomClickListener {
     private List<Photo> photoList;
     private Timer timer;
 
-//    //Danh sach dich vu
-//    private RecyclerView rcvService;
-//    private LinearLayoutManager serviceLayoutManager;
-//    private ServiceAdapter serviceAdapter;
-//    private List<Service> serviceList;
+    //Danh sach khuyen mai
+    private RecyclerView rcvService;
+    private LinearLayoutManager serviceLayoutManager;
+    private ServiceAdapter serviceAdapter;
+    private List<Service> serviceList;
 
     //Danh sach phong
     private RecyclerView rcvRoom;
@@ -146,19 +146,18 @@ public class HomeFragment extends Fragment implements OnRoomClickListener {
         }, 500, 3000);
     }
 
-//    //Slide anh
-//    private List<Service> getListService() {
-//        List<Service> list = new ArrayList<>();
-//        list.add(new Service(R.drawable.bar_service));
-//        list.add(new Service(R.drawable.pool_service));
-//        list.add(new Service(R.drawable.gym_service));
-//        list.add(new Service(R.drawable.bar_service));
-//        list.add(new Service(R.drawable.tennis_service));
-//        list.add(new Service(R.drawable.laundry_service));
-//        list.add(new Service(R.drawable.meeting_service));
-//
-//        return list;
-//    }
+    //Slide anh
+    private List<Service> getListService() {
+        List<Service> list = new ArrayList<>();
+        list.add(new Service(R.drawable.vou_1));
+        list.add(new Service(R.drawable.vou_2));
+        list.add(new Service(R.drawable.vou_3));
+        list.add(new Service(R.drawable.vou_4));
+        list.add(new Service(R.drawable.vou_5));
+        list.add(new Service(R.drawable.vou_6));
+
+        return list;
+    }
 
     private void initUi() {
         vpSlide = view.findViewById(R.id.vp_slide);
@@ -174,12 +173,12 @@ public class HomeFragment extends Fragment implements OnRoomClickListener {
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Đang tải lại dữ liệu...");
 
-//        //Danh sách dịch vụ
-//        rcvService = view.findViewById(R.id.rcv_service);
-//        serviceLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-//        rcvService.setLayoutManager(serviceLayoutManager);
-//        serviceAdapter = new ServiceAdapter(getContext(), getListService());
-//        rcvService.setAdapter(serviceAdapter);
+        //Danh sách dịch vụ
+        rcvService = view.findViewById(R.id.rcv_service);
+        serviceLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        rcvService.setLayoutManager(serviceLayoutManager);
+        serviceAdapter = new ServiceAdapter(getContext(), getListService());
+        rcvService.setAdapter(serviceAdapter);
 
         //Danh sach phong
         rcvRoom = view.findViewById(R.id.rcv_room_home);

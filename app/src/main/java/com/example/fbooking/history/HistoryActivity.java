@@ -30,6 +30,7 @@ import com.example.fbooking.room.Room;
 import com.example.fbooking.room.RoomAdapter;
 import com.example.fbooking.userloginandsignup.LoginActivity;
 import com.example.fbooking.userloginandsignup.User;
+import com.example.fbooking.utils.AlarmReceiver;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -39,9 +40,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -176,6 +182,7 @@ public class HistoryActivity extends AppCompatActivity implements OnHistoryClick
                 if (historyList == null) return;
 
                 adapter.setData(historyList, HistoryActivity.this::onClickItem);
+
                 Log.d("HISTORYLIST", historyList.toString());
                 srlHistory.setRefreshing(false);
                 if (progressDialog.isShowing()) {
@@ -232,12 +239,6 @@ public class HistoryActivity extends AppCompatActivity implements OnHistoryClick
                 callApiHistory(user.getEmail());
 
                 Toast.makeText(HistoryActivity.this, "Xóa mục thành công!", Toast.LENGTH_SHORT).show();
-//                for (int i = 0; i < historyList.size(); i++) {
-//                    if (historyList.get(i).getId().equalsIgnoreCase(response.body().getId())) {
-//                        historyList.remove(i);
-//                    }
-//                }
-//                adapter.updateData(historyList);
                 Log.d("HISTORYID", history.getId());
                 Log.d("NEWHISTORYID", deleteIdHistory + "");
             }

@@ -1,14 +1,25 @@
 package com.example.fbooking;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.fbooking.accept.WaitToAcceptAcitivity;
 import com.example.fbooking.history.HistoryActivity;
@@ -24,6 +35,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initUi();
+
+        if (!isConnected(this)) {
+            showInternetDialog();
+        }
 
         setUpViewPager();
 
@@ -123,6 +138,34 @@ public class MainActivity extends AppCompatActivity {
     private void initUi() {
         bottomNv = findViewById(R.id.bottom_nv);
         vpFrag = findViewById(R.id.vp_frag);
+    }
+
+    private void showInternetDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setCancelable(false);
+        View view = LayoutInflater.from(this).inflate(R.layout.wifi_dialog, findViewById(R.id.ln_no_internet));
+        AppCompatButton btnConfirm = view.findViewById(R.id.btn_confirm_wifi);
+        builder.setView(view);
+
+        AlertDialog alertDialog = builder.create();
+
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        alertDialog.show();
+    }
+
+    private boolean isConnected(MainActivity mainActivity) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) mainActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConnect = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConnect = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        return (wifiConnect != null && wifiConnect.isConnected()) || (mobileConnect != null && mobileConnect.isConnected());
     }
 
     @Override

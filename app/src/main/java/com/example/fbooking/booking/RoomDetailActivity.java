@@ -25,7 +25,9 @@ import java.text.NumberFormat;
 import java.util.List;
 
 public class RoomDetailActivity extends AppCompatActivity {
-    private ImageView imgRoomDetail1, imgRoomDetail2, imgRoomDetail3, imgRoomDetail4;
+    private ImageView imgRoomDetail1;
+//    private ImageView imgRoomDetail2, imgRoomDetail3, imgRoomDetail4;
+
     private TextView tvRoomNumberDetail, tvRankDetail, tvRoomTypeDetail, tvPeopleDetail,
             tvDescriptionDetai, tvPriceDetail;
     private AppCompatButton btnCancelDetail, btnBookingDetail;
@@ -57,13 +59,14 @@ public class RoomDetailActivity extends AppCompatActivity {
             for (int i = 0; i <= room.getRoomPhoto().size(); i++) {
                 if (i == 0) {
                     Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail1);
-                } else if (i == 1) {
-                    Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail2);
-                } else if (i == 2) {
-                    Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail4);
-                } else if (i == 3) {
-                    Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail4);
                 }
+//                else if (i == 1) {
+//                    Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail2);
+//                } else if (i == 2) {
+//                    Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail4);
+//                } else if (i == 3) {
+//                    Picasso.get().load(RoomDetailActivity.this.getString(R.string.path, room.getRoomPhoto().get(i).getFilename())).into(imgRoomDetail4);
+//                }
             }
         } catch (IndexOutOfBoundsException ex) {
             Log.d("EXCEPTION", ex.getMessage());
@@ -110,9 +113,9 @@ public class RoomDetailActivity extends AppCompatActivity {
 
     private void initUi() {
         imgRoomDetail1 = findViewById(R.id.img_room_detail_1);
-        imgRoomDetail2 = findViewById(R.id.img_room_detail_2);
-        imgRoomDetail3 = findViewById(R.id.img_room_detail_3);
-        imgRoomDetail4 = findViewById(R.id.img_room_detail_4);
+//        imgRoomDetail2 = findViewById(R.id.img_room_detail_2);
+//        imgRoomDetail3 = findViewById(R.id.img_room_detail_3);
+//        imgRoomDetail4 = findViewById(R.id.img_room_detail_4);
 
         tvRoomNumberDetail = findViewById(R.id.tv_room_number_detail);
         tvRankDetail = findViewById(R.id.tv_rank_detail);
@@ -125,8 +128,8 @@ public class RoomDetailActivity extends AppCompatActivity {
         btnBookingDetail = findViewById(R.id.btn_open_booking_detail);
 
         int height = Resources.getSystem().getDisplayMetrics().heightPixels;
-        imgRoomDetail2.getLayoutParams().height = height / 6;
-        imgRoomDetail3.getLayoutParams().height = height / 6;
-        imgRoomDetail4.getLayoutParams().height = height / 6;
+//        imgRoomDetail2.getLayoutParams().height = height / 6;
+//        imgRoomDetail3.getLayoutParams().height = height / 6;
+//        imgRoomDetail4.getLayoutParams().height = height / 6;
     }
 }

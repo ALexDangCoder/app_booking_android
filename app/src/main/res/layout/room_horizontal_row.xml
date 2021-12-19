@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/dp_5"
-    app:cardCornerRadius="@dimen/dp_5"
-    app:cardElevation="@dimen/dp_10">
+    app:cardCornerRadius="@dimen/dp_5">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,7 +13,7 @@
         <ImageView
             android:id="@+id/img_room_home"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="@dimen/dp_250"
             android:scaleType="centerCrop"
             android:src="@drawable/img_room"
             app:layout_constraintEnd_toEndOf="parent"

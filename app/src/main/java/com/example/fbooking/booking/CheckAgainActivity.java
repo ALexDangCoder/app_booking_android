@@ -117,7 +117,6 @@ public class CheckAgainActivity extends AppCompatActivity {
 
                         Booking o = response.body();
                         Log.d("BOOKING", o.toString());
-
                         //Dat thoi gian
                         alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                         Intent intent = new Intent(CheckAgainActivity.this, AlarmReceiver.class);
@@ -125,7 +124,7 @@ public class CheckAgainActivity extends AppCompatActivity {
                         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, milliseconds,
                                 AlarmManager.INTERVAL_DAY, pendingIntent);
                         Log.d("DATEMILLI", format.format(milliseconds));
-//                        Toast.makeText(CheckAgainActivity.this, "Đặt thời gian thành công!", Toast.LENGTH_SHORT).show();
+//////                        Toast.makeText(CheckAgainActivity.this, "Đặt thời gian thành công!", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

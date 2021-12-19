@@ -16,7 +16,7 @@
             android:id="@+id/logo_splash_screen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_hotel" />
+            android:src="@drawable/logo_fpoly_hotel" />
 
         <TextView
             android:id="@+id/tv_splash_screen"

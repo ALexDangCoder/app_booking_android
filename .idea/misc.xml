@@ -52,6 +52,7 @@
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_night.xml" value="0.24270833333333333" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_night_check.xml" value="0.24270833333333333" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_people_fill.xml" value="0.24270833333333333" />
+        <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_wifi.xml" value="0.24270833333333333" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout-v28/activity_fill_information.xml" value="0.2265625" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/activity_check_again.xml" value="0.3628023352793995" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/activity_confirm.xml" value="0.25" />
@@ -79,7 +80,7 @@
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/fragment_booking.xml" value="0.375" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/fragment_change_password.xml" value="0.25" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/fragment_favorite.xml" value="0.25" />
-        <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/fragment_home.xml" value="0.375" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/fragment_profile.xml" value="0.335" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/fragment_update_profile.xml" value="0.335" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/history_row.xml" value="0.45" />
@@ -92,6 +93,7 @@
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/room_row.xml" value="0.335" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/service_row.xml" value="0.2265625" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/wait_accept_row.xml" value="0.45" />
+        <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/wifi_dialog.xml" value="0.335" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/menu/menu_bottom_nav.xml" value="0.2265625" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/menu/menu_tool_bar.xml" value="0.2265625" />
         <entry key="..\:/Users/Admin/Documents/FBookingHotel/app/src/main/res/layout/activity_confirm.xml" value="0.1802536231884058" />

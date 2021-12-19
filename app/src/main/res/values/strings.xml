@@ -254,6 +254,20 @@
     <string name="phong_cho_xac_nhan">Danh sách phòng chờ xác nhận</string>
 
     <string name="dich_vu_khach_san">Dịch vụ khách sạn</string>
+    <string name="phong_duoc_dat_nhieu">Phòng được đặt nhiều nhất</string>
+    <string name="khuyen_mai">Khuyến mãi trong năm</string>
+    <string name="phong_benh">Phòng ngừa dịch bệnh</string>
+    <string name="thuc_hien">Chúng ta nên thực hiện những biện pháp phòng ngừa an toàn nào khi đi du lịch?</string>
+    <string name="noi_dung_thuc_hien">• Thường xuyên rửa tay bằng xà phòng và nước hoặc dung dịch rửa tay có cồn.\n
+    • Tránh chạm vào mặt (Mắt, mũi, miêng).\n
+    • Tránh những nơi đông người, không gian kín, có hệ thống thông gió kém.\n
+    • Cố gắng giữ khoảng cách ít nhất 1 mét với những người khác ở nơi công cộng trong thời kỳ bình thường và 2 mét khi đại dịch diễn ra.\n
+    • Luôn đeo khẩu trang vải khi ở những nơi công cộng có COVID-19 phổ biến và không thể thực hiện được.\n</string>
+
+    <string name="thuc_hien_khi_ve">Chúng ta nên làm gì khi trở về nhà?</string>
+    <string name="noi_dung_thuc_hien_khi_ve">Sau khi bạn trở về nhà, hãy làm theo các khuyến cáo hoặc yêu cầu từ chính quyền địa phương
+    của bạn và tiếp tục tuân thủ tất cả các biện pháp phòng ngừa chính - bao gồm theo dõi bất kỳ triệu chứng nào của COVID-19 và
+    tìm kiếm sự trợ giúp hoặc tư vấn y tế nếu các triệu trứng có tiến triển xấu</string>
 
     <!--    How to use-->
     <string name="huong_dan">Sau khi tải về máy, quý khách có thể đăng nhập hoặc bắt đầu vào
