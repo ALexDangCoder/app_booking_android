@@ -454,8 +454,19 @@ public class FillInformationActivity extends AppCompatActivity {
         if (people <= 0) {
             tvErrorFill.setText(FillInformationActivity.this.getString(R.string.so_nguoi_lon_hon));
             return;
-        } else if (people > 5){
+        } else if (people > 4){
             tvErrorFill.setText(FillInformationActivity.this.getString(R.string.so_nguoi_be_hon));
+            return;
+        }
+
+        if (room.getTypeRoom().equalsIgnoreCase("Phòng đơn") && people > 1) {
+            tvErrorFill.setText("Phòng đơn chỉ được tối thiểu 1 người!");
+            return;
+        } else if (room.getTypeRoom().equalsIgnoreCase("Phòng đôi") && people > 2) {
+            tvErrorFill.setText("Phòng đôi chỉ được tối thiểu 2 người!");
+            return;
+        } else  if (room.getTypeRoom().equalsIgnoreCase("Phòng 2 giường") && people > 4) {
+            tvErrorFill.setText("Phòng 2 giường chỉ được tối thiểu từ 2 đến 4 người!");
             return;
         }
 

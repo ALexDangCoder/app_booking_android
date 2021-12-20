@@ -3,6 +3,7 @@ package com.example.fbooking.profile;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.example.fbooking.R;
+import com.example.fbooking.service.ApiServiceUpdate;
+import com.example.fbooking.service.TestLoginService;
 import com.example.fbooking.userloginandsignup.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,6 +35,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -200,6 +207,7 @@ public class UpdateProfileFragment extends Fragment {
             @Override
             public void onComplete(@NonNull Task task) {
                 if (task.isSuccessful()) {
+                    postUpdateAccountToService(name, dateOfBirth, phoneNumber, idPerson, email);
                     progressDialog.dismiss();
                     Toast.makeText(getActivity(), "Cập nhật thông tin thành công!", Toast.LENGTH_SHORT).show();
                     view.setVisibility(View.GONE);
@@ -225,5 +233,26 @@ public class UpdateProfileFragment extends Fragment {
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Đang kiểm tra thông tin...");
+    }
+
+    private void postUpdateAccountToService(String email, String name, String birthday, String phoneNumber, String cccd) {
+        ApiServiceUpdate.apiService.covertApi(email, name, birthday, phoneNumber, cccd).enqueue(new Callback<TestLoginService>() {
+            @Override
+            public void onResponse(Call<TestLoginService> call, Response<TestLoginService> response) {
+                TestLoginService testLoginService = response.body();
+
+                if (testLoginService.getSuccess() == true) {
+                    Log.e("okkk", "");
+                } else {
+                    Log.e("false", "");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TestLoginService> call, Throwable t) {
+                Toast.makeText(getActivity(), "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 }
