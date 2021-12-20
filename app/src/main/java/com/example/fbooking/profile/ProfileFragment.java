@@ -109,6 +109,7 @@ public class ProfileFragment extends Fragment {
         reference = FirebaseDatabase.getInstance().getReference("Users");
 
         if (user == null) {
+            srlProfile.setEnabled(false);
             return;
         }
 
@@ -139,7 +140,6 @@ public class ProfileFragment extends Fragment {
                         progressDialog.dismiss();
                     }
                 } else {
-                    srlProfile.setEnabled(false);
                     tvNameProfile.setText("Xin chào,");
                     tvDateOfBirthProfile.setText("Chưa cập nhật");
                     tvPhoneNumberProfile.setText("Chưa cập nhật");
@@ -147,10 +147,11 @@ public class ProfileFragment extends Fragment {
                     tvEmailProfile.setText("Chưa cập nhật");
                     tvPasswordProfile.setText("Chưa cập nhật");
                     btnOpenUpdateProfile.setText("Đăng nhập để tiếp tục");
-                    srlProfile.setRefreshing(false);
-                    if (progressDialog.isShowing()) {
-                        progressDialog.dismiss();
-                    }
+                    srlProfile.setEnabled(false);
+//                    srlProfile.setRefreshing(false);
+//                    if (progressDialog.isShowing()) {
+//                        progressDialog.dismiss();
+//                    }
                 }
             }
 
