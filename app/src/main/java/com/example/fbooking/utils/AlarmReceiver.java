@@ -26,8 +26,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "fbookingid")
-                .setSmallIcon(R.drawable.ic_launcher_background)
-                .setContentTitle("F-BookingHotel Thông báo")
+                .setSmallIcon(R.drawable.logo_mini)
+                .setContentTitle("F-Booking Thông báo")
                 .setContentText("Hãy kiểm trả phòng đã đặt của bạn!")
                 .setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
@@ -35,6 +35,6 @@ public class AlarmReceiver extends BroadcastReceiver {
                 .setContentIntent(pendingIntent);
 
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
-        notificationManagerCompat.notify(123, builder.build());
+        notificationManagerCompat.notify(1, builder.build());
     }
 }
