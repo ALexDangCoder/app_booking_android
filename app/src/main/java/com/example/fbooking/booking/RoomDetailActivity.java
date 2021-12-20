@@ -128,6 +128,7 @@ public class RoomDetailActivity extends AppCompatActivity {
         btnBookingDetail = findViewById(R.id.btn_open_booking_detail);
 
         int height = Resources.getSystem().getDisplayMetrics().heightPixels;
+        imgRoomDetail1.getLayoutParams().height = height / 4;
 //        imgRoomDetail2.getLayoutParams().height = height / 6;
 //        imgRoomDetail3.getLayoutParams().height = height / 6;
 //        imgRoomDetail4.getLayoutParams().height = height / 6;

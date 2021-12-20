@@ -82,7 +82,7 @@
     <string name="sai_so_dem">Số đêm phải lớn hơn 0!</string>
     <string name="chua_nhap_nguoi_lon">Bạn chưa nhập số người!</string>
     <string name="so_nguoi_lon_hon">Số người phải lớn hơn 0!</string>
-    <string name="so_nguoi_be_hon">Số người phải bé hơn 5!</string>
+    <string name="so_nguoi_be_hon">Số người phải bé hơn hoặc bằng 5!</string>
     <string name="chua_nhap_tre_em">Bạn chưa nhập số trẻ em!</string>
     <string name="chua_nhap_so_dem">Bạn chưa nhập số đêm!</string>
     <string name="chua_nhap_thoi_gian_nhan">Bạn chưa nhập thời gian nhận phòng!</string>

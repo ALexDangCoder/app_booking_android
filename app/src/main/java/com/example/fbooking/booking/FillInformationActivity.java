@@ -338,13 +338,15 @@ public class FillInformationActivity extends AppCompatActivity {
         String strName = edtNameFill.getText().toString().trim();
         String strPhoneNumber = edtPhoneFill.getText().toString().trim();
 
-        int idPerson = 0;
+//        Number idPerson = 0;
         String strIdPerson = edtIdPersonFill.getText().toString().trim();
-        try {
-            idPerson = Integer.parseInt(strIdPerson);
-        } catch (NumberFormatException e) {
-
-        }
+        Log.d("IDPERSONFILL", strIdPerson + "");
+//        try {
+//            idPerson = Long.parseLong(strIdPerson);
+//        } catch (NumberFormatException e) {
+//
+//        }
+//        Log.d("IDPERSONFILLNEW", idPerson + "");
 
         String strEmail = edtEmailFill.getText().toString().trim();
 
@@ -494,7 +496,7 @@ public class FillInformationActivity extends AppCompatActivity {
         Log.d("TOKENCHECK", token);
 
         Booking booking = new Booking(roomId, roomNumber, strName, strPhoneNumber, roomType, roomRank,
-                idPerson, strEmail, strCheckInDate, strCheckOutDate, night, people, strCheckInTime,
+                strIdPerson, strEmail, strCheckInDate, strCheckOutDate, night, people, strCheckInTime,
                 strCheckOutTime, total, token);
 
         Intent intent = new Intent(FillInformationActivity.this, CheckAgainActivity.class);

@@ -27,7 +27,7 @@ public class Accept {
     private String hangPhong;
     @SerializedName("cccd")
     @Expose
-    private Integer cccd;
+    private String cccd;
     @SerializedName("email")
     @Expose
     private String email;
@@ -112,11 +112,11 @@ public class Accept {
         this.hangPhong = hangPhong;
     }
 
-    public Integer getCccd() {
+    public String getCccd() {
         return cccd;
     }
 
-    public void setCccd(Integer cccd) {
+    public void setCccd(String cccd) {
         this.cccd = cccd;
     }
 

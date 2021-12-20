@@ -81,6 +81,8 @@ public class CheckAgainActivity extends AppCompatActivity {
         tvIdPersonAgain.setText(String.valueOf(booking.getCccd()));
         tvEmailAgain.setText(booking.getEmail());
 
+        Log.d("IDPERSONCHECK", booking.getCccd() + "");
+
         tvPriceAgain.setText(CheckAgainActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(booking.getGiaPhong()))));
 
         //Call API

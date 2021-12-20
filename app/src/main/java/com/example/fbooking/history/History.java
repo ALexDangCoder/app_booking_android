@@ -45,7 +45,7 @@ public class History {
     private String gioTraPhong;
     @SerializedName("sdt")
     @Expose
-    private Integer sdt;
+    private String sdt;
     @SerializedName("__v")
     @Expose
     private Integer v;
@@ -53,7 +53,7 @@ public class History {
     @Expose
     private String soPhong;
 
-    public History(String id, String maPhong, String hoten, String loaiPhong, String cmnd, String email, Integer giaPhong, String ngayNhan, String ngayTra, Integer soDem, Integer soNguoi, String gioNhanPhong, String gioTraPhong, Integer sdt, Integer v, String soPhong) {
+    public History(String id, String maPhong, String hoten, String loaiPhong, String cmnd, String email, Integer giaPhong, String ngayNhan, String ngayTra, Integer soDem, Integer soNguoi, String gioNhanPhong, String gioTraPhong, String sdt, Integer v, String soPhong) {
         this.id = id;
         this.maPhong = maPhong;
         this.hoten = hoten;
@@ -176,11 +176,11 @@ public class History {
         this.gioTraPhong = gioTraPhong;
     }
 
-    public Integer getSdt() {
+    public String getSdt() {
         return sdt;
     }
 
-    public void setSdt(Integer sdt) {
+    public void setSdt(String sdt) {
         this.sdt = sdt;
     }
 

@@ -53,7 +53,7 @@ public class RoomHorizontalAdapter extends RecyclerView.Adapter<RoomHorizontalVi
         holder.tvCount.setText(room.getCountAccept() + " lượt đặt");
 
         String path = room.getRoomPhoto().get(0).getFilename();
-        Picasso.get().load(context.getString(R.string.path, path)).into(holder.imgRoom);
+        Glide.with(context).load(context.getString(R.string.path, path)).into(holder.imgRoom);
         Log.d("ANH", path);
 
         holder.view.setOnClickListener(new View.OnClickListener() {

@@ -26,7 +26,7 @@ public class Booking implements Serializable {
     private String hangPhong;
     @SerializedName("cccd")
     @Expose
-    private int cccd;
+    private String cccd;
     @SerializedName("email")
     @Expose
     private String email;
@@ -55,7 +55,7 @@ public class Booking implements Serializable {
     @Expose
     private String tokenUser;
 
-    public Booking(String roomid, String sophong, String hoten, String sdt, String loaiPhong, String hangPhong, int cccd, String email, String ngaynhan, String ngayTra, int sodem, int soNguoi, String gioNhanPhong, String gioTra, double giaPhong, String tokenUser) {
+    public Booking(String roomid, String sophong, String hoten, String sdt, String loaiPhong, String hangPhong, String cccd, String email, String ngaynhan, String ngayTra, int sodem, int soNguoi, String gioNhanPhong, String gioTra, double giaPhong, String tokenUser) {
         Roomid = roomid;
         this.sophong = sophong;
         this.hoten = hoten;
@@ -122,11 +122,11 @@ public class Booking implements Serializable {
         this.hangPhong = hangPhong;
     }
 
-    public int getCccd() {
+    public String getCccd() {
         return cccd;
     }
 
-    public void setCccd(int cccd) {
+    public void setCccd(String cccd) {
         this.cccd = cccd;
     }
 
