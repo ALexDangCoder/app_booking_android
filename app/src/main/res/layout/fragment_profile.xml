@@ -171,31 +171,32 @@
                             android:textColor="@color/black"
                             android:textStyle="italic" />
                     </RelativeLayout>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_open_pay_profile"
+                        style="@style/text_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/rl_profile"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginBottom="@dimen/dp_10"
+                        android:background="@drawable/custom_button_abort"
+                        android:text="@string/thong_tin_chuyen_khoan" />
+
+                    <TextView
+                        android:id="@+id/btn_sign_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/btn_open_pay_profile"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/allerta_stencil"
+                        android:padding="@dimen/dp_5"
+                        android:text="Đăng xuất"
+                        android:textColor="#FF0000"
+                        android:textSize="@dimen/sp_20"
+                        android:textStyle="bold" />
                 </RelativeLayout>
             </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_open_pay_profile"
-                style="@style/text_button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/btn_sign_out"
-                android:layout_marginBottom="@dimen/dp_10"
-                android:background="@drawable/custom_button_abort"
-                android:text="@string/thong_tin_chuyen_khoan" />
-
-            <TextView
-                android:id="@+id/btn_sign_out"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="@font/allerta_stencil"
-                android:padding="@dimen/dp_5"
-                android:text="Đăng xuất"
-                android:textColor="#FF0000"
-                android:textSize="@dimen/sp_20"
-                android:textStyle="bold" />
         </RelativeLayout>
     </FrameLayout>
 </ScrollView>
