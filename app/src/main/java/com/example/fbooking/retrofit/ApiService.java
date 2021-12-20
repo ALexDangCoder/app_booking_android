@@ -50,7 +50,7 @@ public interface ApiService {
 
     //Danh sach pho bien
     @GET("api/get-top-favorite")
-    Call<Result> getListFavorite();
+    Call<Result> getTopFavorite();
 
     //Filter danh sach
     @GET("api/get-filter-Room")

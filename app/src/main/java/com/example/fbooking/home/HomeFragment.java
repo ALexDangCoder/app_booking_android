@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fbooking.R;
@@ -68,6 +69,8 @@ public class HomeFragment extends Fragment implements OnRoomClickListener {
 
     private ProgressDialog progressDialog;
     private SwipeRefreshLayout srlHome;
+
+    private TextView tvTop;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -188,6 +191,7 @@ public class HomeFragment extends Fragment implements OnRoomClickListener {
         rcvRoom.setAdapter(roomHorizontalAdapter);
 
         srlHome = view.findViewById(R.id.srl_home);
+        tvTop = view.findViewById(R.id.tv_top);
     }
 
     @Override
@@ -202,10 +206,16 @@ public class HomeFragment extends Fragment implements OnRoomClickListener {
     private void getListRoom() {
         Retrofit retrofit = RetrofitInstance.getInstance();
         ApiService apiService = retrofit.create(ApiService.class);
-        apiService.getListRoom().enqueue(new Callback<Result>() {
+        apiService.getTopFavorite().enqueue(new Callback<Result>() {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {
                 roomList = response.body().getData();
+
+                if (roomList == null) {
+                    tvTop.setText("Chưa có phòng nào được đặt nhiều nhất");
+                } else {
+                    tvTop.setText("Top " + roomList.size() + " phòng được đặt nhiều nhất");
+                }
 
                 if (roomList == null) return;
 

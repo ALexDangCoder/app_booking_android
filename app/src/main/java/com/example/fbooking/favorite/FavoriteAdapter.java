@@ -58,7 +58,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteViewHolder> {
         holder.tvPriceRoom.setText(context.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
 
         String path = room.getRoomPhoto().get(0).getFilename();
-        Picasso.get().load(context.getString(R.string.path, path)).into(holder.imgRoom);
+        Glide.with(context).load(context.getString(R.string.path, path)).into(holder.imgRoom);
         Log.d("ANHFAVORITE", path);
 
         holder.view.setOnClickListener(new View.OnClickListener() {
