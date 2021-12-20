@@ -132,6 +132,7 @@ public class HistoryActivity extends AppCompatActivity implements OnHistoryClick
         if (user == null) {
             clLogin.setVisibility(View.VISIBLE);
             lnHistory.setVisibility(View.GONE);
+            srlHistory.setEnabled(false);
 
             btnOpenLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -143,6 +144,8 @@ public class HistoryActivity extends AppCompatActivity implements OnHistoryClick
             clLogin.setVisibility(View.GONE);
             btnOpenLogin.setEnabled(false);
             lnHistory.setVisibility(View.VISIBLE);
+            srlHistory.setEnabled(true);
+
             showProgressDialog();
 
             reference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {

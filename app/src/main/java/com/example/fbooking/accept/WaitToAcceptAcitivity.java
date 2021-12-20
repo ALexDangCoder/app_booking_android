@@ -94,6 +94,7 @@ public class WaitToAcceptAcitivity extends AppCompatActivity implements OnClickA
         if (user == null) {
             clLogin.setVisibility(View.VISIBLE);
             lnAccept.setVisibility(View.GONE);
+            srlAccept.setEnabled(false);
 
             btnOpenLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -115,6 +116,7 @@ public class WaitToAcceptAcitivity extends AppCompatActivity implements OnClickA
                         showProgressDialog();
                         callApiAccept(user.getEmail());
 
+                        srlAccept.setEnabled(true);
                         srlAccept.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                             @Override
                             public void onRefresh() {

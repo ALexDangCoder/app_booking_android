@@ -133,11 +133,13 @@ public class ProfileFragment extends Fragment {
                     tvEmailProfile.setText(email);
                     tvPasswordProfile.setText("********");
 
+                    srlProfile.setEnabled(true);
                     srlProfile.setRefreshing(false);
                     if (progressDialog.isShowing()) {
                         progressDialog.dismiss();
                     }
                 } else {
+                    srlProfile.setEnabled(false);
                     tvNameProfile.setText("Xin chào,");
                     tvDateOfBirthProfile.setText("Chưa cập nhật");
                     tvPhoneNumberProfile.setText("Chưa cập nhật");

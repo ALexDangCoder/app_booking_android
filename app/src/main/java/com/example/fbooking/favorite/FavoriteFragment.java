@@ -103,6 +103,7 @@ public class FavoriteFragment extends Fragment implements OnRoomClickListener, O
     private void showFrom() {
         if (user == null) {
             lnLoginFavorite.setVisibility(View.VISIBLE);
+            srlFavorite.setEnabled(false);
             btnOpenLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -117,6 +118,7 @@ public class FavoriteFragment extends Fragment implements OnRoomClickListener, O
 
             tvTitleFavorite.setVisibility(View.VISIBLE);
             rcvRoomFavorite.setVisibility(View.VISIBLE);
+            srlFavorite.setEnabled(true);
 
             reference.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override

@@ -192,7 +192,6 @@
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/allerta_stencil"
                 android:padding="@dimen/dp_5"
-                android:src="@drawable/ic_sigt_out"
                 android:text="Đăng xuất"
                 android:textColor="#FF0000"
                 android:textSize="@dimen/sp_20"

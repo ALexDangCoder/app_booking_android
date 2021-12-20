@@ -40,6 +40,7 @@
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/custom_edit_text.xml" value="0.24270833333333333" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/custom_edit_text_fill_infor.xml" value="0.24270833333333333" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/custom_edit_text_search.xml" value="0.24270833333333333" />
+        <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_account.xml" value="0.24270833333333333" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_booking.xml" value="0.24270833333333333" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_calender.xml" value="0.24270833333333333" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_calender_check.xml" value="0.24270833333333333" />
@@ -52,7 +53,9 @@
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_night.xml" value="0.24270833333333333" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_night_check.xml" value="0.24270833333333333" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_people_fill.xml" value="0.24270833333333333" />
+        <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_update_profile.xml" value="0.24270833333333333" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/drawable/ic_wifi.xml" value="0.24270833333333333" />
+        <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/font/allerta_stencil.xml" value="0.25677083333333334" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout-v28/activity_fill_information.xml" value="0.2265625" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/activity_check_again.xml" value="0.3628023352793995" />
         <entry key="..\:/AndroidTotNghiep/FBookingHotel/app/src/main/res/layout/activity_confirm.xml" value="0.25" />
