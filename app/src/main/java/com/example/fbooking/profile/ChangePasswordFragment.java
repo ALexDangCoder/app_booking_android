@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
@@ -106,12 +107,15 @@ public class ChangePasswordFragment extends Fragment {
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Toast.makeText(getActivity(), "Thay đổi mật khẩu thành công!", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(getContext(), "Thay đổi mật khẩu thành công!", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         });
 
-                                getActivity().onBackPressed();
+                                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                                ProfileFragment profileFragment = new ProfileFragment();
+                                activity.getSupportFragmentManager().beginTransaction()
+                                        .replace(R.id.fl_change_password, profileFragment).addToBackStack(null).commit();
                             }
                         })
                         .setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
