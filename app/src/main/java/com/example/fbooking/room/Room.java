@@ -1,5 +1,7 @@
 package com.example.fbooking.room;
 
+import android.graphics.Color;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -7,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 
 public class Room implements Serializable {
@@ -87,6 +90,8 @@ public class Room implements Serializable {
     private Number countAccept;
 
     private boolean isChecked;
+
+    public int color;
 
     public String getRoomId() {
         return roomId;

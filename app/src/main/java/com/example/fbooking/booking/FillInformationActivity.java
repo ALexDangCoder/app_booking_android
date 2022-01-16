@@ -7,9 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,24 +15,16 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.CheckBox;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.fbooking.R;
-import com.example.fbooking.retrofit.ApiService;
-import com.example.fbooking.retrofit.RetrofitInstance;
 import com.example.fbooking.room.Room;
 import com.example.fbooking.userloginandsignup.LoginActivity;
-import com.example.fbooking.userloginandsignup.SignUpActivity;
 import com.example.fbooking.userloginandsignup.User;
 import com.example.fbooking.utils.MyFirebaseInstanceIDService;
 import com.example.fbooking.utils.PriceFormatUtils;
@@ -46,26 +36,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
-import java.util.Timer;
 import java.util.concurrent.TimeUnit;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class FillInformationActivity extends AppCompatActivity {
     private EditText edtNameFill, edtPhoneFill, edtIdPersonFill, edtEmailFill,
             edtCheckInDateFill, edtCheckOutDateFill, edtPeopleFill,
             edtNightFill, edtCheckInTimeFill, edtCheckOutTimeFill;
-    private TextView tvErrorFill, tvRoomNumber, tvRoomRank, tvRoomType, tvRoomPrice;
+    private TextView tvErrorFill, tvRoomNumber, tvRoomRank, tvRoomType, tvtotalPrice, tvPriceFill, tvExtraFill;
     private AppCompatButton btnCancelFill, btnOpenCheckAgain, btnOpenLoginFill;
 
     private String amPm;
@@ -79,8 +63,13 @@ public class FillInformationActivity extends AppCompatActivity {
     private String formatTime = "HH:mm";
     private Room room;
 
-    double total;
-    int night;
+    double total = 0;
+    int night = 0;
+    int expectedTotal = 0;
+
+    private Spinner spnCheckInFill;
+    private CheckInTimeAdapter checkInTimeAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,9 +85,47 @@ public class FillInformationActivity extends AppCompatActivity {
 
         onChoseDate();
 
-        onChoseTime();
-
         onClickButton();
+    }
+
+    private void onChoseCheckInTime() {
+        spnCheckInFill.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                caculatorPrice(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    private void caculatorPrice(int position) {
+        int priceRoom = (int) room.getPriceRoom();
+        if (position == 1) {
+            expectedTotal = (int) total;
+            tvExtraFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
+            tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(expectedTotal)));
+            Toast.makeText(FillInformationActivity.this, "Thu thêm: 0 Vnđ - Tổng tiền: " + total + " Vnđ",
+                    Toast.LENGTH_SHORT).show();
+        } else if (position == 2) {
+            expectedTotal = (int) ((int) (priceRoom * 0.5) + total);
+            tvExtraFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(priceRoom * 0.5)));
+            tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(expectedTotal)));
+            Toast.makeText(FillInformationActivity.this, "Thu thêm: " + (priceRoom * 0.5) + " Vnđ - Tổng tiền: " + total + " Vnđ",
+                    Toast.LENGTH_SHORT).show();
+        } else if (position == 3) {
+            expectedTotal = (int) ((int) (priceRoom * 0.3) + total);
+            tvExtraFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(priceRoom * 0.3)));
+            tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(expectedTotal)));
+            Toast.makeText(FillInformationActivity.this, "Thu thêm: " + (priceRoom * 0.3) + " Vnđ - Tổng tiền: " + total + " Vnđ",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            return;
+        }
+
     }
 
     //Hien thi thong tin phong
@@ -106,7 +133,9 @@ public class FillInformationActivity extends AppCompatActivity {
         tvRoomNumber.setText(room.getRoomNumber());
         tvRoomType.setText(room.getTypeRoom());
         tvRoomRank.setText(room.getRankRoom());
-        tvRoomPrice.setText("0 đ");
+        tvExtraFill.setText("0 đ");
+        tvPriceFill.setText("0 đ");
+        tvtotalPrice.setText("0 đ");
     }
 
     //Hien thi form dang nhap khi nguoi dung chua dang nhap
@@ -169,7 +198,6 @@ public class FillInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openCheckInformationAgain();
-//                createBooking();
             }
         });
     }
@@ -186,14 +214,14 @@ public class FillInformationActivity extends AppCompatActivity {
 
                 updateCheckInCalender(calendarCheckInDate);
                 calculateDates();
+                onChoseCheckInTime();
+                caculatorPrice(spnCheckInFill.getSelectedItemPosition());
             }
         };
 
         edtCheckInDateFill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                new DatePickerDialog(FillInformationActivity.this, checkInDate, calendarCheckInDate.get(Calendar.YEAR),
-//                        calendarCheckInDate.get(Calendar.MONTH), calendarCheckInDate.get(Calendar.DAY_OF_MONTH)).show();
                 DatePickerDialog datePickerDialog = new DatePickerDialog(FillInformationActivity.this, checkInDate,
                         calendarCheckInDate.get(Calendar.YEAR), calendarCheckInDate.get(Calendar.MONTH), calendarCheckInDate.get(Calendar.DAY_OF_MONTH));
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
@@ -212,14 +240,14 @@ public class FillInformationActivity extends AppCompatActivity {
 
                 updateCheckOutCalender(calendarCheckOutDate);
                 calculateDates();
+                onChoseCheckInTime();
+                caculatorPrice(spnCheckInFill.getSelectedItemPosition());
             }
         };
 
         edtCheckOutDateFill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                new DatePickerDialog(FillInformationActivity.this, checkOutDate, calendarCheckOutDate.get(Calendar.YEAR),
-//                        calendarCheckOutDate.get(Calendar.MONTH), calendarCheckOutDate.get(Calendar.DAY_OF_MONTH)).show();
                 DatePickerDialog datePickerDialog = new DatePickerDialog(FillInformationActivity.this, checkOutDate,
                         calendarCheckOutDate.get(Calendar.YEAR), calendarCheckOutDate.get(Calendar.MONTH), calendarCheckOutDate.get(Calendar.DAY_OF_MONTH));
                 datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
@@ -254,99 +282,31 @@ public class FillInformationActivity extends AppCompatActivity {
             if (startDate.compareTo(endDate) > 0) {
                 tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_ngay));
                 edtNightFill.setText(FillInformationActivity.this.getString(R.string.loi));
+                tvPriceFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
                 return;
             } else if (startDate.compareTo(endDate) == 0) {
                 tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_so_dem));
                 edtNightFill.setText(TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS) + " đêm");
+                tvPriceFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
                 return;
             } else {
                 tvErrorFill.setText("");
                 edtNightFill.setText(TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS) + " đêm");
                 total = room.getPriceRoom() * TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS);
-                tvRoomPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(total)));
+                tvPriceFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(total)));
+//                tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(expectedTotal)));
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
     }
 
-    private void onChoseTime() {
-        Calendar selectedTime = Calendar.getInstance();
-        int hour = selectedTime.get(Calendar.HOUR_OF_DAY);
-        int minute = selectedTime.get(Calendar.MINUTE);
-        TimePickerDialog checkInTime = new TimePickerDialog(FillInformationActivity.this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                selectedTime.set(Calendar.HOUR_OF_DAY, selectedHour);
-                selectedTime.set(Calendar.MINUTE, selectedMinute);
-                if (selectedHour >= 12) {
-                    amPm = "PM";
-                } else {
-                    amPm = "AM";
-                }
-                edtCheckInTimeFill.setText(String.format("%02d:%02d", selectedHour, selectedMinute) + " " + amPm);
-            }
-        }, hour, minute, false);
-
-        edtCheckInTimeFill.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkInTime.show();
-            }
-        });
-
-        TimePickerDialog checkOutTime = new TimePickerDialog(FillInformationActivity.this, new TimePickerDialog.OnTimeSetListener() {
-            @Override
-            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                selectedTime.set(Calendar.HOUR_OF_DAY, selectedHour);
-                selectedTime.set(Calendar.MINUTE, selectedMinute);
-                if (selectedHour >= 12) {
-                    amPm = "PM";
-                } else {
-                    amPm = "AM";
-                }
-                edtCheckOutTimeFill.setText(String.format("%02d:%02d", selectedHour, selectedMinute) + " " + amPm);
-            }
-        }, hour, minute, false);
-
-        edtCheckOutTimeFill.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkOutTime.show();
-            }
-        });
-
-        edtCheckOutTimeFill.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                calculateDates();
-            }
-        });
-    }
-
     private void openCheckInformationAgain() {
         String strName = edtNameFill.getText().toString().trim();
         String strPhoneNumber = edtPhoneFill.getText().toString().trim();
 
-//        Number idPerson = 0;
         String strIdPerson = edtIdPersonFill.getText().toString().trim();
         Log.d("IDPERSONFILL", strIdPerson + "");
-//        try {
-//            idPerson = Long.parseLong(strIdPerson);
-//        } catch (NumberFormatException e) {
-//
-//        }
-//        Log.d("IDPERSONFILLNEW", idPerson + "");
 
         String strEmail = edtEmailFill.getText().toString().trim();
 
@@ -363,27 +323,13 @@ public class FillInformationActivity extends AppCompatActivity {
         }
 
         String strNight = edtNightFill.getText().toString().trim();
-        String checkInDate = edtCheckInDateFill.getText().toString();
-        String checkOutDate = edtCheckOutDateFill.getText().toString();
-        try {
-            @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formatDate);
-            Date startDate = simpleDateFormat.parse(checkInDate);
-            Date endDate = simpleDateFormat.parse(checkOutDate);
 
-            assert startDate != null;
-            assert endDate != null;
-            long duration = (endDate.getTime() - startDate.getTime());
-            night = (int) TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        String strCheckInTime = edtCheckInTimeFill.getText().toString().trim();
+        String strCheckInTime = spnCheckInFill.getSelectedItem().toString();
         String strCheckOutTime = edtCheckOutTimeFill.getText().toString().trim();
 
         if (strName.isEmpty() && strPhoneNumber.isEmpty() && strIdPerson.isEmpty() && strEmail.isEmpty()
                 && strCheckInDate.isEmpty() && strCheckOutDate.isEmpty() && strPeopleFill.isEmpty() && strNight.isEmpty()
-                && strCheckInTime.isEmpty() && strCheckOutTime.isEmpty()) {
+                && strCheckOutTime.isEmpty()) {
             tvErrorFill.setText(FillInformationActivity.this.getString(R.string.thong_tin_bi_trong));
             return;
         }
@@ -435,10 +381,12 @@ public class FillInformationActivity extends AppCompatActivity {
 
             if (startDate.compareTo(endDate) > 0) {
                 tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_ngay_nhan_tra_phong));
+                tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
                 return;
             } else if (startDate.compareTo(endDate) == 0) {
                 if (startTime.compareTo(endTime) > 0) {
                     tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_thoi_gian_nhan_tra_phong));
+                    tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
                     return;
                 }
             }
@@ -454,19 +402,19 @@ public class FillInformationActivity extends AppCompatActivity {
         if (people <= 0) {
             tvErrorFill.setText(FillInformationActivity.this.getString(R.string.so_nguoi_lon_hon));
             return;
-        } else if (people > 4){
+        } else if (people > 4) {
             tvErrorFill.setText(FillInformationActivity.this.getString(R.string.so_nguoi_be_hon));
             return;
         }
 
         if (room.getTypeRoom().equalsIgnoreCase("Phòng đơn") && people > 1) {
-            tvErrorFill.setText("Phòng đơn chỉ được tối thiểu 1 người!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.phong_toi_thieu_1));
             return;
         } else if (room.getTypeRoom().equalsIgnoreCase("Phòng đôi") && people > 2) {
-            tvErrorFill.setText("Phòng đôi chỉ được tối thiểu 2 người!");
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.phong_toi_thieu_2));
             return;
-        } else  if (room.getTypeRoom().equalsIgnoreCase("Phòng 2 giường") && people > 4) {
-            tvErrorFill.setText("Phòng 2 giường chỉ được tối thiểu từ 2 đến 4 người!");
+        } else if (room.getTypeRoom().equalsIgnoreCase("Phòng 2 giường") && people > 4) {
+            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.phong_toi_thieu_4));
             return;
         }
 
@@ -475,13 +423,8 @@ public class FillInformationActivity extends AppCompatActivity {
             return;
         }
 
-        if (strCheckInTime.isEmpty()) {
-            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_thoi_gian_nhan));
-            return;
-        }
-
-        if (strCheckInTime.isEmpty()) {
-            tvErrorFill.setText(FillInformationActivity.this.getString(R.string.chua_nhap_thoi_gian_tra));
+        if (spnCheckInFill.getSelectedItemPosition() == 0) {
+            tvErrorFill.setText("Bạn chưa chọn giờ nhận phòng!");
             return;
         }
 
@@ -508,7 +451,7 @@ public class FillInformationActivity extends AppCompatActivity {
 
         Booking booking = new Booking(roomId, roomNumber, strName, strPhoneNumber, roomType, roomRank,
                 strIdPerson, strEmail, strCheckInDate, strCheckOutDate, night, people, strCheckInTime,
-                strCheckOutTime, total, token);
+                strCheckOutTime, room.getPriceRoom(), expectedTotal, token);
 
         Intent intent = new Intent(FillInformationActivity.this, CheckAgainActivity.class);
         Bundle bundle = new Bundle();
@@ -526,7 +469,18 @@ public class FillInformationActivity extends AppCompatActivity {
         edtCheckOutDateFill = findViewById(R.id.edt_check_out_date_fill);
         edtPeopleFill = findViewById(R.id.edt_people_fill);
         edtNightFill = findViewById(R.id.edt_night_fill);
-        edtCheckInTimeFill = findViewById(R.id.edt_check_in_time_fill);
+//        edtCheckInTimeFill = findViewById(R.id.edt_check_in_time_fill);
+        spnCheckInFill = findViewById(R.id.spn_check_in_time_fill);
+
+        List<String> checkInTime = new ArrayList<>();
+        checkInTime.add("Thời gian nhận!");
+        checkInTime.add("14:00 PM");
+        checkInTime.add("5:00 AM - 9:00 AM");
+        checkInTime.add("9:00 AM - 14:00 PM");
+        checkInTimeAdapter = new CheckInTimeAdapter(FillInformationActivity.this,
+                R.layout.item_selected, checkInTime);
+        spnCheckInFill.setAdapter(checkInTimeAdapter);
+
         edtCheckOutTimeFill = findViewById(R.id.edt_check_out_time_fill);
 
         tvErrorFill = findViewById(R.id.tv_error_fill);
@@ -534,7 +488,9 @@ public class FillInformationActivity extends AppCompatActivity {
         tvRoomNumber = findViewById(R.id.tv_room_number_fill);
         tvRoomRank = findViewById(R.id.tv_room_rank_fill);
         tvRoomType = findViewById(R.id.tv_room_type_fill);
-        tvRoomPrice = findViewById(R.id.tv_price_fill);
+        tvPriceFill = findViewById(R.id.tv_price_fill);
+        tvtotalPrice = findViewById(R.id.tv_total_fill);
+        tvExtraFill = findViewById(R.id.tv_extra_fill);
 
         btnCancelFill = findViewById(R.id.btn_cancel_fill);
         btnOpenCheckAgain = findViewById(R.id.btn_open_check_again);

@@ -198,8 +198,8 @@
                 app:layout_constraintStart_toEndOf="@+id/edt_night_fill"
                 app:layout_constraintTop_toBottomOf="@+id/edt_check_out_date_fill" />
 
-            <EditText
-                android:id="@+id/edt_check_in_time_fill"
+            <Spinner
+                android:id="@+id/spn_check_in_time_fill"
                 style="@style/orange_input_disable"
                 android:layout_width="@dimen/dp_0"
                 android:layout_height="@dimen/dp_40"
@@ -207,7 +207,6 @@
                 android:layout_marginEnd="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text_fill_infor"
                 android:drawableStart="@drawable/ic_clock"
-                android:hint="@string/gio_nhan"
                 app:layout_constraintEnd_toStartOf="@+id/edt_check_out_time_fill"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/edt_night_fill" />
@@ -221,9 +220,11 @@
                 android:layout_marginTop="@dimen/dp_5"
                 android:background="@drawable/custom_edit_text_fill_infor"
                 android:drawableStart="@drawable/ic_clock"
-                android:hint="@string/gio_tra"
+                android:enabled="false"
+                android:text="12:00 PM"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/edt_check_in_time_fill"
+                app:layout_constraintStart_toEndOf="@+id/spn_check_in_time_fill"
                 app:layout_constraintTop_toBottomOf="@+id/edt_people_fill" />
 
             <TextView
@@ -235,17 +236,14 @@
                 android:layout_marginBottom="@dimen/dp_10"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edt_check_in_time_fill" />
+                app:layout_constraintTop_toBottomOf="@+id/spn_check_in_time_fill" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dp_5"
-                android:layout_marginVertical="@dimen/dp_10"
-                android:background="@drawable/bg_color_grey"
+                android:layout_margin="@dimen/dp_5"
                 android:paddingHorizontal="@dimen/dp_10"
-                android:paddingBottom="@dimen/dp_10"
                 app:layout_constraintTop_toBottomOf="@+id/tv_error_fill"
                 tools:layout_editor_absoluteX="5dp">
 
@@ -315,6 +313,43 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_room_type_fill" />
 
                 <TextView
+                    android:id="@+id/tv_warning_fill"
+                    style="@style/text_warning_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/luu_y"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_room_rank_fill" />
+
+                <TextView
+                    android:id="@+id/tv_content_pay"
+                    style="@style/text_content_fill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/luu_y_chon_gio"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_warning_fill" />
+
+                <TextView
+                    android:id="@+id/tv_title_extra_fill"
+                    style="@style/text_title_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:text="@string/thu_them"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_extra_fill"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_content_pay" />
+
+                <TextView
+                    android:id="@+id/tv_extra_fill"
+                    style="@style/text_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_content_pay" />
+
+                <TextView
                     android:id="@+id/tv_title_price_fill"
                     style="@style/text_title_price"
                     android:layout_width="wrap_content"
@@ -322,7 +357,7 @@
                     android:layout_marginEnd="@dimen/dp_5"
                     android:text="@string/don_gia"
                     app:layout_constraintEnd_toStartOf="@+id/tv_price_fill"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_title_room_rank_fill" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_extra_fill" />
 
                 <TextView
                     android:id="@+id/tv_price_fill"
@@ -331,7 +366,26 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_title_room_rank_fill" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_extra_fill" />
+
+                <TextView
+                    android:id="@+id/tv_title_total_fill"
+                    style="@style/text_title_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_5"
+                    android:text="@string/du_kien"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_total_fill"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_price_fill" />
+
+                <TextView
+                    android:id="@+id/tv_total_fill"
+                    style="@style/text_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title_price_fill" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatButton

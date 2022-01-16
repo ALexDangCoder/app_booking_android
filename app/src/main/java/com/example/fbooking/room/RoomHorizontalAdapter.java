@@ -2,6 +2,7 @@ package com.example.fbooking.room;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +46,17 @@ public class RoomHorizontalAdapter extends RecyclerView.Adapter<RoomHorizontalVi
         Room room = roomList.get(position);
         if (room == null) {
             return;
+        }
+
+        if (room.getStatusRoom().equals("Hết phòng")) {
+            holder.itemView.setAlpha(0.5f);
+//            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+        } else if (room.getStatusRoom().equals("Chờ xác nhận")) {
+            holder.itemView.setAlpha(0.5f);
+        } else {
+            holder.itemView.setAlpha(1f);
+//            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                    ViewGroup.LayoutParams.WRAP_CONTENT));
         }
 
         holder.tvRoomNumber.setText(room.getRoomNumber());

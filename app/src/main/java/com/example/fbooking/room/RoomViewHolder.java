@@ -24,14 +24,14 @@ public class RoomViewHolder extends RecyclerView.ViewHolder {
     public RoomViewHolder(@NonNull View itemView) {
         super(itemView);
         view = itemView;
-        imgRoom = itemView.findViewById(R.id.img_room);
-        tvRoomNumber = itemView.findViewById(R.id.tv_room_number);
-        tvTypeRoom = itemView.findViewById(R.id.tv_type_room);
-        tvRankRoom = itemView.findViewById(R.id.tv_rank_room);
-        tvStatusRoom = itemView.findViewById(R.id.tv_status_room);
-        tvPriceRoom = itemView.findViewById(R.id.tv_price_room);
+        imgRoom = view.findViewById(R.id.img_room);
+        tvRoomNumber = view.findViewById(R.id.tv_room_number);
+        tvTypeRoom = view.findViewById(R.id.tv_type_room);
+        tvRankRoom = view.findViewById(R.id.tv_rank_room);
+        tvStatusRoom = view.findViewById(R.id.tv_status_room);
+        tvPriceRoom = view.findViewById(R.id.tv_price_room);
 
-        ivUnFavorite = itemView.findViewById(R.id.iv_un_favorite);
+        ivUnFavorite = view.findViewById(R.id.iv_un_favorite);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users");

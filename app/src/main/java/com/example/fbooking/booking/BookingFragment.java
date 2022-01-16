@@ -5,6 +5,7 @@ import static android.content.Context.MODE_PRIVATE;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -105,6 +106,7 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
     private FirebaseUser user;
     private DatabaseReference reference;
 
+    private int index = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -173,7 +175,7 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
         List<RankRoom> list = new ArrayList<>();
         list.add(new RankRoom("Phổ thông", false));
         list.add(new RankRoom("Cao cấp", false));
-         list.add(new RankRoom("Sang trọng", false));
+        list.add(new RankRoom("Sang trọng", false));
         return list;
     }
 
@@ -219,7 +221,16 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
 
                 if (roomList == null) return;
 
+//                //Sap xep
+//                for (int i = 0; i < roomList.size(); i++) {
+//                    if (roomList.get(i).getStatusRoom().equals("Còn phòng")) {
+//                        Collections.swap(roomList, index, i);
+//                        index++;
+//                    }
+//                }
+
                 roomAdapter.setData(roomList, BookingFragment.this::onRoomClick, BookingFragment.this::onClickFavorite);
+
                 srlBooking.setRefreshing(false);
                 if (progressDialog.isShowing()) {
                     progressDialog.dismiss();
@@ -301,7 +312,12 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
         Bundle bundle = new Bundle();
         bundle.putSerializable("data", room);
         intent.putExtras(bundle);
-        startActivity(intent);
+        if (room.getStatusRoom().equalsIgnoreCase("Hết phòng")) {
+            Toast.makeText(getActivity().getApplication(), "Phòng đã hết!", Toast.LENGTH_LONG).show();
+            return;
+        } else {
+            startActivity(intent);
+        }
     }
 
     @Override

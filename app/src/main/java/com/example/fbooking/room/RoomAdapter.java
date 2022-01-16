@@ -36,6 +36,7 @@ import com.squareup.picasso.Picasso;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Currency;
 import java.util.List;
 
@@ -45,8 +46,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder> implements Filterable {
-    private View view;
-
     Context context;
     private List<Room> roomList;
     private List<Room> oldRoomList;
@@ -54,7 +53,6 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder> implements
     private OnFavoriteClickListener onFavoriteClickListener;
 
     //Cach lam ko toi uu
-
     public RoomAdapter(Context context) {
         this.context = context;
     }
@@ -70,7 +68,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder> implements
     @NonNull
     @Override
     public RoomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.room_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.room_row, parent, false);
         return new RoomViewHolder(view);
     }
 
@@ -90,47 +88,27 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder> implements
                 holder.ivUnFavorite.setBackgroundResource(R.drawable.ic_favorite_border);
             }
         } else {
-            holder.tvRoomNumber.setText(String.valueOf(room.getRoomNumber()));
-            holder.tvTypeRoom.setText(String.valueOf(room.getTypeRoom()));
-            holder.tvRankRoom.setText(String.valueOf(room.getRankRoom()));
-            holder.tvStatusRoom.setText(String.valueOf(room.getStatusRoom()));
-
-            holder.tvPriceRoom.setText(context.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
-
-            if (room.getStatusRoom().equalsIgnoreCase("Hết phòng")) {
-                holder.tvStatusRoom.setTextColor(Color.RED);
-            } else if (room.getStatusRoom().equalsIgnoreCase("Chờ xác nhận")) {
-                holder.tvStatusRoom.setTextColor(Color.BLUE);
-            } else {
-                holder.tvStatusRoom.setTextColor(Color.parseColor("#30C536"));
-            }
-
             holder.ivUnFavorite.setVisibility(View.GONE);
-
-            String path = room.getRoomPhoto().get(0).getFilename();
-            Glide.with(context).load(context.getString(R.string.path, path)).into(holder.imgRoom);
-
-            holder.view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onRoomClickListener.onRoomClick(room);
-                }
-            });
-            return;
-        }
-
-        if (room.getStatusRoom().equalsIgnoreCase("Hết phòng")) {
-            holder.tvStatusRoom.setTextColor(Color.RED);
-        } else if (room.getStatusRoom().equalsIgnoreCase("Chờ xác nhận")) {
-            holder.tvStatusRoom.setTextColor(Color.BLUE);
-        } else {
-            holder.tvStatusRoom.setTextColor(Color.parseColor("#30C536"));
         }
 
         holder.tvRoomNumber.setText(String.valueOf(room.getRoomNumber()));
         holder.tvTypeRoom.setText(String.valueOf(room.getTypeRoom()));
         holder.tvRankRoom.setText(String.valueOf(room.getRankRoom()));
         holder.tvStatusRoom.setText(String.valueOf(room.getStatusRoom()));
+
+        if (room.getStatusRoom().equals("Hết phòng")) {
+            holder.tvStatusRoom.setTextColor(Color.RED);
+            holder.itemView.setAlpha(0.5f);
+//            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0, 0));
+        } else if (room.getStatusRoom().equals("Chờ xác nhận")) {
+            holder.tvStatusRoom.setTextColor(Color.BLUE);
+            holder.itemView.setAlpha(0.5f);
+        } else {
+            holder.tvStatusRoom.setTextColor(Color.parseColor("#30C536"));
+            holder.itemView.setAlpha(1f);
+//            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+//                    ViewGroup.LayoutParams.WRAP_CONTENT));
+        }
 
         holder.tvPriceRoom.setText(context.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(room.getPriceRoom()))));
 
@@ -156,7 +134,6 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder> implements
                     onFavoriteClickListener.onClickFavorite(roomList.get(position));
                 }
                 notifyDataSetChanged();
-//                onFavoriteClickListener.onClickFavorite(room);
             }
         });
     }

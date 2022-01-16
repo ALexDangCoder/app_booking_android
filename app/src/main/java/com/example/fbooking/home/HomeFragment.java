@@ -200,7 +200,12 @@ public class HomeFragment extends Fragment implements OnRoomClickListener {
         Bundle bundle = new Bundle();
         bundle.putSerializable("data", room);
         intent.putExtras(bundle);
-        startActivity(intent);
+        if (room.getStatusRoom().equalsIgnoreCase("Hết phòng")) {
+            Toast.makeText(getActivity().getApplication(), "Phòng đã hết!", Toast.LENGTH_LONG).show();
+            return;
+        } else {
+            startActivity(intent);
+        }
     }
 
     private void getListRoom() {

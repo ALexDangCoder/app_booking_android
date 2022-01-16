@@ -34,6 +34,8 @@
     <string name="gio_den">Giờ đến: </string>
 
     <string name="don_gia">Đơn giá: </string>
+    <string name="thu_them">Phí thu thêm: </string>
+    <string name="du_kien">Tổng dự kiến: </string>
     <string name="price">1500000 đ</string>
 
     <string name="quay_lai">Quay lại</string>
@@ -129,6 +131,11 @@
 
     <!--    How to use-->
 
+    <string name="luu_y_chon_gio">Nếu quý khách nhận phòng trước thời gian quy định, khách sạn sẽ thu thêm phí tùy theo khung giờ (Phí thu thêm sẽ theo phần trăm giá của phòng).
+    \n- Sau 14:00 PM: Không thu thêm phí.
+    \n- Trong khoảng 5:00 AM - 9:00 AM: Thu thêm 50% giá phòng.
+        \n- Trong khoảng 9:00 AM - 14:00 PM: Thu thêm 50% giá phòng.
+    </string>
 
     <!--    Room detail-->
     <string name="fboking_hotel">FBOOKING - FPOLY HOTEL</string>
@@ -215,6 +222,9 @@
     <string name="loi">Lỗi</string>
     <string name="dem">%1$s đêm</string>
     <string name="dang_nhap_tiep_tuc">Đăng nhập để tiếp tục!</string>
+    <string name="phong_toi_thieu_1">Phòng đơn chỉ được tối thiểu 1 người!</string>
+    <string name="phong_toi_thieu_2">Phòng đôi chỉ được tối thiểu 2 người!</string>
+    <string name="phong_toi_thieu_4">Phòng 2 giường chỉ được tối thiểu từ 1 đến 4 người!</string>
 
     <!--    Value - Check again-->
     <string name="check_nhan_phong">Ngày nhận phòng: %1$s</string>
