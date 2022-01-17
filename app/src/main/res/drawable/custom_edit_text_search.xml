@@ -11,7 +11,7 @@
     <!--    Doi mau sau khi click-->
     <item android:state_enabled="true">
         <shape android:shape="rectangle">
-            <stroke android:width="1dp" android:color="#5B69B5" />
+            <stroke android:width="1dp" android:color="#ff5916" />
             <corners android:radius="@dimen/dp_5" />
         </shape>
     </item>
