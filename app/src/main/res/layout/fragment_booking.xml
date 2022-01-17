@@ -17,7 +17,7 @@
             android:layout_height="@dimen/dp_40"
             android:layout_marginEnd="@dimen/dp_5"
             android:background="@drawable/custom_edit_text_search"
-            android:hint="@string/hint_so_nguoi"
+            android:hint="@string/hint_tang"
             android:inputType="number"
             android:paddingHorizontal="@dimen/dp_10"
             android:textColorHint="#838383"

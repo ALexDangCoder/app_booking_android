@@ -56,6 +56,7 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
                 .setContentTitle(strTitle)
                 .setContentText(strBody)
                 .setSmallIcon(R.drawable.logo_mini)
+                .setAutoCancel(true)
                 .setContentIntent(pendingIntent);
 
         Notification notification = notificationBuilder.build();

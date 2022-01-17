@@ -128,6 +128,7 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
             @Override
             public void onRefresh() {
                 showProgressDialog();
+                index = 0;
                 getListRoom();
             }
         });
@@ -149,7 +150,7 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
 
             @Override
             public void afterTextChanged(Editable s) {
-                roomAdapter.getPeopleFilter().filter(s);
+                roomAdapter.getFloorFilter().filter(s);
             }
         });
 
@@ -221,13 +222,13 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
 
                 if (roomList == null) return;
 
-//                //Sap xep
-//                for (int i = 0; i < roomList.size(); i++) {
-//                    if (roomList.get(i).getStatusRoom().equals("Còn phòng")) {
-//                        Collections.swap(roomList, index, i);
-//                        index++;
-//                    }
-//                }
+                //Sap xep
+                for (int i = 0; i < roomList.size(); i++) {
+                    if (roomList.get(i).getStatusRoom().equals("Còn phòng")) {
+                        Collections.swap(roomList, index, i);
+                        index++;
+                    }
+                }
 
                 roomAdapter.setData(roomList, BookingFragment.this::onRoomClick, BookingFragment.this::onClickFavorite);
 
@@ -363,6 +364,14 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
                         roomList = response.body().getData();
 
                         if (roomList == null) return;
+
+//                        //Sap xep
+//                        for (int i = 0; i < roomList.size(); i++) {
+//                            if (roomList.get(i).getStatusRoom().equals("Còn phòng")) {
+//                                Collections.swap(roomList, index, i);
+//                                index++;
+//                            }
+//                        }
 
                         roomAdapter.setData(roomList, BookingFragment.this::onRoomClick, BookingFragment.this::onClickFavorite);
                     }

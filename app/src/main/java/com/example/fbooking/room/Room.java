@@ -25,6 +25,9 @@ public class Room implements Serializable {
     @SerializedName("typeRoom")
     @Expose
     private String typeRoom;
+    @SerializedName("tang")
+    @Expose
+    private String floorRoom;
     @SerializedName("rankRoom")
     @Expose
     private String rankRoom;
@@ -123,6 +126,14 @@ public class Room implements Serializable {
 
     public void setTypeRoom(String typeRoom) {
         this.typeRoom = typeRoom;
+    }
+
+    public String getFloorRoom() {
+        return floorRoom;
+    }
+
+    public void setFloorRoom(String floorRoom) {
+        this.floorRoom = floorRoom;
     }
 
     public String getRankRoom() {

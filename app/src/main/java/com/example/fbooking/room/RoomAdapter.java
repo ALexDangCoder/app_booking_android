@@ -213,7 +213,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder> implements
         };
     }
 
-    public Filter getPeopleFilter() {
+    public Filter getFloorFilter() {
         return new Filter() {
             @Override
             protected FilterResults performFiltering(CharSequence constraint) {
@@ -223,7 +223,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomViewHolder> implements
                 } else {
                     List<Room> list = new ArrayList<>();
                     for (Room room : oldRoomList) {
-                        if (String.valueOf(room.getPeopleRoom()).equalsIgnoreCase(strFilter)) {
+                        if (String.valueOf(room.getFloorRoom()).equalsIgnoreCase(strFilter)) {
                             list.add(room);
                         }
                     }

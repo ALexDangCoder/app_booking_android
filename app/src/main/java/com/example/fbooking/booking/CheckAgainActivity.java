@@ -83,7 +83,7 @@ public class CheckAgainActivity extends AppCompatActivity {
 
         Log.d("IDPERSONCHECK", booking.getCccd() + "");
 
-        tvPriceAgain.setText(CheckAgainActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(booking.getGiaPhong()))));
+        tvPriceAgain.setText(CheckAgainActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(booking.getTongTien()))));
 
         //Call API
         Retrofit retrofit = RetrofitInstance.getInstance();

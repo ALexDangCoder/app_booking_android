@@ -108,18 +108,27 @@ public class FillInformationActivity extends AppCompatActivity {
             expectedTotal = (int) total;
             tvExtraFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
             tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(expectedTotal)));
+
+            calculateDates();
+
             Toast.makeText(FillInformationActivity.this, "Thu thêm: 0 Vnđ - Tổng tiền: " + total + " Vnđ",
                     Toast.LENGTH_SHORT).show();
         } else if (position == 2) {
             expectedTotal = (int) ((int) (priceRoom * 0.5) + total);
             tvExtraFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(priceRoom * 0.5)));
             tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(expectedTotal)));
+
+            calculateDates();
+
             Toast.makeText(FillInformationActivity.this, "Thu thêm: " + (priceRoom * 0.5) + " Vnđ - Tổng tiền: " + total + " Vnđ",
                     Toast.LENGTH_SHORT).show();
         } else if (position == 3) {
             expectedTotal = (int) ((int) (priceRoom * 0.3) + total);
             tvExtraFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(priceRoom * 0.3)));
             tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(expectedTotal)));
+
+            calculateDates();
+
             Toast.makeText(FillInformationActivity.this, "Thu thêm: " + (priceRoom * 0.3) + " Vnđ - Tổng tiền: " + total + " Vnđ",
                     Toast.LENGTH_SHORT).show();
         } else {
@@ -283,11 +292,19 @@ public class FillInformationActivity extends AppCompatActivity {
                 tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_ngay));
                 edtNightFill.setText(FillInformationActivity.this.getString(R.string.loi));
                 tvPriceFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
+
+                tvExtraFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
+                tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
+
                 return;
             } else if (startDate.compareTo(endDate) == 0) {
                 tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_so_dem));
                 edtNightFill.setText(TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS) + " đêm");
                 tvPriceFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
+
+                tvExtraFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
+                tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
+
                 return;
             } else {
                 tvErrorFill.setText("");
@@ -381,12 +398,12 @@ public class FillInformationActivity extends AppCompatActivity {
 
             if (startDate.compareTo(endDate) > 0) {
                 tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_ngay_nhan_tra_phong));
-                tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
+//                tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
                 return;
             } else if (startDate.compareTo(endDate) == 0) {
                 if (startTime.compareTo(endTime) > 0) {
                     tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_thoi_gian_nhan_tra_phong));
-                    tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
+//                    tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
                     return;
                 }
             }
