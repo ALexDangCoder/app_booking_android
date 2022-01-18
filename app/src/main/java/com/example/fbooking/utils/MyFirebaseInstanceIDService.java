@@ -40,9 +40,9 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
         }
 
         String strTitle = notification.getTitle();
-        String strBody = notification.getBody();
+        String strBody = remoteMessage.getNotification().getBody();
 
-        sendNotification(strTitle, strBody);
+//        sendNotification(strTitle, remoteMessage.getNotification().getBody());
     }
 
     //Ham viet them
@@ -57,6 +57,8 @@ public class MyFirebaseInstanceIDService extends FirebaseMessagingService {
                 .setContentText(strBody)
                 .setSmallIcon(R.drawable.logo_mini)
                 .setAutoCancel(true)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setPriority(NotificationManager.IMPORTANCE_HIGH)
                 .setContentIntent(pendingIntent);
 
         Notification notification = notificationBuilder.build();

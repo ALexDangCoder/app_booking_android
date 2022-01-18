@@ -50,7 +50,7 @@ public class WaitAcceptAdapter extends RecyclerView.Adapter<WaitAcceptViewHolder
         holder.tvIdPerson.setText(context.getString(R.string.his_cmnd, String.valueOf(accept.getCccd())));
         holder.tvEmail.setText(context.getString(R.string.his_email, accept.getEmail()));
         holder.tvCheckIn.setText(context.getString(R.string.his_thoi_gian_nhan, accept.getNgaynhan(), accept.getGioNhanPhong()));
-        holder.tvCheckOut.setText(context.getString(R.string.his_thoi_gian_tra, accept.getNgayTra(), accept.getGioTra()));
+        holder.tvCheckOut.setText(context.getString(R.string.his_thoi_gian_tra, accept.getNgayTra(), "12:00 PM"));
         holder.tvPhone.setText(context.getString(R.string.his_phong_so, accept.getSophong()));
         holder.tvPrice.setText(PriceFormatUtils.format(String.valueOf(accept.getGiaPhong())));
 

@@ -128,7 +128,9 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
             @Override
             public void onRefresh() {
                 showProgressDialog();
-                index = 0;
+
+                //Can sua
+//                index = 0;
                 getListRoom();
             }
         });
@@ -222,13 +224,13 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
 
                 if (roomList == null) return;
 
-                //Sap xep
-                for (int i = 0; i < roomList.size(); i++) {
-                    if (roomList.get(i).getStatusRoom().equals("Còn phòng")) {
-                        Collections.swap(roomList, index, i);
-                        index++;
-                    }
-                }
+//                //Sap xep (Can sua)
+//                for (int i = 0; i < roomList.size(); i++) {
+//                    if (roomList.get(i).getStatusRoom().equals("Còn phòng")) {
+//                        Collections.swap(roomList, index, i);
+//                        index++;
+//                    }
+//                }
 
                 roomAdapter.setData(roomList, BookingFragment.this::onRoomClick, BookingFragment.this::onClickFavorite);
 
@@ -365,7 +367,7 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
 
                         if (roomList == null) return;
 
-//                        //Sap xep
+//                        //Sap xep (Can sua)
 //                        for (int i = 0; i < roomList.size(); i++) {
 //                            if (roomList.get(i).getStatusRoom().equals("Còn phòng")) {
 //                                Collections.swap(roomList, index, i);
@@ -405,6 +407,8 @@ public class BookingFragment extends Fragment implements OnRoomClickListener, On
                         @Override
                         public void onResponse(Call<FavoriteResult> call, Response<FavoriteResult> response) {
                             Toast.makeText(getActivity().getApplicationContext(), "Đã thêm vào mục yêu thích!", Toast.LENGTH_SHORT).show();
+                            //Can sua
+//                            index = 0;
                             getListRoom();
                         }
 

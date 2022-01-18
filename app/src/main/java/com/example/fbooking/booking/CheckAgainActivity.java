@@ -35,6 +35,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -69,7 +70,7 @@ public class CheckAgainActivity extends AppCompatActivity {
 //        booking = (Booking) getIntent().getExtras().get("booking");
 
         tvDateCheckInAgain.setText(booking.getNgaynhan());
-        tvNightAgain.setText(String.valueOf(booking.getSodem()));
+        tvNightAgain.setText(TimeUnit.DAYS.convert(booking.getSodem(), TimeUnit.MILLISECONDS) + " đêm");
         tvDateCheckOutAgain.setText(booking.getNgayTra());
         tvRoomNumberAgain.setText(booking.getSophong());
         tvRoomTypeAgain.setText(booking.getLoaiPhong());
@@ -84,6 +85,7 @@ public class CheckAgainActivity extends AppCompatActivity {
         Log.d("IDPERSONCHECK", booking.getCccd() + "");
 
         tvPriceAgain.setText(CheckAgainActivity.this.getString(R.string.vnd, PriceFormatUtils.format(String.valueOf(booking.getTongTien()))));
+        Log.d("NIGHTCHECK->", booking.getSodem() + "");
 
         //Call API
         Retrofit retrofit = RetrofitInstance.getInstance();
@@ -115,7 +117,7 @@ public class CheckAgainActivity extends AppCompatActivity {
                 apiService.createOrder(booking).enqueue(new Callback<Booking>() {
                     @Override
                     public void onResponse(Call<Booking> call, Response<Booking> response) {
-                        Toast.makeText(CheckAgainActivity.this, "Đặt phòng thành công!", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(CheckAgainActivity.this, "Đặt phòng thành công!", Toast.LENGTH_SHORT).show();
 
                         Booking o = response.body();
                         Log.d("BOOKING", o.toString());

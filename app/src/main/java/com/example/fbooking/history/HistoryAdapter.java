@@ -59,7 +59,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryViewHolder> {
         holder.tvIdPerson.setText(context.getString(R.string.his_cmnd, history.getCmnd()));
         holder.tvEmail.setText(context.getString(R.string.his_email, history.getEmail()));
         holder.tvCheckIn.setText(context.getString(R.string.his_thoi_gian_nhan, history.getNgayNhan(), history.getGioNhanPhong()));
-        holder.tvCheckOut.setText(context.getString(R.string.his_thoi_gian_tra, history.getNgayTra(), history.getGioTraPhong()));
+        holder.tvCheckOut.setText(context.getString(R.string.his_thoi_gian_tra, history.getNgayTra(), "12:00 PM"));
         holder.tvPhone.setText(context.getString(R.string.his_so_dien_thoai, String.valueOf(history.getSdt())));
         holder.tvPrice.setText(PriceFormatUtils.format(String.valueOf(history.getGiaPhong())) + " đ");
 

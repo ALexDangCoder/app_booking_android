@@ -111,8 +111,8 @@ public class FillInformationActivity extends AppCompatActivity {
 
             calculateDates();
 
-            Toast.makeText(FillInformationActivity.this, "Thu thêm: 0 Vnđ - Tổng tiền: " + total + " Vnđ",
-                    Toast.LENGTH_SHORT).show();
+//            Toast.makeText(FillInformationActivity.this, "Thu thêm: 0 Vnđ - Tổng tiền: " + total + " Vnđ",
+//                    Toast.LENGTH_SHORT).show();
         } else if (position == 2) {
             expectedTotal = (int) ((int) (priceRoom * 0.5) + total);
             tvExtraFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(priceRoom * 0.5)));
@@ -120,8 +120,8 @@ public class FillInformationActivity extends AppCompatActivity {
 
             calculateDates();
 
-            Toast.makeText(FillInformationActivity.this, "Thu thêm: " + (priceRoom * 0.5) + " Vnđ - Tổng tiền: " + total + " Vnđ",
-                    Toast.LENGTH_SHORT).show();
+//            Toast.makeText(FillInformationActivity.this, "Thu thêm: " + (priceRoom * 0.5) + " Vnđ - Tổng tiền: " + total + " Vnđ",
+//                    Toast.LENGTH_SHORT).show();
         } else if (position == 3) {
             expectedTotal = (int) ((int) (priceRoom * 0.3) + total);
             tvExtraFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(priceRoom * 0.3)));
@@ -129,8 +129,8 @@ public class FillInformationActivity extends AppCompatActivity {
 
             calculateDates();
 
-            Toast.makeText(FillInformationActivity.this, "Thu thêm: " + (priceRoom * 0.3) + " Vnđ - Tổng tiền: " + total + " Vnđ",
-                    Toast.LENGTH_SHORT).show();
+//            Toast.makeText(FillInformationActivity.this, "Thu thêm: " + (priceRoom * 0.3) + " Vnđ - Tổng tiền: " + total + " Vnđ",
+//                    Toast.LENGTH_SHORT).show();
         } else {
             return;
         }
@@ -287,6 +287,7 @@ public class FillInformationActivity extends AppCompatActivity {
             assert startDate != null;
             assert endDate != null;
             long duration = (endDate.getTime() - startDate.getTime());
+            night = (int) duration;
 
             if (startDate.compareTo(endDate) > 0) {
                 tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_ngay));
@@ -299,7 +300,7 @@ public class FillInformationActivity extends AppCompatActivity {
                 return;
             } else if (startDate.compareTo(endDate) == 0) {
                 tvErrorFill.setText(FillInformationActivity.this.getString(R.string.sai_so_dem));
-                edtNightFill.setText(TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS) + " đêm");
+                edtNightFill.setText(TimeUnit.DAYS.convert(night, TimeUnit.MILLISECONDS) + " đêm");
                 tvPriceFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
 
                 tvExtraFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(0)));
@@ -308,7 +309,7 @@ public class FillInformationActivity extends AppCompatActivity {
                 return;
             } else {
                 tvErrorFill.setText("");
-                edtNightFill.setText(TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS) + " đêm");
+                edtNightFill.setText(TimeUnit.DAYS.convert(night, TimeUnit.MILLISECONDS) + " đêm");
                 total = room.getPriceRoom() * TimeUnit.DAYS.convert(duration, TimeUnit.MILLISECONDS);
                 tvPriceFill.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(total)));
 //                tvtotalPrice.setText(FillInformationActivity.this.getString(R.string.vnd, PriceFormatUtils.format(expectedTotal)));
@@ -465,10 +466,11 @@ public class FillInformationActivity extends AppCompatActivity {
 
         String token = MyFirebaseInstanceIDService.getToken(FillInformationActivity.this);
         Log.d("TOKENCHECK", token);
+        Log.d("NIGHTCHECK->", night + "");
 
         Booking booking = new Booking(roomId, roomNumber, strName, strPhoneNumber, roomType, roomRank,
                 strIdPerson, strEmail, strCheckInDate, strCheckOutDate, night, people, strCheckInTime,
-                strCheckOutTime, room.getPriceRoom(), expectedTotal, token);
+                "12:00 PM", room.getPriceRoom(), expectedTotal, token);
 
         Intent intent = new Intent(FillInformationActivity.this, CheckAgainActivity.class);
         Bundle bundle = new Bundle();
